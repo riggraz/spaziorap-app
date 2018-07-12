@@ -1,23 +1,33 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {createStore, applyMiddleware} from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import {Provider} from 'react-redux';
 
-export default class App extends React.Component {
+import rootReducer from './src/reducers';
+
+import SpazioRap from './src/components/SpazioRap';
+
+import {fetchPosts} from './src/actions/requestPosts';
+
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunkMiddleware)
+);
+
+store.dispatch(fetchPosts('latest'))
+  .then(
+    () => console.log(store.getState()),
+    error => console.log('An error occurred: ' + error)
+  );
+
+class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+      <Provider store={store}>
+        <SpazioRap />
+      </Provider>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
