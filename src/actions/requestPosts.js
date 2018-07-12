@@ -34,6 +34,6 @@ export const fetchPosts = topic => dispatch => {
     )
     .then(
       json => dispatch(postsRequestSuccessful(json.data)),
-      error => console.log('An error occurred in FETCHPOSTS: ' + error)
+      error => console.log('An error occurred in FETCHPOSTS: ' + error),
     );
 }

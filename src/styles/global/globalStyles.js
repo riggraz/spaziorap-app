@@ -7,6 +7,11 @@ const globalStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  list: {
+    flex: 1,
+    alignSelf: 'stretch'
+  },
 });
 
 export default globalStyles;
