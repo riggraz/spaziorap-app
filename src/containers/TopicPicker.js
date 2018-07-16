@@ -2,6 +2,7 @@ import {connect} from 'react-redux';
 
 import TopicPickerPresentational from '../components/PostsScreen/TopicPickerPresentational';
 import {selectTopic} from '../actions/selectTopic';
+import {fetchPosts} from '../actions/requestPosts';
 
 const mapStateToProps = state =>
   ({
@@ -12,6 +13,7 @@ const mapStateToProps = state =>
 const mapDispatchToProps = dispatch =>
   ({
     handleTopicChange(topic) {
+      dispatch(fetchPosts(topic));
       dispatch(selectTopic(topic));
     }
   })

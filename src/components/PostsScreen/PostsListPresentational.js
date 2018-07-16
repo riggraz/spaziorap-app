@@ -18,6 +18,12 @@ class PostsListPresentational extends React.Component {
     
     return (
       <View style={globalStyles.container}>
+        {
+          areFetching ?
+            <Text>Caricamento. . .</Text>
+          :
+            <Text>{posts.length} post</Text>
+        }
         <FlatList
           style={globalStyles.list}
           data={posts}
@@ -25,7 +31,7 @@ class PostsListPresentational extends React.Component {
             ({item}) =>
               <PostListItem id={item.id}
                 title={item.title}
-                excerpt={item.body.slice(0, 60)}
+                excerpt={item.body.slice(0, 120)}
               />
             }
           keyExtractor={

@@ -5,19 +5,23 @@ const postListItemStyles = StyleSheet.create({
     flex: 1,
     alignSelf: 'stretch',
 
-    borderTopColor: 'grey',
-    borderBottomColor: 'grey',
-    borderBottomWidth: 1,
+    backgroundColor: '#fefefe',
+
+    borderWidth: 1,
+    borderColor: '#cbcbcb',
 
     paddingTop: 16,
-    paddingLeft: 8,
-    paddingRight: 8,
-    paddingBottom: 16
+    paddingLeft: 16,
+    paddingBottom: 16,
+    paddingRight: 16,
+
+    marginTop: 8,
+    marginBottom: 8,
   },
   
   postTitle: {
     fontSize: 24,
-    color: 'blue'
+    color: '#293F14'
   },
 
   postExcerpt: {
