@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import PostsListPresentational from '../components/PostsScreen/PostsListPresentational';
+import PostsListP from '../components/PostsScreen/PostsListP';
 
 const mapStateToProps = state =>
   ({
@@ -11,6 +11,6 @@ const mapStateToProps = state =>
 const PostsList = connect(
   mapStateToProps,
   null
-)(PostsListPresentational);
+)(PostsListP);
 
 export default PostsList;

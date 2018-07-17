@@ -21,7 +21,7 @@ const postListItemStyles = StyleSheet.create({
   
   postTitle: {
     fontSize: 24,
-    color: '#293F14'
+    color: '#95190C'
   },
 
   postExcerpt: {

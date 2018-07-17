@@ -17,20 +17,32 @@ const PostsStack = createStackNavigator(
     initialRouteName: 'Posts',
     navigationOptions: {
       headerStyle: {
-        backgroundColor: '#38A700',
+        backgroundColor: '#F15946',
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
         fontWeight: 'bold',
       },
     },
-  }
+  },
 );
 
 const AuthStack = createStackNavigator(
   {
     Login: LoginScreen,
-  }
+  },
+  {
+    initialRouteName: 'Login',
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#F15946',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
+  },
 )
 
 const RootStack = createBottomTabNavigator(
@@ -47,12 +59,18 @@ const RootStack = createBottomTabNavigator(
         if (routeName === 'Posts') icon = '📖';
         if (routeName === 'Auth') icon = '👤';
 
-        return <Text>{icon}</Text>;
+        return <Text style={{fontSize: 18}}>{icon}</Text>;
       },
     }),
+    initialRouteName: 'Posts',
+    animationEnabled: true,
+    swipeEnabled: true,
     tabBarOptions: {
-      activeTintColor: 'black',
+      activeTintColor: '#95190C',
       inactiveTintColor: 'gray',
+      labelStyle: {
+        fontSize: 13,
+      },
     },
   },
 );

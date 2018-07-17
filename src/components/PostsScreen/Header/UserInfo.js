@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-const UserInfoP = ({username, handlePress}) => {
+const UserInfo = ({username, handlePress}) => {
     return (
       <View style={styles.userInfoBox}>
       {
@@ -21,7 +21,7 @@ const UserInfoP = ({username, handlePress}) => {
     );
   }
 
-export default UserInfoP;
+export default UserInfo;
 
 const styles = StyleSheet.create({
   userInfoBox: {
@@ -30,5 +30,6 @@ const styles = StyleSheet.create({
 
   userInfoText: {
     fontSize: 22,
+    color: 'white',
   },
 });

@@ -12,18 +12,12 @@ import PostListItem from './PostListItem';
 
 import globalStyles from '../../styles/global/globalStyles';
 
-class PostsListPresentational extends React.Component {
+class PostsListP extends React.Component {
   render() {
-    const { posts, areFetching } = this.props;
+    const {posts, areFetching} = this.props;
     
     return (
       <View style={globalStyles.container}>
-        {
-          areFetching ?
-            <Text>Caricamento. . .</Text>
-          :
-            <Text>{posts.length} post</Text>
-        }
         <FlatList
           style={globalStyles.list}
           data={posts}
@@ -43,4 +37,4 @@ class PostsListPresentational extends React.Component {
   }
 }
 
-export default PostsListPresentational;
+export default PostsListP;

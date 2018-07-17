@@ -4,7 +4,7 @@ import LoginForm from '../../containers/LoginForm';
 
 class LoginScreen extends React.Component {
   static navigationOptions = {
-    title: '👤 Accedi',
+    title: 'Accedi',
   };
 
   render() {
