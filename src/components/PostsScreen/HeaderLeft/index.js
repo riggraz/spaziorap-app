@@ -4,6 +4,8 @@ import {View, StyleSheet} from 'react-native';
 import TopicInfo from './TopicInfo';
 import LoadingInfo from './LoadingInfo';
 
+import {TOPICS} from '../../../constants/navigation';
+
 class HeaderLeftP extends React.Component {
   constructor() {
     super();
@@ -28,7 +30,7 @@ class HeaderLeftP extends React.Component {
       <View style={styles.header}>
         <TopicInfo
           selectedTopicName={selectedTopicName}
-          handlePress={() => navigation.navigate('Topics')}
+          handlePress={() => navigation.navigate(TOPICS)}
         />
         <LoadingInfo
           isLoading={isLoading}

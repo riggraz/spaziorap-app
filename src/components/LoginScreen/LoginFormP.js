@@ -9,6 +9,8 @@ import {
 
 import formStyles from '../../styles/global/formStyles';
 
+import {POSTS, REGISTRATION} from '../../constants/navigation';
+
 class LoginFormP extends React.Component {
 
   constructor() {
@@ -24,7 +26,7 @@ class LoginFormP extends React.Component {
 
   componentDidUpdate() {
     if (this.props.isLoggedIn) {
-      this.props.navigation.navigate('Posts');
+      this.props.navigation.navigate(POSTS);
     }
   }
 
@@ -81,7 +83,7 @@ class LoginFormP extends React.Component {
             null
         }
 
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('Registration')}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate(REGISTRATION)}>
           <Text style={formStyles.touchableText}>
             Non hai un account? Crealo subito.
           </Text>

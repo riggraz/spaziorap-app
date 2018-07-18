@@ -3,11 +3,13 @@ import {View, StyleSheet} from 'react-native';
 
 import UserInfo from './UserInfo';
 
+import {LOGIN} from '../../../constants/navigation';
+
 const HeaderRightP = ({username, navigation}) =>
   <View>
     <UserInfo
       username={username}
-      handlePress={() => navigation.navigate('Login')}
+      handlePress={() => navigation.navigate(LOGIN)}
     />
   </View>
 
