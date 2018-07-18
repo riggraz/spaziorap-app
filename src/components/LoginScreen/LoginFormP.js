@@ -7,7 +7,9 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-class LoginFormPresentational extends React.Component {
+import formStyles from '../../styles/global/formStyles';
+
+class LoginFormP extends React.Component {
 
   constructor() {
     super();
@@ -22,6 +24,10 @@ class LoginFormPresentational extends React.Component {
 
   componentDidUpdate() {
     if (this.props.isLoggedIn) {
+      this.setState({
+        usernameInputText: '',
+        passwordInputText: '',
+      });
       this.props.navigation.navigate('Posts');
     }
   }
@@ -31,53 +37,62 @@ class LoginFormPresentational extends React.Component {
     const {handleLogin} = this.props;
 
     handleLogin(usernameInputText, passwordInputText);
-    // handleLogin('riccardo.graziosi97@gmail.com', 'password');
+    // handleLogin('ricco', 'password');
   }
 
   render() {
     return(
-      <View>
-        <Text>Nome utente:</Text>
+      <View style={formStyles.container}>
+        <Text style={formStyles.label}>
+          Nome utente
+        </Text>
         <TextInput
             value={this.state.usernameInputText}
             onChangeText={usernameInputText => this.setState({usernameInputText})}
             placeholder='Inserisci qui il tuo nome utente'
             autoCapitalize='none'
             autoCorrect={false}
+            underlineColorAndroid='white'
+            style={formStyles.input}
         />
 
-        <Text>Password:</Text>
+        <Text style={formStyles.label}>
+          Password
+        </Text>
         <TextInput
             value={this.state.passwordInputText}
             onChangeText={passwordInputText => this.setState({passwordInputText})}
-            placeholder='Type your password...'
+            placeholder='Inserisci qui la tua password'
             secureTextEntry
+            underlineColorAndroid='white'
+            style={formStyles.input}
         />
 
-        <Button
-          title='Login'
-          onPress={() => this._handleLogin()}
-        />
+        <TouchableOpacity onPress={() => this._handleLogin()} style={formStyles.button}>
+          <Text style={formStyles.buttonText}>Accedi</Text>
+        </TouchableOpacity>
 
         {
           this.props.isLoggingIn ?
-            <Text>Logging in...</Text>
+            <Text style={formStyles.label}>Sto accedendo...</Text>
           :
             null
         }
         {
           this.props.error ?
-            <Text style={{color: 'red'}}>Error during login</Text>
+            <Text style={formStyles.redLabel}>Combinazione nome utente e password sbagliata.</Text>
           :
             null
         }
 
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('Signup')}>
-          <Text>Non hai un account? Crealo in 30 secondi!</Text>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Registration')}>
+          <Text style={formStyles.touchableText}>
+            Non hai un account? Crealo subito.
+          </Text>
         </TouchableOpacity>
       </View>
     );
   }
 }
 
-export default LoginFormPresentational;
+export default LoginFormP;

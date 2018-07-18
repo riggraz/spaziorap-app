@@ -14,7 +14,7 @@ const UserInfo = ({username, handlePress}) => {
           <Text style={styles.userInfoText}>{username}</Text>
         :
           <TouchableOpacity onPress={handlePress}>
-            <Text style={styles.userInfoText}>Login</Text>
+            <Text style={styles.userInfoText}>Accedi</Text>
           </TouchableOpacity>
       }
       </View>

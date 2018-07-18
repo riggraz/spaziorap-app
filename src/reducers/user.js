@@ -4,6 +4,14 @@ import {
   LOGIN_FAILURE,
 } from '../actions/login';
 
+import {
+  START_REGISTRATION,
+  REGISTRATION_SUCCESSFUL,
+  REGISTRATION_FAILURE
+} from '../actions/register';
+
+import {LOGOUT} from '../actions/logout';
+
 const user = (
   state = {
     isLoggingIn: false,
@@ -19,12 +27,15 @@ const user = (
 ) => {
   switch (action.type) {
     case START_LOGIN:
+    case START_REGISTRATION:
       return {
         ...state,
-        isLoggingIn: true
+        isLoggingIn: true,
+        error: false,
       };
 
     case LOGIN_SUCCESSFUL:
+    case REGISTRATION_SUCCESSFUL:
       return {
         isLoggingIn: false,
         isLoggedIn: true,
@@ -37,6 +48,8 @@ const user = (
       };
 
     case LOGIN_FAILURE:
+    case REGISTRATION_FAILURE:
+    case LOGOUT:
       return {
         isLoggingIn: false,
         isLoggedIn: false,

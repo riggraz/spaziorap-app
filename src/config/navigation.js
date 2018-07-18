@@ -6,8 +6,12 @@ import {
   createSwitchNavigator,
 } from 'react-navigation';
 
+//Posts stack
 import PostsScreen from '../components/PostsScreen';
+
+//Auth stack
 import LoginScreen from '../components/LoginScreen';
+import RegistrationScreen from '../components/RegistrationScreen';
 
 const PostsStack = createStackNavigator(
   {
@@ -30,6 +34,7 @@ const PostsStack = createStackNavigator(
 const AuthStack = createStackNavigator(
   {
     Login: LoginScreen,
+    Registration: RegistrationScreen,
   },
   {
     initialRouteName: 'Login',
@@ -43,7 +48,7 @@ const AuthStack = createStackNavigator(
       },
     },
   },
-)
+);
 
 const RootStack = createBottomTabNavigator(
   {
