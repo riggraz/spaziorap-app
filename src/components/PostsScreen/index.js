@@ -1,13 +1,17 @@
 import React from 'react';
 
 import PostsList from '../../containers/PostsList';
-import Header from '../../containers/Header';
+import HeaderLeft from '../../containers/HeaderLeft';
+import HeaderRight from '../../containers/HeaderRight';
 
 class PostsScreen extends React.Component {
   static navigationOptions = ({navigation}) =>
   ({
     headerLeft: (
-      <Header navigation={navigation} />
+      <HeaderLeft navigation={navigation} />
+    ),
+    headerRight: (
+      <HeaderRight navigation={navigation} />
     ),
   });
 

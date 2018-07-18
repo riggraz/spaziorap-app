@@ -1,21 +1,18 @@
 import {connect} from 'react-redux';
 
-import HeaderP from '../components/PostsScreen/Header/HeaderP';
+import HeaderLeftP from '../components/PostsScreen/HeaderLeft';
 
 import {fetchPosts} from '../actions/requestPosts';
 import {selectTopic} from '../actions/selectTopic';
 
 const mapStateToProps = state =>
   ({
-    //TopicPicker
+    //TopicInfo
     topics: state.topics.items,
     selectedTopic: state.topics.selectedTopic,
 
     //LoadingInfo
     isLoading: state.posts.areFetching,
-
-    //UserInfo
-    username: state.user.username,
   });
 
 const mapDispatchToProps = dispatch =>
@@ -27,9 +24,9 @@ const mapDispatchToProps = dispatch =>
     }
   });
 
-const Header = connect(
+const HeaderLeft = connect(
   mapStateToProps,
   mapDispatchToProps
-)(HeaderP);
+)(HeaderLeftP);
 
-export default Header;
+export default HeaderLeft;

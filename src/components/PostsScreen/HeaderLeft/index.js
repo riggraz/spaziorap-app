@@ -3,9 +3,8 @@ import {View, StyleSheet} from 'react-native';
 
 import TopicInfo from './TopicInfo';
 import LoadingInfo from './LoadingInfo';
-import UserInfo from './UserInfo';
 
-class HeaderP extends React.Component {
+class HeaderLeftP extends React.Component {
   constructor() {
     super();
 
@@ -22,7 +21,6 @@ class HeaderP extends React.Component {
   render() {
     const {topics, selectedTopic} = this.props;
     const {isLoading, navigation} = this.props;
-    const {username} = this.props;
 
     const selectedTopicName = this._getSelectedTopicName(selectedTopic, topics);
 
@@ -35,22 +33,16 @@ class HeaderP extends React.Component {
         <LoadingInfo
           isLoading={isLoading}
         />
-        <UserInfo
-          username={username}
-          handlePress={() => navigation.navigate('Login')}
-        />
       </View>
     );
   }
 }
 
-export default HeaderP;
+export default HeaderLeftP;
 
 const styles = StyleSheet.create({
   header: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
   },
 });
