@@ -24,10 +24,6 @@ class LoginFormP extends React.Component {
 
   componentDidUpdate() {
     if (this.props.isLoggedIn) {
-      this.setState({
-        usernameInputText: '',
-        passwordInputText: '',
-      });
       this.props.navigation.navigate('Posts');
     }
   }

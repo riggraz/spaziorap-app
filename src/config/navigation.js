@@ -9,9 +9,22 @@ import {
 //Posts stack
 import PostsScreen from '../components/PostsScreen';
 
+//Topics stack
+import TopicsScreen from '../components/TopicsScreen';
+
 //Auth stack
 import LoginScreen from '../components/LoginScreen';
 import RegistrationScreen from '../components/RegistrationScreen';
+
+const defaultNavigationOptions = {
+  headerStyle: {
+    backgroundColor: '#F15946',
+  },
+  headerTintColor: '#fff',
+  headerTitleStyle: {
+    fontWeight: 'bold',
+  },
+};
 
 const PostsStack = createStackNavigator(
   {
@@ -19,15 +32,17 @@ const PostsStack = createStackNavigator(
   },
   {
     initialRouteName: 'Posts',
-    navigationOptions: {
-      headerStyle: {
-        backgroundColor: '#F15946',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    },
+    navigationOptions: defaultNavigationOptions,
+  },
+);
+
+const TopicsStack = createStackNavigator(
+  {
+    Topics: TopicsScreen,
+  },
+  {
+    initialRouteName: 'Topics',
+    navigationOptions: defaultNavigationOptions,
   },
 );
 
@@ -38,21 +53,14 @@ const AuthStack = createStackNavigator(
   },
   {
     initialRouteName: 'Login',
-    navigationOptions: {
-      headerStyle: {
-        backgroundColor: '#F15946',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    },
+    navigationOptions: defaultNavigationOptions,
   },
 );
 
 const RootStack = createBottomTabNavigator(
   {
     Posts: PostsStack,
+    Topics: TopicsStack,
     Auth: AuthStack,
   },
   {
@@ -62,6 +70,7 @@ const RootStack = createBottomTabNavigator(
         let icon;
 
         if (routeName === 'Posts') icon = '📖';
+        if (routeName === 'Topics') icon = '📚';
         if (routeName === 'Auth') icon = '👤';
 
         return <Text style={{fontSize: 18}}>{icon}</Text>;

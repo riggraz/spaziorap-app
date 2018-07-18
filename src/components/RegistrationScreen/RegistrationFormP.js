@@ -27,13 +27,6 @@ class RegistrationFormP extends React.Component {
 
   componentDidUpdate() {
     if (this.props.isLoggedIn) {
-      this.setState({
-        usernameInputText: '',
-        emailInputText: undefined,
-        passwordInputText: '',
-        passwordConfirmationInputText: '',
-        passwordDoesntMatch: false,
-      });
       this.props.navigation.navigate('Posts');
     }
   }
