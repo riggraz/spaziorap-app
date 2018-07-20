@@ -7,9 +7,7 @@ import {
 import TopicsListSectionHeader from './TopicsListSectionHeader';
 import TopicsListItem from './TopicsListItem';
 
-import {POSTS} from '../../constants/navigation';
-
-const TopicsListP = ({topics, handleTopicChange, navigation}) =>
+const TopicsListP = ({topics, handleTopicChange, navigateToPostsListByTopic}) =>
   <SectionList
     renderItem={
       ({item, index, section}) =>
@@ -17,7 +15,7 @@ const TopicsListP = ({topics, handleTopicChange, navigation}) =>
           name={item.name}
           handlePress={() => {
             handleTopicChange(item.id);
-            navigation.navigate(POSTS);
+            navigateToPostsListByTopic();
           }}
           key={index}
         />

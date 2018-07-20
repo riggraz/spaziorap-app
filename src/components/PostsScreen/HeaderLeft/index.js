@@ -1,10 +1,11 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 
+import BackButton from './BackButton';
 import TopicInfo from './TopicInfo';
 import LoadingInfo from './LoadingInfo';
 
-import {TOPICS} from '../../../constants/navigation';
+import {POSTS_LIST, TOPICS_LIST} from '../../../constants/navigation';
 
 class HeaderLeftP extends React.Component {
 
@@ -23,9 +24,15 @@ class HeaderLeftP extends React.Component {
 
     return (
       <View style={styles.header}>
+        {
+          (navigation.state.routeName === POSTS_LIST) ?
+            null
+          :
+            <BackButton goBack={() => navigation.goBack()} />
+        }
         <TopicInfo
           selectedTopicName={selectedTopicName}
-          handlePress={() => navigation.navigate(TOPICS)}
+          handlePress={() => navigation.navigate(TOPICS_LIST)}
         />
         <LoadingInfo
           isLoading={isLoading}

@@ -7,12 +7,8 @@ import HeaderRight from '../../containers/HeaderRight';
 class PostsScreen extends React.Component {
   static navigationOptions = ({navigation}) =>
   ({
-    headerLeft: (
-      <HeaderLeft navigation={navigation} />
-    ),
-    headerRight: (
-      <HeaderRight navigation={navigation} />
-    ),
+    headerLeft: <HeaderLeft navigation={navigation} />,
+    headerRight: <HeaderRight navigation={navigation} />,
   });
 
   render() {

@@ -19,10 +19,15 @@ import RegistrationScreen from '../components/RegistrationScreen';
 
 import {
   POSTS,
+    POSTS_LIST,
+
   TOPICS,
+    TOPICS_LIST,
+    POSTS_LIST_BY_TOPIC,
+
   AUTH,
-  LOGIN,
-  REGISTRATION,
+    LOGIN,
+    REGISTRATION,
 } from '../constants/navigation';
 
 const defaultNavigationOptions = {
@@ -37,20 +42,21 @@ const defaultNavigationOptions = {
 
 const PostsStack = createStackNavigator(
   {
-    [POSTS]: PostsScreen,
+    [POSTS_LIST]: PostsScreen,
   },
   {
-    initialRouteName: POSTS,
+    initialRouteName: POSTS_LIST,
     navigationOptions: defaultNavigationOptions,
   },
 );
 
 const TopicsStack = createStackNavigator(
   {
-    [TOPICS]: TopicsScreen,
+    [TOPICS_LIST]: TopicsScreen,
+    [POSTS_LIST_BY_TOPIC]: PostsScreen,
   },
   {
-    initialRouteName: TOPICS,
+    initialRouteName: TOPICS_LIST,
     navigationOptions: defaultNavigationOptions,
   },
 );

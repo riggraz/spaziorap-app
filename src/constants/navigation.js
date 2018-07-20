@@ -7,7 +7,12 @@
 */
 
 export const POSTS = 'Messaggi';
+  export const POSTS_LIST = 'Lista Messaggi';
+
 export const TOPICS = 'Argomenti';
+  export const TOPICS_LIST = 'Lista Argomenti';
+  export const POSTS_LIST_BY_TOPIC = 'Lista Messaggi Per Argomento';
+
 export const AUTH = 'Autenticazione';
-export const LOGIN = 'Login';
-export const REGISTRATION = 'Registration';
+  export const LOGIN = 'Login';
+  export const REGISTRATION = 'Registration';
