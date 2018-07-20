@@ -27,7 +27,11 @@ const posts = (
           id: post.id,
           title: post.attributes.title,
           body: post.attributes.body,
-          url: post.attributes.url
+          url: post.attributes.url,
+          userId: post.attributes.user_id,
+          userUsername: post.attributes.user_username,
+          topicId: post.attributes.topic_id.toString(),
+          createdAt: post.attributes.created_at.toString(),
         })),
       };
 

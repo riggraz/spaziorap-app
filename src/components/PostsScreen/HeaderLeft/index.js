@@ -7,16 +7,11 @@ import LoadingInfo from './LoadingInfo';
 import {TOPICS} from '../../../constants/navigation';
 
 class HeaderLeftP extends React.Component {
-  constructor() {
-    super();
 
-    this._getSelectedTopicName = this._getSelectedTopicName.bind(this);
-  }
-
-  _getSelectedTopicName(selectedTopic, topics) {
+  _getSelectedTopicName = (selectedTopic, topics) => {
     if (selectedTopic === 'latest') return 'nuovi';
     else if (selectedTopic === 'trending') return 'di moda';
-    else if (selectedTopic) return topics.filter(topic => topic.id == selectedTopic)[0].name;
+    else if (selectedTopic) return topics.find(topic => topic.id == selectedTopic).name;
     else return '';
   }
 

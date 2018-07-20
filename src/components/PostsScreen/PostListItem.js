@@ -5,14 +5,22 @@ import {
   Text
 } from 'react-native';
 
+import PostsListItemInfoBox from './PostsListItemInfoBox';
+
 import postListItemStyles from '../../styles/postListItemStyles';
 
-const PostListItem = ({title, excerpt}) =>
-  <TouchableOpacity onPress={() => null}>
-    <View style={postListItemStyles.postBox}>
+const PostsListItem = ({title, excerpt, user, topic, createdAt, handleTopicChange}) =>
+  <View style={postListItemStyles.postBox}>
+    <TouchableOpacity onPress={() => null}>
       <Text style={postListItemStyles.postTitle}>{title}</Text>
       <Text style={postListItemStyles.postExcerpt}>{excerpt}</Text>
-    </View>
-  </TouchableOpacity>
+    </TouchableOpacity>
+    <PostsListItemInfoBox
+      user={user}
+      topic={topic}
+      createdAt={createdAt}
+      handleTopicChange={handleTopicChange}
+    />
+  </View>
 
-export default PostListItem;
+export default PostsListItem;

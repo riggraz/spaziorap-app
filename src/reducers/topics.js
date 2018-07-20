@@ -31,9 +31,8 @@ const topics = (
         areFetching: false,
         items: action.topics.map(topic => ({
           id: topic.id,
-          name: topic.attributes.name
-        }),
-        )
+          name: topic.attributes.name,
+        })),
       };
 
     default:
