@@ -24,7 +24,11 @@ class PostsListP extends React.Component {
       'nessuna'
   );
 
-  _handleRefresh = () => this.props.handleRefresh(this.props.selectedTopic);
+  _handleRefresh = () => {
+    const {handleRefresh, selectedTopic, of} = this.props;
+
+    handleRefresh((of === 'latest' || of === 'trending') ? of : selectedTopic);
+  }
 
   render() {
     const {posts, postsAreFetching} = this.props;

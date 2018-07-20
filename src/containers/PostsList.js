@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import PostsListP from '../components/PostsScreen/PostsListP';
 
 import {fetchPosts} from '../actions/requestPosts';
+import {fetchLatestPosts} from '../actions/requestLatestPosts';
 import {selectTopic} from '../actions/selectTopic';
 
 import {POSTS_BY_TOPIC} from '../constants/navigation';
@@ -25,7 +26,9 @@ const mapDispatchToProps = dispatch =>
     },
 
     handleRefresh(selectedTopic) {
-      dispatch(fetchPosts(selectedTopic));
+      if (selectedTopic === 'latest') dispatch(fetchLatestPosts());
+      else if (selectedTopic === 'trending') 0//to implement
+      else dispatch(fetchPosts(selectedTopic));
     },
   });
 
