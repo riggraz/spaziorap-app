@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 import PostsListItem from './PostListItem';
+import Loading from './Loading';
 
 import globalStyles from '../../styles/global/globalStyles';
 
@@ -27,7 +28,9 @@ class PostsListP extends React.Component {
 
   render() {
     const {posts, postsAreFetching} = this.props;
-    const {topics, topicsAreFetching, handleTopicChange} = this.props;
+    const {topics, topicsAreFetching} = this.props;
+
+    const {handleTopicChange, navigateToPostsByTopic} = this.props;
 
     return (!postsAreFetching && !topicsAreFetching) ?
       (
@@ -44,7 +47,15 @@ class PostsListP extends React.Component {
                   topic={this._getTopicName(item.topicId, topics)}
                   createdAt={friendlyDate(item.createdAt)}
 
-                  handleTopicChange={() => handleTopicChange(item.topicId)}
+                  handleTopicChange={
+                    () => {
+                      if (navigateToPostsByTopic) {
+                        const topicName = this._getTopicName(item.topicId, topics);
+                        handleTopicChange(item.topicId, topicName);
+                        navigateToPostsByTopic(topicName);
+                      }
+                    }
+                  }
                 />
               }
             keyExtractor={

@@ -1,14 +1,13 @@
 import React from 'react';
 import {Text} from 'react-native';
 import {
-  createTabNavigator,
   createBottomTabNavigator,
   createStackNavigator,
-  createSwitchNavigator,
 } from 'react-navigation';
 
 //Posts stack
-import PostsScreen from '../components/PostsScreen';
+import LatestPostsScreen from '../components/PostsScreen/LatestPostsScreen';
+import TopicPostsScreen from '../components/PostsScreen/TopicPostsScreen';
 
 //Topics stack
 import TopicsScreen from '../components/TopicsScreen';
@@ -18,12 +17,13 @@ import LoginScreen from '../components/LoginScreen';
 import RegistrationScreen from '../components/RegistrationScreen';
 
 import {
-  POSTS,
-    POSTS_LIST,
+  HOME,
+    LATEST_POSTS,
+    TRENDING_POSTS,
 
   TOPICS,
     TOPICS_LIST,
-    POSTS_LIST_BY_TOPIC,
+    POSTS_BY_TOPIC,
 
   AUTH,
     LOGIN,
@@ -40,12 +40,13 @@ const defaultNavigationOptions = {
   },
 };
 
-const PostsStack = createStackNavigator(
+const HomeStack = createStackNavigator(
   {
-    [POSTS_LIST]: PostsScreen,
+    [LATEST_POSTS]: LatestPostsScreen,
+    [TRENDING_POSTS]: LatestPostsScreen,
   },
   {
-    initialRouteName: POSTS_LIST,
+    initialRouteName: LATEST_POSTS,
     navigationOptions: defaultNavigationOptions,
   },
 );
@@ -53,7 +54,7 @@ const PostsStack = createStackNavigator(
 const TopicsStack = createStackNavigator(
   {
     [TOPICS_LIST]: TopicsScreen,
-    [POSTS_LIST_BY_TOPIC]: PostsScreen,
+    [POSTS_BY_TOPIC]: TopicPostsScreen,
   },
   {
     initialRouteName: TOPICS_LIST,
@@ -74,7 +75,7 @@ const AuthStack = createStackNavigator(
 
 const RootStack = createBottomTabNavigator(
   {
-    [POSTS]: PostsStack,
+    [HOME]: HomeStack,
     [TOPICS]: TopicsStack,
     [AUTH]: AuthStack,
   },
@@ -84,17 +85,14 @@ const RootStack = createBottomTabNavigator(
         const {routeName} = navigation.state;
         let icon;
 
-        if (routeName === POSTS) icon = '💬';
+        if (routeName === HOME) icon = '🏠';
         if (routeName === TOPICS) icon = '📚';
         if (routeName === AUTH) icon = '👤';
 
         return <Text style={{fontSize: 18}}>{icon}</Text>;
       },
     }),
-    initialRouteName: POSTS,
-    tabBarPosition: 'bottom',
-    animationEnabled: true,
-    swipeEnabled: true,
+    initialRouteName: HOME,
     tabBarOptions: {
       activeTintColor: '#95190C',
       inactiveTintColor: 'gray',

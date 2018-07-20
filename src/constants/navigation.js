@@ -6,12 +6,13 @@
   cambiarlo a piacere modificando semplicemente questo file.
 */
 
-export const POSTS = 'Messaggi';
-  export const POSTS_LIST = 'Lista Messaggi';
+export const HOME = 'Home';
+  export const LATEST_POSTS = 'Messaggi recenti';
+  export const TRENDING_POSTS = 'Messaggi di moda';
 
 export const TOPICS = 'Argomenti';
   export const TOPICS_LIST = 'Lista Argomenti';
-  export const POSTS_LIST_BY_TOPIC = 'Lista Messaggi Per Argomento';
+  export const POSTS_BY_TOPIC = 'Messaggi per argomento';
 
 export const AUTH = 'Autenticazione';
   export const LOGIN = 'Login';

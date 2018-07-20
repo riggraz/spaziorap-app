@@ -1,50 +1,44 @@
 import {
+  START_LATEST_POSTS_REQUEST,
+  LATEST_POSTS_REQUEST_SUCCESSFUL,
+  LATEST_POSTS_REQUEST_FAILURE,
+} from '../actions/requestLatestPosts';
+
+import {
   START_POSTS_REQUEST,
   POSTS_REQUEST_SUCCESSFUL,
-  POSTS_REQUEST_FAILURE
+  POSTS_REQUEST_FAILURE,
 } from '../actions/requestPosts';
+
+import postsByTopic from './postsByTopic';
 
 const posts = (
   state = {
-    areFetching: true,
-    error: false,
-    items: []
+    latest: {},
+    selectedTopic: {},
   },
   action
 ) => {
   switch (action.type) {
+    case START_LATEST_POSTS_REQUEST:
+    case LATEST_POSTS_REQUEST_SUCCESSFUL:
+    case LATEST_POSTS_REQUEST_FAILURE:
+      return {
+        latest: postsByTopic(state.latest, action),
+        selectedTopic: state.selectedTopic,
+      };
+
     case START_POSTS_REQUEST:
-      return {
-        ...state,
-        areFetching: true,
-      };
-
     case POSTS_REQUEST_SUCCESSFUL:
-      return {
-        areFetching: false,
-        error: false,
-        items: action.posts.map(post => ({
-          id: post.id,
-          title: post.attributes.title,
-          body: post.attributes.body,
-          url: post.attributes.url,
-          userId: post.attributes.user_id,
-          userUsername: post.attributes.user_username,
-          topicId: post.attributes.topic_id.toString(),
-          createdAt: post.attributes.created_at.toString(),
-        })),
-      };
-
     case POSTS_REQUEST_FAILURE:
       return {
-        areFetching: false,
-        error: true,
-        items: state.posts.items,
+        latest: state.latest,
+        selectedTopic: postsByTopic(state.selectedTopic, action),
       };
 
     default:
       return state;
   }
-}
+};
 
 export default posts;

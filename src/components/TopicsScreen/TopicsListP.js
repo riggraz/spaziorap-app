@@ -15,7 +15,7 @@ const TopicsListP = ({topics, handleTopicChange, navigateToPostsListByTopic}) =>
           name={item.name}
           handlePress={() => {
             handleTopicChange(item.id);
-            navigateToPostsListByTopic();
+            navigateToPostsListByTopic(item.name);
           }}
           key={index}
         />
@@ -25,7 +25,7 @@ const TopicsListP = ({topics, handleTopicChange, navigateToPostsListByTopic}) =>
         <TopicsListSectionHeader title={title} />
     }
     sections={[
-      {title: 'Migliori', data: [{id: 'latest', name: 'nuovi'}, {id: 'trending', name: 'di moda'}]},
+//      {title: 'Migliori', data: [{id: 'latest', name: 'nuovi'}, {id: 'trending', name: 'di moda'}]},
       {title: 'Tutti', data: topics},
     ]}
     keyExtractor={(item, index) => item + index}

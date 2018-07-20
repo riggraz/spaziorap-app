@@ -5,10 +5,12 @@ import PostsListP from '../components/PostsScreen/PostsListP';
 import {fetchPosts} from '../actions/requestPosts';
 import {selectTopic} from '../actions/selectTopic';
 
-const mapStateToProps = state =>
+import {POSTS_BY_TOPIC} from '../constants/navigation';
+
+const mapStateToProps = (state, ownProps) =>
   ({
-    posts: state.posts.items,
-    postsAreFetching: state.posts.areFetching,
+    posts: state.posts[ownProps.of].items,
+    postsAreFetching: state.posts[ownProps.of].areFetching,
 
     topics: state.topics.items,
     topicsAreFetching: state.topics.areFetching,
@@ -17,7 +19,7 @@ const mapStateToProps = state =>
 
 const mapDispatchToProps = dispatch =>
   ({
-    handleTopicChange(topicId) {
+    handleTopicChange(topicId, topicName) {
       dispatch(fetchPosts(topicId));
       dispatch(selectTopic(topicId));
     },

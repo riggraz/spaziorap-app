@@ -22,12 +22,7 @@ const postsRequestFailure = () =>
 export const fetchPosts = topic => dispatch => {
   dispatch(startPostsRequest());
 
-  let URL = API_URL;
-
-  if (topic === 'latest') URL += '/posts/latest';
-  else URL += `/topics/${topic}/posts`;
-
-  return fetch(URL)
+  return fetch(`${API_URL}/topics/${topic}/posts`)
     .then(
       response => response.json(),
       error => postsRequestFailure(),
