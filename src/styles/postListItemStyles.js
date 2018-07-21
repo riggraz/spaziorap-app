@@ -21,18 +21,18 @@ const postListItemStyles = StyleSheet.create({
   
   postTitle: {
     fontSize: 24,
-    color: '#95190C'
+    color: '#95190C',
   },
 
   postExcerpt: {
     fontSize: 16,
-    color: 'black'
+    color: 'black',
   },
 
   infoBox: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
 
     marginTop: 8,
   },

@@ -6,8 +6,6 @@ import {fetchPosts} from '../actions/requestPosts';
 import {fetchLatestPosts} from '../actions/requestLatestPosts';
 import {selectTopic} from '../actions/selectTopic';
 
-import {POSTS_BY_TOPIC} from '../constants/navigation';
-
 const mapStateToProps = (state, ownProps) =>
   ({
     posts: state.posts[ownProps.of].items,

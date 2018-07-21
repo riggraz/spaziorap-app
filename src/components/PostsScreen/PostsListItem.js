@@ -9,9 +9,9 @@ import PostsListItemInfoBox from './PostsListItemInfoBox';
 
 import postListItemStyles from '../../styles/postListItemStyles';
 
-const PostsListItem = ({title, excerpt, user, topic, createdAt, handleTopicChange}) =>
+const PostsListItem = ({title, excerpt, user, topic, createdAt, handleTopicChange, handlePress}) =>
   <View style={postListItemStyles.postBox}>
-    <TouchableOpacity onPress={() => null}>
+    <TouchableOpacity onPress={handlePress}>
       <Text style={postListItemStyles.postTitle}>{title}</Text>
       <Text style={postListItemStyles.postExcerpt}>{excerpt}</Text>
     </TouchableOpacity>

@@ -6,8 +6,8 @@ import {
 } from 'react-navigation';
 
 //Posts stack
-import LatestPostsScreen from '../components/PostsScreen/LatestPostsScreen';
-import TopicPostsScreen from '../components/PostsScreen/TopicPostsScreen';
+import PostsScreen from '../components/PostsScreen';
+import SinglePostScreen from '../components/SinglePostScreen';
 
 //Topics stack
 import TopicsScreen from '../components/TopicsScreen';
@@ -20,10 +20,12 @@ import {
   HOME,
     LATEST_POSTS,
     TRENDING_POSTS,
+    SINGLE_HOME_POST,
 
   TOPICS,
     TOPICS_LIST,
     POSTS_BY_TOPIC,
+    SINGLE_POST,
 
   AUTH,
     LOGIN,
@@ -42,8 +44,9 @@ const defaultNavigationOptions = {
 
 const HomeStack = createStackNavigator(
   {
-    [LATEST_POSTS]: LatestPostsScreen,
-    [TRENDING_POSTS]: LatestPostsScreen,
+    [LATEST_POSTS]: PostsScreen,
+    [TRENDING_POSTS]: PostsScreen,
+    [SINGLE_HOME_POST]: SinglePostScreen,
   },
   {
     initialRouteName: LATEST_POSTS,
@@ -54,7 +57,8 @@ const HomeStack = createStackNavigator(
 const TopicsStack = createStackNavigator(
   {
     [TOPICS_LIST]: TopicsScreen,
-    [POSTS_BY_TOPIC]: TopicPostsScreen,
+    [POSTS_BY_TOPIC]: PostsScreen,
+    [SINGLE_POST]: SinglePostScreen,
   },
   {
     initialRouteName: TOPICS_LIST,
