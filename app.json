@@ -1,5 +1,19 @@
 {
   "expo": {
-    "sdkVersion": "27.0.0"
+    "sdkVersion": "27.0.0",
+
+    "name": "Spazio Rap",
+    "slug": "spaziorap",
+    "description": "La prima app sul rap in Italia: opinioni, discussioni e ultime uscite!",
+    
+    "privacy": "unlisted",
+
+    "icon": "./assets/images/icon2.png",
+    "splash": {
+      "backgroundColor": "#F15946",
+      "resizeMode": "contain",
+      "image": "./assets/images/splash.png"
+    },
+    "primaryColor": "#F15946"
   }
 }
