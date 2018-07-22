@@ -10,7 +10,7 @@ import {
   POSTS_REQUEST_FAILURE,
 } from '../actions/requestPosts';
 
-import postsByTopic from './postsByTopic';
+import postsBranch from './postsBranch';
 
 const posts = (
   state = {
@@ -24,7 +24,7 @@ const posts = (
     case LATEST_POSTS_REQUEST_SUCCESSFUL:
     case LATEST_POSTS_REQUEST_FAILURE:
       return {
-        latest: postsByTopic(state.latest, action),
+        latest: postsBranch(state.latest, action),
         selectedTopic: state.selectedTopic,
       };
 
@@ -33,7 +33,7 @@ const posts = (
     case POSTS_REQUEST_FAILURE:
       return {
         latest: state.latest,
-        selectedTopic: postsByTopic(state.selectedTopic, action),
+        selectedTopic: postsBranch(state.selectedTopic, action),
       };
 
     default:

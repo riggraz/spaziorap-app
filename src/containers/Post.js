@@ -7,7 +7,7 @@ import {selectTopic} from '../actions/selectTopic';
 
 const mapStateToProps = (state, ownProps) =>
   ({
-    post: state.posts[ownProps.of].items.find(post => post.id === ownProps.id),
+    post: state.posts[ownProps.branch].items.find(post => post.id === ownProps.id),
     topics: state.topics.items,
   });
 

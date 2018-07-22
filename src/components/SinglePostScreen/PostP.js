@@ -3,7 +3,7 @@ import {
   ScrollView,
 } from 'react-native';
 
-import PostsListItemInfoBox from '../PostsScreen/PostsListItemInfoBox';
+import PostInfoBox from '../PostInfoBox';
 import PostContent from './PostContent';
 
 import friendlyDate from '../../helpers/friendlyDate';
@@ -17,7 +17,7 @@ _getTopicName = (topicId, topics) => (
 
 const PostP = ({post, topics, handleTopicChange, navigateToPostsByTopic}) =>
   <ScrollView>
-    <PostsListItemInfoBox
+    <PostInfoBox
       user={post.userUsername}
       topic={_getTopicName(post.topicId, topics)}
       createdAt={friendlyDate(post.createdAt)}

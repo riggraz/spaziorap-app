@@ -6,7 +6,7 @@ import {
 
 const topics = (
   state = {
-    selectedTopic: 'latest',
+    selectedTopic: '',
     areFetching: false,
     items: [],
   },

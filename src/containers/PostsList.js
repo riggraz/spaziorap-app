@@ -8,8 +8,8 @@ import {selectTopic} from '../actions/selectTopic';
 
 const mapStateToProps = (state, ownProps) =>
   ({
-    posts: state.posts[ownProps.of].items,
-    postsAreFetching: state.posts[ownProps.of].areFetching,
+    posts: state.posts[ownProps.branch].items,
+    postsAreFetching: state.posts[ownProps.branch].areFetching,
 
     topics: state.topics.items,
     topicsAreFetching: state.topics.areFetching,

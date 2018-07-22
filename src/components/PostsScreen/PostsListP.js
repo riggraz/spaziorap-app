@@ -25,9 +25,9 @@ class PostsListP extends React.Component {
   );
 
   _handleRefresh = () => {
-    const {handleRefresh, selectedTopic, of} = this.props;
+    const {handleRefresh, selectedTopic, branch} = this.props;
 
-    handleRefresh((of === 'latest' || of === 'trending') ? of : selectedTopic);
+    handleRefresh((branch === 'latest' || branch === 'trending') ? branch : selectedTopic);
   }
 
   render() {

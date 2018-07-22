@@ -9,7 +9,7 @@ import {fetchTopics} from '../actions/requestTopics';
 const store = createStore(
   rootReducer,
   applyMiddleware(
-    thunkMiddleware
+    thunkMiddleware,
   ),
 );
 

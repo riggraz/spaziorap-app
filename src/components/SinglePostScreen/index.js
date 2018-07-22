@@ -3,7 +3,7 @@ import React from 'react';
 import HeaderRight from '../PostsScreen/HeaderRight';
 import Post from '../../containers/Post';
 
-import getOf from '../../helpers/getOf';
+import getBranch from '../../helpers/getBranch';
 
 import {POSTS_BY_TOPIC} from '../../constants/navigation';
 
@@ -17,7 +17,7 @@ class SinglePostScreen extends React.Component {
     const {navigation} = this.props;
 
     return (
-      <Post of={getOf(navigation)} 
+      <Post branch={getBranch(navigation)} 
         id={navigation.getParam('postId', '-1')}
         navigateToPostsByTopic={
           topicName => navigation.navigate(POSTS_BY_TOPIC, {topicName})

@@ -4,7 +4,7 @@ import PostsList from '../../containers/PostsList';
 import HeaderLeft from '../../containers/HeaderLeft';
 import HeaderRight from '../../containers/HeaderRight';
 
-import getOf from '../../helpers/getOf';
+import getBranch from '../../helpers/getBranch';
 
 import {POSTS_BY_TOPIC, SINGLE_HOME_POST, SINGLE_POST} from '../../constants/navigation';
 
@@ -19,14 +19,14 @@ class PostsScreen extends React.Component {
     const {navigation} = this.props;
 
     return (
-      <PostsList of={getOf(navigation)}
+      <PostsList branch={getBranch(navigation)}
         navigateToPostsByTopic={
           topicName => navigation.navigate(POSTS_BY_TOPIC, {topicName})
         }
         navigateToSinglePostScreen={
           (postId, postTitle) => {
             navigation.navigate(
-              (getOf(navigation) === 'latest' || getOf(navigation) === 'trending') ? SINGLE_HOME_POST : SINGLE_POST,
+              (getBranch(navigation) === 'latest' || getBranch(navigation) === 'trending') ? SINGLE_HOME_POST : SINGLE_POST,
               {postId, postTitle}
             );
           }

@@ -10,7 +10,7 @@ import {
   POSTS_REQUEST_FAILURE,
 } from '../actions/requestPosts';
 
-const postsByTopic = (
+const postsBranch = (
   state = {
     areFetching: true,
     error: false,
@@ -56,4 +56,4 @@ const postsByTopic = (
   }
 }
 
-export default postsByTopic;
+export default postsBranch;
