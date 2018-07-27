@@ -16,6 +16,7 @@ import TopicsScreen from '../components/TopicsScreen';
 import NewButton from '../components/NewButton'; //bottomTab button
 import NewPostMenuScreen from '../components/NewPostMenuScreen';
 import NewTextPostScreen from '../components/NewPostScreens/NewTextPostScreen';
+import NewYTPostScreen from '../components/NewPostScreens/NewYTPostScreen';
 
 //Auth stack
 import LoginScreen from '../components/LoginScreen';
@@ -79,7 +80,7 @@ const NewPostStack = createStackNavigator(
   {
     [NEW_POST_MENU]: NewPostMenuScreen,
     [NEW_TEXT_POST]: NewTextPostScreen,
-    // [NEW_YT_POST]: null,
+    [NEW_YT_POST]: NewYTPostScreen,
   },
   {
     initialRouteName: NEW_POST_MENU,

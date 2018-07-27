@@ -46,7 +46,7 @@ class PostsListP extends React.Component {
               ({item}) =>
                 <PostsListItem id={item.id}
                   title={item.title}
-                  excerpt={item.body.slice(0, 120)}
+                  excerpt={item.body}
                   user={item.userUsername}
                   topic={this._getTopicName(item.topicId, topics)}
                   createdAt={friendlyDate(item.createdAt)}

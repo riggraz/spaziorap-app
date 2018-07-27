@@ -52,7 +52,7 @@ class RegistrationFormP extends React.Component {
 
   render() {
     return(
-      <ScrollView contentContainerStyle={formStyles.center} style={formStyles.container}>
+      <ScrollView keyboardShouldPersistTaps='handled' contentContainerStyle={formStyles.center} style={formStyles.container}>
         <Text style={formStyles.label}>
           Nome utente
         </Text>

@@ -7,19 +7,18 @@ import {
 
 import formStyles from '../../../styles/global/formStyles';
 
-const TextPostSpecificField = ({value, handleChangeText}) =>
+const YTPostSpecificField = ({value, handleChangeText}) =>
   <View>
     <Text style={formStyles.label}>
-      Cosa vuoi dire?
+      Link a video YouTube
     </Text>
     <TextInput
       value={value}
-      onChangeText={text => handleChangeText(`body~${text}`)}
-      multiline
-      numberOfLines={8}
+      placeholder='Inserisci qui il link a YT'
+      onChangeText={text => handleChangeText(`url~${text}`)}
       underlineColorAndroid='white'
-      style={[formStyles.input, {width: 300, textAlignVertical: "top",}]}
+      style={[formStyles.input, {width: 300}]}
     />
   </View>
 
-export default TextPostSpecificField;
+export default YTPostSpecificField;

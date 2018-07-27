@@ -35,7 +35,6 @@ class LoginFormP extends React.Component {
     const {handleLogin} = this.props;
 
     handleLogin(usernameInputText, passwordInputText);
-    // handleLogin('ricco', 'password');
   }
 
   render() {

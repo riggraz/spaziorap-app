@@ -94,6 +94,10 @@ const formStyles = StyleSheet.create({
     
     alignSelf: 'center',
   },
+
+  marginBottomButton: {
+    marginBottom: 128,
+  },
 });
 
 export default formStyles;

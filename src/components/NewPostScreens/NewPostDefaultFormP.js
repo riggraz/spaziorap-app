@@ -48,14 +48,9 @@ class NewPostDefaultFormP extends React.Component {
   }
 
   _handleChangeSpecificField = text => {
-    const typeAndValue = text.split(":", 2);
+    const typeAndValue = text.split('~', 2);
     const type = typeAndValue[0];
     const value = typeAndValue[1];
-
-    console.log(text);
-    console.log(typeAndValue);
-    console.log(type);
-    console.log(value);
 
     switch (type) {
       case 'body':
@@ -78,7 +73,11 @@ class NewPostDefaultFormP extends React.Component {
     let renderSpecificField = this.props.children;
 
     return (
-      <ScrollView contentContainerStyle={formStyles.center} style={formStyles.container}>
+      <ScrollView
+        keyboardShouldPersistTaps='handled'
+        contentContainerStyle={formStyles.center}
+        style={formStyles.container}
+      >
         <Text style={formStyles.label}>
           Titolo
         </Text>
@@ -107,7 +106,9 @@ class NewPostDefaultFormP extends React.Component {
           )
         }
 
-        <TouchableOpacity onPress={() => this._handleSubmit()} style={formStyles.button}>
+        <TouchableOpacity
+          onPress={() => this._handleSubmit()}
+          style={[formStyles.button, formStyles.marginBottomButton]}>
           <Text style={formStyles.buttonText}>Invia</Text>
         </TouchableOpacity>
 
