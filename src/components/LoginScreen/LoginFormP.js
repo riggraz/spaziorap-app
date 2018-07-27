@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View,
+  ScrollView,
   Text,
   TextInput,
   Button,
@@ -40,7 +40,7 @@ class LoginFormP extends React.Component {
 
   render() {
     return(
-      <View style={formStyles.container}>
+      <ScrollView keyboardShouldPersistTaps='handled' contentContainerStyle={formStyles.center} style={formStyles.container}>
         <Text style={formStyles.label}>
           Nome utente
         </Text>
@@ -88,7 +88,7 @@ class LoginFormP extends React.Component {
             Non hai un account? Crealo subito.
           </Text>
         </TouchableOpacity>
-      </View>
+      </ScrollView>
     );
   }
 }

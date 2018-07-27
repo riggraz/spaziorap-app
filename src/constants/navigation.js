@@ -16,6 +16,10 @@ export const TOPICS = 'Argomenti';
   export const POSTS_BY_TOPIC = 'Messaggi per argomento';
   export const SINGLE_POST = 'Messaggio';
 
+export const NEW_POST_MENU = 'Nuovo';
+  export const NEW_TEXT_POST = 'Nuovo post di testo';
+  export const NEW_YT_POST = 'Nuovo post con link YT';
+
 export const AUTH = 'Autenticazione';
   export const LOGIN = 'Login';
   export const REGISTRATION = 'Registration';

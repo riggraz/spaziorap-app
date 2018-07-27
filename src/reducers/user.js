@@ -7,10 +7,18 @@ import {
 import {
   START_REGISTRATION,
   REGISTRATION_SUCCESSFUL,
-  REGISTRATION_FAILURE
+  REGISTRATION_FAILURE,
 } from '../actions/register';
 
 import {LOGOUT} from '../actions/logout';
+
+import {
+  START_POST_SUBMISSION,
+  POST_SUBMISSION_SUCCESSFUL,
+  POST_SUBMISSION_FAILURE,
+} from '../actions/submitPost';
+
+import newPost from './newPost';
 
 const user = (
   state = {
@@ -22,6 +30,8 @@ const user = (
     username: undefined,
     admin: false,
     accessToken: '',
+
+    newPost: {},
   },
   action
 ) => {
@@ -45,6 +55,8 @@ const user = (
         username: action.user.attributes.username,
         admin: action.user.attributes.admin,
         accessToken: action.user.attributes.access_token,
+
+        newPost: {},
       };
 
     case LOGIN_FAILURE:
@@ -59,7 +71,17 @@ const user = (
         username: undefined,
         admin: false,
         accessToken: '',
+
+        newPost: {},
       };
+
+    case START_POST_SUBMISSION:
+    case POST_SUBMISSION_SUCCESSFUL:
+    case POST_SUBMISSION_FAILURE:
+      return {
+        ...state,
+        newPost: newPost(state.newPost, action),
+      }
 
     default:
       return state;

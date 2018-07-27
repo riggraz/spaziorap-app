@@ -8,7 +8,7 @@
     
     "privacy": "unlisted",
 
-    "icon": "./assets/images/icon2.png",
+    "icon": "./assets/images/icon.png",
     "splash": {
       "backgroundColor": "#F15946",
       "resizeMode": "contain",

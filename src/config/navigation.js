@@ -12,6 +12,11 @@ import SinglePostScreen from '../components/SinglePostScreen';
 //Topics stack
 import TopicsScreen from '../components/TopicsScreen';
 
+//NewPost stack
+import NewButton from '../components/NewButton'; //bottomTab button
+import NewPostMenuScreen from '../components/NewPostMenuScreen';
+import NewTextPostScreen from '../components/NewPostScreens/NewTextPostScreen';
+
 //Auth stack
 import LoginScreen from '../components/LoginScreen';
 import RegistrationScreen from '../components/RegistrationScreen';
@@ -26,6 +31,10 @@ import {
     TOPICS_LIST,
     POSTS_BY_TOPIC,
     SINGLE_POST,
+
+  NEW_POST_MENU,
+    NEW_TEXT_POST,
+    NEW_YT_POST,
 
   AUTH,
     LOGIN,
@@ -66,6 +75,18 @@ const TopicsStack = createStackNavigator(
   },
 );
 
+const NewPostStack = createStackNavigator(
+  {
+    [NEW_POST_MENU]: NewPostMenuScreen,
+    [NEW_TEXT_POST]: NewTextPostScreen,
+    // [NEW_YT_POST]: null,
+  },
+  {
+    initialRouteName: NEW_POST_MENU,
+    navigationOptions: defaultNavigationOptions,
+  },
+);
+
 const AuthStack = createStackNavigator(
   {
     [LOGIN]: LoginScreen,
@@ -81,6 +102,13 @@ const RootStack = createBottomTabNavigator(
   {
     [HOME]: HomeStack,
     [TOPICS]: TopicsStack,
+    [NEW_POST_MENU]: {
+      screen: NewPostStack,
+      navigationOptions: ({navigation}) => ({
+        tabBarButtonComponent: () => <NewButton navigation={navigation} />,
+      }),
+    },
+    'Oggi': AuthStack,
     [AUTH]: AuthStack,
   },
   {
@@ -90,13 +118,14 @@ const RootStack = createBottomTabNavigator(
         let icon;
 
         if (routeName === HOME) icon = '🏠';
-        if (routeName === TOPICS) icon = '📚';
-        if (routeName === AUTH) icon = '👤';
+        else if (routeName === TOPICS) icon = '📚';
+        else if (routeName === 'Oggi') icon = '❓';
+        else if (routeName === AUTH) icon = '👤';
 
         return <Text style={{fontSize: 18}}>{icon}</Text>;
       },
     }),
-    initialRouteName: HOME,
+    initialRouteName: NEW_POST_MENU,
     tabBarOptions: {
       activeTintColor: '#95190C',
       inactiveTintColor: 'gray',

@@ -4,6 +4,9 @@ const formStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#eeeeee',
+  },
+
+  center: {
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
@@ -19,7 +22,7 @@ const formStyles = StyleSheet.create({
   },
 
   input: {
-    width: 300,
+    width: '90%',
 
     backgroundColor: 'white',
     borderRadius: 16,
@@ -72,6 +75,24 @@ const formStyles = StyleSheet.create({
     marginRight: 16,
 
     textAlign: 'center',
+  },
+
+  pickerWrapper: {
+    width: '90%',
+
+    backgroundColor: 'white',
+    borderRadius: 16,
+
+    marginLeft: 16,
+    marginRight: 16,
+    marginBottom: 8,
+  },
+
+  picker: {
+    width: '90%',
+    padding: 8,
+    
+    alignSelf: 'center',
   },
 });
 
