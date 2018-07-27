@@ -5,16 +5,23 @@ import {
   Text
 } from 'react-native';
 
+import PostBody from './PostBody';
+import PostVideo from './PostVideo';
 import PostInfoBox from '../PostInfoBox';
 
 import postListItemStyles from '../../styles/postListItemStyles';
 
-const PostsListItem = ({title, excerpt, user, topic, createdAt, handleTopicChange, handlePress}) =>
+const PostsListItem = ({title, body, url, user, topic, createdAt, handleTopicChange, handlePress}) =>
   <View style={postListItemStyles.postBox}>
     <TouchableOpacity onPress={handlePress}>
       <Text style={postListItemStyles.postTitle}>{title}</Text>
-      <Text style={postListItemStyles.postExcerpt}>{excerpt}</Text>
     </TouchableOpacity>
+      {
+        body ?
+          <TouchableOpacity onPress={handlePress}><PostBody body={body} /></TouchableOpacity>
+        :
+          <PostVideo url={url} />
+      }
     <PostInfoBox
       user={user}
       topic={topic}

@@ -34,6 +34,7 @@ const PostP = ({post, topics, handleTopicChange, navigateToPostsByTopic}) =>
     <PostContent
       title={post.title}
       body={post.body}
+      url={post.url}
     />
   </ScrollView>
 
