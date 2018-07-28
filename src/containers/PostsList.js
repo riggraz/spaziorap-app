@@ -15,6 +15,8 @@ const mapStateToProps = (state, ownProps) =>
     topics: state.topics.items,
     topicsAreFetching: state.topics.areFetching,
     selectedTopic: state.topics.selectedTopic, //used only for handleRefresh
+
+    selectedProfile: state.posts.profile.items ? state.posts.profile.items[0].userId : null,
   });
 
 const mapDispatchToProps = dispatch =>
@@ -28,10 +30,11 @@ const mapDispatchToProps = dispatch =>
       dispatch(selectTopic(topicId));
     },
 
-    handleRefresh(selectedTopic) {
-      if (selectedTopic === 'latest') dispatch(fetchLatestPosts());
-      else if (selectedTopic === 'trending') 0//to implement
-      else dispatch(fetchPosts(selectedTopic));
+    handleRefresh(whatToRefresh, id) {
+      if (whatToRefresh === 'latest') dispatch(fetchLatestPosts());
+      else if (whatToRefresh === 'trending') 0//to implement
+      else if (whatToRefresh === 'profile') dispatch(fetchProfilePosts(id));
+      else if (whatToRefresh === 'selectedTopic') dispatch(fetchPosts(id));
     },
   });
 

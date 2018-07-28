@@ -6,14 +6,16 @@ import {
   StyleSheet,
 } from 'react-native';
 
-const UserInfo = ({username, handlePress}) => {
+const UserInfo = ({username, handleUsernamePress, handleLoginPress}) => {
     return (
       <View style={styles.userInfoBox}>
       {
         username ?
-          <Text style={styles.userInfoText}>{username}</Text>
+          <TouchableOpacity onPress={handleUsernamePress}>
+            <Text style={styles.userInfoText}>{username}</Text>
+          </TouchableOpacity>
         :
-          <TouchableOpacity onPress={handlePress}>
+          <TouchableOpacity onPress={handleLoginPress}>
             <Text style={styles.userInfoText}>Accedi</Text>
           </TouchableOpacity>
       }

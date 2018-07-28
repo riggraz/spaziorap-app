@@ -2,18 +2,24 @@ import {connect} from 'react-redux';
 
 import HeaderRightP from '../components/PostsScreen/HeaderRight';
 
-import {fetchPosts} from '../actions/requestPosts';
-import {selectTopic} from '../actions/selectTopic';
+import {fetchProfilePosts} from '../actions/requestProfilePosts';
 
 const mapStateToProps = state =>
   ({
-    //UserInfo
+    userId: state.user.id,
     username: state.user.username,
+  });
+
+const mapDispatchToProps = dispatch =>
+  ({
+    handleProfileRefresh(userId) {
+      dispatch(fetchProfilePosts(userId));
+    },
   });
 
 const HeaderRight = connect(
   mapStateToProps,
-  null
+  mapDispatchToProps,
 )(HeaderRightP);
 
 export default HeaderRight;

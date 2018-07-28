@@ -3,13 +3,19 @@ import {View, StyleSheet} from 'react-native';
 
 import UserInfo from './UserInfo';
 
-import {LOGIN} from '../../../constants/navigation';
+import {LOGIN, PROFILE} from '../../../constants/navigation';
 
-const HeaderRightP = ({username, navigation}) =>
+const HeaderRightP = ({userId, username, navigation, handleProfileRefresh}) =>
   <View>
     <UserInfo
       username={username}
-      handlePress={() => navigation.navigate(LOGIN)}
+      handleUsernamePress={
+        () => {
+          handleProfileRefresh(userId);
+          navigation.navigate(PROFILE);
+        }
+      }
+      handleLoginPress={() => navigation.navigate(LOGIN)}
     />
   </View>
 
