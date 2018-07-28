@@ -34,7 +34,9 @@ class PostsListP extends React.Component {
     const {posts, postsAreFetching} = this.props;
     const {topics, topicsAreFetching} = this.props;
 
-    const {handleTopicChange, navigateToPostsByTopic, navigateToSinglePostScreen} = this.props;
+    const {handleProfileChange, navigateToProfile} = this.props;
+    const {handleTopicChange, navigateToPostsByTopic} = this.props;
+    const {navigateToSinglePostScreen} = this.props;
 
     return (!postsAreFetching && !topicsAreFetching) ?
       (
@@ -54,6 +56,12 @@ class PostsListP extends React.Component {
 
                   handlePress={
                     () => navigateToSinglePostScreen(item.id, item.title)
+                  }
+                  handleProfileChange={
+                    () => {
+                      handleProfileChange(item.userId);
+                      navigateToProfile(item.userUsername);
+                    }
                   }
                   handleTopicChange={
                     () => {

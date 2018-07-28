@@ -15,13 +15,27 @@ _getTopicName = (topicId, topics) => (
     'nessuna'
 );
 
-const PostP = ({post, topics, handleTopicChange, navigateToPostsByTopic}) =>
+const PostP = ({
+  post,
+  topics,
+  
+  handleProfileChange,
+  handleTopicChange,
+  navigateToProfile,
+  navigateToPostsByTopic
+}) =>
   <ScrollView>
     <PostInfoBox
       user={post.userUsername}
       topic={_getTopicName(post.topicId, topics)}
       createdAt={friendlyDate(post.createdAt)}
 
+      handleProfileChange={
+        () => {
+          handleProfileChange(post.userId);
+          navigateToProfile(post.userUsername);
+        }
+      }
       handleTopicChange={
         () => {
           const topicName = _getTopicName(post.topicId, topics);

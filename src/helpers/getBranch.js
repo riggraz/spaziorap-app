@@ -28,7 +28,6 @@ import {
   LATEST_POSTS,
   TRENDING_POSTS,
   POSTS_BY_TOPIC,
-  SINGLE_HOME_POST,
   SINGLE_POST
 } from '../constants/navigation';
 
@@ -37,15 +36,15 @@ export default getBranch = navigation => {
 
   switch (navigation.state.routeName) {
     case LATEST_POSTS:
-    case SINGLE_HOME_POST:
-    default:
       return 'latest';
 
     case TRENDING_POSTS:
       return 'trending';
 
     case POSTS_BY_TOPIC:
-    case SINGLE_POST:
       return 'selectedTopic';
+
+    default:
+      return 'latest';
   }
 };

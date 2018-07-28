@@ -9,16 +9,18 @@
 export const HOME = 'Home';
   export const LATEST_POSTS = 'Messaggi recenti';
   export const TRENDING_POSTS = 'Messaggi di moda';
-  export const SINGLE_HOME_POST = 'Messaggio Home';
 
 export const TOPICS = 'Argomenti';
-  export const TOPICS_LIST = 'Lista Argomenti';
-  export const POSTS_BY_TOPIC = 'Messaggi per argomento';
-  export const SINGLE_POST = 'Messaggio';
+export const TOPICS_LIST = 'Lista Argomenti';
+export const POSTS_BY_TOPIC = 'Messaggi per argomento';
+export const SINGLE_POST = 'Messaggio';
 
 export const NEW_POST_MENU = 'Nuovo';
   export const NEW_TEXT_POST = 'Nuovo post di testo';
   export const NEW_YT_POST = 'Nuovo post con link YT';
+
+export const PROFILE = 'Profilo';
+export const PROFILE_PAGE = 'Pagina di profilo';
 
 export const AUTH = 'Autenticazione';
   export const LOGIN = 'Login';

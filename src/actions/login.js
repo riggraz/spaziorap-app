@@ -1,5 +1,7 @@
 import {API_URL} from '../constants/API';
 
+import {fetchProfilePosts} from '../actions/requestProfilePosts';
+
 export const START_LOGIN = 'START_LOGIN';
 const startLogin = () =>
   ({
@@ -45,6 +47,8 @@ export const login = (username, password) => dispatch => {
         json => {
           if (json.error === undefined) {
             dispatch(loginSuccessful(json.data));
+            dispatch(fetchProfilePosts(json.data.id));
+
           } else {
             dispatch(loginFailure());
           }

@@ -1,25 +1,23 @@
 import React from 'react';
+import {
+  View,
+  Text,
+} from  'react-native';
 
 import PostsList from '../../containers/PostsList';
-import HeaderLeft from '../../containers/HeaderLeft';
-import HeaderRight from '../../containers/HeaderRight';
 
-import getBranch from '../../helpers/getBranch';
+import globalStyles from '../../styles/global/globalStyles';
+import profileStyles from '../../styles/profileStyles';
 
 import {POSTS_BY_TOPIC, SINGLE_POST, PROFILE_PAGE} from '../../constants/navigation';
 
-class PostsScreen extends React.Component {
-  static navigationOptions = ({navigation}) =>
-  ({
-    title: navigation.getParam('topicName', 'Spazio Rap'),
-    headerRight: <HeaderRight navigation={navigation} />,
-  });
+const ProfileInfoP = ({username, navigation}) => {
+  const branch = 'profile';
 
-  render() {
-    const {navigation} = this.props;
-    const branch = getBranch(navigation);
+  return (
+    <View style={globalStyles.container}>
+      <Text style={profileStyles.username}>{username}</Text>
 
-    return (
       <PostsList branch={branch}
         navigateToProfile={
           profileName => navigation.navigate(PROFILE_PAGE, {profileName})
@@ -29,15 +27,15 @@ class PostsScreen extends React.Component {
         }
         navigateToSinglePostScreen={
           (postId, postTitle) => {
-            navigation.navigate(
+            navigation.push(
               SINGLE_POST,
               {postId, postTitle, branch}
             );
           }
         }
       />
-    );
-  }
-}
+    </View>
+  );
+};
 
-export default PostsScreen;
+export default ProfileInfoP;

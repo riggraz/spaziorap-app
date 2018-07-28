@@ -11,7 +11,18 @@ import PostInfoBox from '../PostInfoBox';
 
 import postListItemStyles from '../../styles/postListItemStyles';
 
-const PostsListItem = ({title, body, url, user, topic, createdAt, handleTopicChange, handlePress}) =>
+const PostsListItem = ({
+  title,
+  body,
+  url,
+  user,
+  topic,
+  createdAt,
+  
+  handleProfileChange,
+  handleTopicChange,
+  handlePress
+}) => (
   <View style={postListItemStyles.postBox}>
     <TouchableOpacity onPress={handlePress}>
       <Text style={postListItemStyles.postTitle}>{title}</Text>
@@ -26,8 +37,11 @@ const PostsListItem = ({title, body, url, user, topic, createdAt, handleTopicCha
       user={user}
       topic={topic}
       createdAt={createdAt}
+
+      handleProfileChange={handleProfileChange}
       handleTopicChange={handleTopicChange}
     />
   </View>
+);
 
 export default PostsListItem;

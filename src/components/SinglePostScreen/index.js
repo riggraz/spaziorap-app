@@ -3,9 +3,7 @@ import React from 'react';
 import HeaderRight from '../PostsScreen/HeaderRight';
 import Post from '../../containers/Post';
 
-import getBranch from '../../helpers/getBranch';
-
-import {POSTS_BY_TOPIC} from '../../constants/navigation';
+import {POSTS_BY_TOPIC, PROFILE_PAGE} from '../../constants/navigation';
 
 class SinglePostScreen extends React.Component {
   static navigationOptions = ({navigation}) =>
@@ -17,8 +15,11 @@ class SinglePostScreen extends React.Component {
     const {navigation} = this.props;
 
     return (
-      <Post branch={getBranch(navigation)} 
+      <Post branch={navigation.getParam('branch')} 
         id={navigation.getParam('postId', '-1')}
+        navigateToProfile={
+          profileName => navigation.push(PROFILE_PAGE, {profileName})
+        }
         navigateToPostsByTopic={
           topicName => navigation.navigate(POSTS_BY_TOPIC, {topicName})
         }

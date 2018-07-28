@@ -10,17 +10,24 @@ import {
   POSTS_REQUEST_FAILURE,
 } from '../actions/requestPosts';
 
+import {
+  START_PROFILE_POSTS_REQUEST,
+  PROFILE_POSTS_REQUEST_SUCCESSFUL,
+  PROFILE_POSTS_REQUEST_FAILURE,
+} from '../actions/requestProfilePosts';
+
 const postsBranch = (
   state = {
     areFetching: true,
     error: false,
     items: []
   },
-  action
+  action,
 ) => {
   switch (action.type) {
     case START_LATEST_POSTS_REQUEST:
     case START_POSTS_REQUEST:
+    case START_PROFILE_POSTS_REQUEST:
       return {
         ...state,
         areFetching: true,
@@ -28,6 +35,7 @@ const postsBranch = (
 
     case LATEST_POSTS_REQUEST_SUCCESSFUL:
     case POSTS_REQUEST_SUCCESSFUL:
+    case PROFILE_POSTS_REQUEST_SUCCESSFUL:
       return {
         areFetching: false,
         error: false,
@@ -45,6 +53,7 @@ const postsBranch = (
 
     case LATEST_POSTS_REQUEST_FAILURE:
     case POSTS_REQUEST_FAILURE:
+    case PROFILE_POSTS_REQUEST_FAILURE:
       return {
         areFetching: false,
         error: true,

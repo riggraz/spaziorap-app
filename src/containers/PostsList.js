@@ -5,6 +5,7 @@ import PostsListP from '../components/PostsScreen/PostsListP';
 import {fetchPosts} from '../actions/requestPosts';
 import {fetchLatestPosts} from '../actions/requestLatestPosts';
 import {selectTopic} from '../actions/selectTopic';
+import {fetchProfilePosts} from '../actions/requestProfilePosts';
 
 const mapStateToProps = (state, ownProps) =>
   ({
@@ -18,6 +19,10 @@ const mapStateToProps = (state, ownProps) =>
 
 const mapDispatchToProps = dispatch =>
   ({
+    handleProfileChange(userId) {
+      dispatch(fetchProfilePosts(userId));
+    },
+
     handleTopicChange(topicId, topicName) {
       dispatch(fetchPosts(topicId));
       dispatch(selectTopic(topicId));

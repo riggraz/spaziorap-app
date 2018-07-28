@@ -18,6 +18,9 @@ import NewPostMenuScreen from '../components/NewPostMenuScreen';
 import NewTextPostScreen from '../components/NewPostScreens/NewTextPostScreen';
 import NewYTPostScreen from '../components/NewPostScreens/NewYTPostScreen';
 
+//Profile stack
+import ProfileScreen from '../components/ProfileScreen';
+
 //Auth stack
 import LoginScreen from '../components/LoginScreen';
 import RegistrationScreen from '../components/RegistrationScreen';
@@ -26,21 +29,27 @@ import {
   HOME,
     LATEST_POSTS,
     TRENDING_POSTS,
-    SINGLE_HOME_POST,
 
   TOPICS,
-    TOPICS_LIST,
-    POSTS_BY_TOPIC,
-    SINGLE_POST,
+  TOPICS_LIST,
+  POSTS_BY_TOPIC,
+  SINGLE_POST,
 
   NEW_POST_MENU,
     NEW_TEXT_POST,
     NEW_YT_POST,
 
+  PROFILE,
+  PROFILE_PAGE,
+
   AUTH,
     LOGIN,
     REGISTRATION,
 } from '../constants/navigation';
+
+//Imports used to fetch profile posts on bottom tab click
+import store from './store';
+import {fetchProfilePosts} from '../actions/requestProfilePosts';
 
 const defaultNavigationOptions = {
   headerStyle: {
@@ -56,7 +65,8 @@ const HomeStack = createStackNavigator(
   {
     [LATEST_POSTS]: PostsScreen,
     [TRENDING_POSTS]: PostsScreen,
-    [SINGLE_HOME_POST]: SinglePostScreen,
+    [SINGLE_POST]: SinglePostScreen,
+    [PROFILE_PAGE]: ProfileScreen,
   },
   {
     initialRouteName: LATEST_POSTS,
@@ -69,6 +79,7 @@ const TopicsStack = createStackNavigator(
     [TOPICS_LIST]: TopicsScreen,
     [POSTS_BY_TOPIC]: PostsScreen,
     [SINGLE_POST]: SinglePostScreen,
+    [PROFILE_PAGE]: ProfileScreen,
   },
   {
     initialRouteName: TOPICS_LIST,
@@ -84,6 +95,17 @@ const NewPostStack = createStackNavigator(
   },
   {
     initialRouteName: NEW_POST_MENU,
+    navigationOptions: defaultNavigationOptions,
+  },
+);
+
+const ProfileStack = createStackNavigator(
+  {
+    [PROFILE_PAGE]: ProfileScreen,
+    [SINGLE_POST]: SinglePostScreen,
+  },
+  {
+    initialRouteName: PROFILE_PAGE,
     navigationOptions: defaultNavigationOptions,
   },
 );
@@ -110,7 +132,21 @@ const RootStack = createBottomTabNavigator(
       }),
     },
     'Oggi': AuthStack,
-    [AUTH]: AuthStack,
+    [PROFILE]: {
+      screen: ProfileStack,
+      navigationOptions: ({navigation}) => ({
+        tabBarOnPress: ({navigation, defaultHandler}) => {
+          const currentUser = store.getState().user.id;
+
+          if (currentUser) {
+            store.dispatch(fetchProfilePosts(currentUser));
+            navigation.navigate(PROFILE);
+          } else {
+            navigation.navigate(LOGIN);
+          }
+        },
+      }),
+    },
   },
   {
     navigationOptions: ({navigation}) => ({
@@ -121,12 +157,12 @@ const RootStack = createBottomTabNavigator(
         if (routeName === HOME) icon = '🏠';
         else if (routeName === TOPICS) icon = '📚';
         else if (routeName === 'Oggi') icon = '❓';
-        else if (routeName === AUTH) icon = '👤';
+        else if (routeName === PROFILE) icon = '👤';
 
         return <Text style={{fontSize: 18}}>{icon}</Text>;
       },
     }),
-    initialRouteName: NEW_POST_MENU,
+    initialRouteName: HOME,
     tabBarOptions: {
       activeTintColor: '#95190C',
       inactiveTintColor: 'gray',
