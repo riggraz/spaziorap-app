@@ -22,11 +22,15 @@ const postListItemStyles = StyleSheet.create({
   postTitle: {
     fontSize: 24,
     color: '#95190C',
+
+    marginBottom: 8,
   },
 
   postExcerpt: {
     fontSize: 16,
     color: 'black',
+
+    marginBottom: 8,
   },
 });
 
