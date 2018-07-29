@@ -61,7 +61,6 @@ const user = (
 
     case LOGIN_FAILURE:
     case REGISTRATION_FAILURE:
-    case LOGOUT:
       return {
         isLoggingIn: false,
         isLoggedIn: false,
@@ -81,7 +80,21 @@ const user = (
       return {
         ...state,
         newPost: newPost(state.newPost, action),
-      }
+      };
+
+    case LOGOUT:
+      return {
+        isLoggingIn: false,
+        isLoggedIn: false,
+        error: false,
+
+        id: undefined,
+        username: undefined,
+        admin: false,
+        accessToken: '',
+
+        newPost: {},
+      };
 
     default:
       return state;

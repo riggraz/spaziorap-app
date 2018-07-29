@@ -2,6 +2,7 @@ import React from 'react';
 import {Text} from 'react-native';
 
 import ProfileInfo from '../../containers/ProfileInfo';
+import LogoutButton from '../../containers/LogoutButton';
 
 class ProfileScreen extends React.Component {
   static navigationOptions = ({navigation}) =>
@@ -10,6 +11,11 @@ class ProfileScreen extends React.Component {
       ('Profilo di ' + navigation.getParam('profileName'))
       :
       ('Il tuo profilo'),
+
+    headerRight: navigation.getParam('profileName') ?
+      null
+      :
+      <LogoutButton navigation={navigation} />
   });
 
   render() {

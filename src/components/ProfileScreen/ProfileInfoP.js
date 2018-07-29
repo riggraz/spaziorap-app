@@ -16,7 +16,9 @@ const ProfileInfoP = ({username, navigation}) => {
 
   return (
     <View style={globalStyles.container}>
-      <Text style={profileStyles.username}>{username}</Text>
+      <View style={profileStyles.userInfoBox}>
+        <Text style={profileStyles.username}>{username}</Text>
+      </View>
 
       <PostsList branch={branch}
         navigateToProfile={
@@ -29,7 +31,7 @@ const ProfileInfoP = ({username, navigation}) => {
           (postId, postTitle) => {
             navigation.push(
               SINGLE_POST,
-              {postId, postTitle, branch}
+              {postId, postTitle, branch},
             );
           }
         }

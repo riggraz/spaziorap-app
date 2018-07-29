@@ -14,9 +14,10 @@ const mapStateToProps = (state, ownProps) =>
 
     topics: state.topics.items,
     topicsAreFetching: state.topics.areFetching,
-    selectedTopic: state.topics.selectedTopic, //used only for handleRefresh
 
-    selectedProfile: state.posts.profile.items ? state.posts.profile.items[0].userId : null,
+    //used only for handleRefresh
+    selectedTopic: state.topics.selectedTopic,
+    // selectedProfile: state.posts.profile.items ? state.posts.profile.items[0].userId : null,
   });
 
 const mapDispatchToProps = dispatch =>

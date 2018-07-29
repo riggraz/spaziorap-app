@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import PostsListItem from './PostsListItem';
-import Loading from './Loading';
+import SkeletonLoadingPost from '../SkeletonLoading/SkeletonLoadingPost';
 
 import globalStyles from '../../styles/global/globalStyles';
 
@@ -28,7 +28,7 @@ class PostsListP extends React.Component {
     const {handleRefresh, selectedTopic, selectedProfile, branch} = this.props;
 
     if (branch === 'latest' || branch === 'trending') handleRefresh(branch);
-    else if (branch === 'profile') handleRefresh(branch, selectedProfile);
+    else if (branch === 'profile') null; //handleRefresh(branch, selectedProfile);
     else handleRefresh(branch, selectedTopic);
   }
 
@@ -87,7 +87,11 @@ class PostsListP extends React.Component {
         </View>
       )
     :
-      null
+      <View>
+        <SkeletonLoadingPost />
+        <SkeletonLoadingPost />
+        <SkeletonLoadingPost />
+      </View>
   }
 }
 
