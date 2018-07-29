@@ -28,23 +28,34 @@ import {
   LATEST_POSTS,
   TRENDING_POSTS,
   POSTS_BY_TOPIC,
-  SINGLE_POST
 } from '../constants/navigation';
+import {
+  LATEST_BRANCH,
+  TRENDING_BRANCH,
+  SELECTEDTOPIC_BRANCH,
+  PROFILE_BRANCH,
+} from '../constants/branches';
 
 export default getBranch = navigation => {
-  if (!navigation) return 'latest';
+  if (!navigation) return LATEST_BRANCH;
 
   switch (navigation.state.routeName) {
     case LATEST_POSTS:
-      return 'latest';
+      return LATEST_BRANCH;
 
     case TRENDING_POSTS:
-      return 'trending';
+      return TRENDING_BRANCH;
 
     case POSTS_BY_TOPIC:
-      return 'selectedTopic';
+      return SELECTEDTOPIC_BRANCH;
+
+    /*
+      PROFILE non c'è perché branch viene passato come prop
+      a PostsList direttamente da UserInfoP. Negli altri casi, invece,
+      non viene passato direttamente ma si esegue prima questa funzione.
+    */
 
     default:
-      return 'latest';
+      return LATEST_BRANCH;
   }
 };

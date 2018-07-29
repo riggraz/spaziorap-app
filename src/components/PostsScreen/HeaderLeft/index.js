@@ -6,12 +6,13 @@ import TopicInfo from './TopicInfo';
 import LoadingInfo from './LoadingInfo';
 
 import {POSTS_LIST, TOPICS_LIST} from '../../../constants/navigation';
+import {LATEST_BRANCH, TRENDING_BRANCH} from '../../../constants/branches';
 
 class HeaderLeftP extends React.Component {
 
   _getSelectedTopicName = (selectedTopic, topics) => {
-    if (selectedTopic === 'latest') return 'nuovi';
-    else if (selectedTopic === 'trending') return 'di moda';
+    if (selectedTopic === LATEST_BRANCH) return 'nuovi';
+    else if (selectedTopic === TRENDING_BRANCH) return 'di moda';
     else if (selectedTopic) return topics.find(topic => topic.id == selectedTopic).name;
     else return '';
   }

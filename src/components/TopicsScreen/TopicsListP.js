@@ -25,7 +25,6 @@ const TopicsListP = ({topics, handleTopicChange, navigateToPostsListByTopic}) =>
         <TopicsListSectionHeader title={title} />
     }
     sections={[
-//      {title: 'Migliori', data: [{id: 'latest', name: 'nuovi'}, {id: 'trending', name: 'di moda'}]},
       {title: 'Tutti', data: topics},
     ]}
     keyExtractor={(item, index) => item + index}

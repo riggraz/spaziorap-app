@@ -7,6 +7,13 @@ import {fetchLatestPosts} from '../actions/requestLatestPosts';
 import {selectTopic} from '../actions/selectTopic';
 import {fetchProfilePosts} from '../actions/requestProfilePosts';
 
+import {
+  LATEST_BRANCH,
+  TRENDING_BRANCH,
+  SELECTEDTOPIC_BRANCH,
+  PROFILE_BRANCH,
+} from '../constants/branches';
+
 const mapStateToProps = (state, ownProps) =>
   ({
     posts: state.posts[ownProps.branch].items,
@@ -32,10 +39,10 @@ const mapDispatchToProps = dispatch =>
     },
 
     handleRefresh(whatToRefresh, id) {
-      if (whatToRefresh === 'latest') dispatch(fetchLatestPosts());
-      else if (whatToRefresh === 'trending') 0//to implement
-      else if (whatToRefresh === 'profile') dispatch(fetchProfilePosts(id));
-      else if (whatToRefresh === 'selectedTopic') dispatch(fetchPosts(id));
+      if (whatToRefresh === LATEST_BRANCH) dispatch(fetchLatestPosts());
+      else if (whatToRefresh === TRENDING_BRANCH) 0//to implement
+      else if (whatToRefresh === SELECTEDTOPIC_BRANCH) dispatch(fetchPosts(id));
+      else if (whatToRefresh === PROFILE_BRANCH) dispatch(fetchProfilePosts(id));
     },
   });
 

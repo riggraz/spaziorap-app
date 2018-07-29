@@ -10,10 +10,13 @@ import {
 
 import PostsListItem from './PostsListItem';
 import SkeletonLoadingPost from '../SkeletonLoading/SkeletonLoadingPost';
+import SkeletonLoadingProfileInfo from '../SkeletonLoading/SkeletonLoadingProfileInfo';
 
 import globalStyles from '../../styles/global/globalStyles';
 
 import friendlyDate from '../../helpers/friendlyDate';
+
+import {LATEST_BRANCH, TRENDING_BRANCH, PROFILE_BRANCH} from '../../constants/branches';
 
 class PostsListP extends React.Component {
 
@@ -27,8 +30,8 @@ class PostsListP extends React.Component {
   _handleRefresh = () => {
     const {handleRefresh, selectedTopic, selectedProfile, branch} = this.props;
 
-    if (branch === 'latest' || branch === 'trending') handleRefresh(branch);
-    else if (branch === 'profile') null; //handleRefresh(branch, selectedProfile);
+    if (branch === LATEST_BRANCH || branch === TRENDING_BRANCH) handleRefresh(branch);
+    else if (branch === PROFILE_BRANCH) null; //handleRefresh(branch, selectedProfile);
     else handleRefresh(branch, selectedTopic);
   }
 

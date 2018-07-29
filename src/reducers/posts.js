@@ -18,11 +18,17 @@ import {
 
 import postsBranch from './postsBranch';
 
+import {
+  LATEST_BRANCH,
+  SELECTEDTOPIC_BRANCH,
+  PROFILE_BRANCH,
+} from '../constants/branches';
+
 const posts = (
   state = {
-    latest: {},
-    selectedTopic: {},
-    profile: {},
+    [LATEST_BRANCH]: {},
+    [SELECTEDTOPIC_BRANCH]: {},
+    [PROFILE_BRANCH]: {},
   },
   action,
 ) => {
@@ -32,7 +38,7 @@ const posts = (
     case LATEST_POSTS_REQUEST_FAILURE:
       return {
         ...state,
-        latest: postsBranch(state.latest, action),
+        [LATEST_BRANCH]: postsBranch(state[LATEST_BRANCH], action),
       };
 
     case START_POSTS_REQUEST:
@@ -40,7 +46,7 @@ const posts = (
     case POSTS_REQUEST_FAILURE:
       return {
         ...state,
-        selectedTopic: postsBranch(state.selectedTopic, action),
+        [SELECTEDTOPIC_BRANCH]: postsBranch(state[SELECTEDTOPIC_BRANCH], action),
       };
 
     case START_PROFILE_POSTS_REQUEST:
@@ -48,7 +54,7 @@ const posts = (
     case PROFILE_POSTS_REQUEST_FAILURE:
       return {
         ...state,
-        profile: postsBranch(state.profile, action),
+        [PROFILE_BRANCH]: postsBranch(state[PROFILE_BRANCH], action),
       };
 
     default:
