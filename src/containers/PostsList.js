@@ -24,7 +24,7 @@ const mapStateToProps = (state, ownProps) =>
 
     //used only for handleRefresh
     selectedTopic: state.topics.selectedTopic,
-    // selectedProfile: state.posts.profile.items ? state.posts.profile.items[0].userId : null,
+    selectedProfile: state.posts.profile.items && state.posts.profile.items[0] && state.posts.profile.items[0].userId,
   });
 
 const mapDispatchToProps = dispatch =>

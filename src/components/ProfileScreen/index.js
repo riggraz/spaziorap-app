@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text} from 'react-native';
 
-import ProfileInfo from '../../containers/ProfileInfo';
+import Profile from '../../containers/Profile';
 import LogoutButton from '../../containers/LogoutButton';
 
 class ProfileScreen extends React.Component {
@@ -22,7 +22,7 @@ class ProfileScreen extends React.Component {
     const {navigation} = this.props;
 
     return (
-      <ProfileInfo
+      <Profile
         profileName={navigation.getParam('profileName')}
         navigation={navigation}
       />

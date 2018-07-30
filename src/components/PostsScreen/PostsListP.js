@@ -31,7 +31,7 @@ class PostsListP extends React.Component {
     const {handleRefresh, selectedTopic, selectedProfile, branch} = this.props;
 
     if (branch === LATEST_BRANCH || branch === TRENDING_BRANCH) handleRefresh(branch);
-    else if (branch === PROFILE_BRANCH) null; //handleRefresh(branch, selectedProfile);
+    else if (branch === PROFILE_BRANCH) handleRefresh(branch, selectedProfile);
     else handleRefresh(branch, selectedTopic);
   }
 
@@ -86,6 +86,7 @@ class PostsListP extends React.Component {
                 onRefresh={this._handleRefresh}
               />
             }
+            removeClippedSubviews
           />
         </View>
       )

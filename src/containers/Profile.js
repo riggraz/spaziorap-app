@@ -1,15 +1,15 @@
 import {connect} from 'react-redux';
 
-import ProfileInfoP from '../components/ProfileScreen/ProfileInfoP';
+import ProfileP from '../components/ProfileScreen/ProfileP';
 
 const mapStateToProps = (state, ownProps) =>
   ({
     username: ownProps.profileName ? ownProps.profileName : state.user.username,
   });
 
-const ProfileInfo = connect(
+const Profile = connect(
   mapStateToProps,
   null
-)(ProfileInfoP);
+)(ProfileP);
 
-export default ProfileInfo;
+export default Profile;

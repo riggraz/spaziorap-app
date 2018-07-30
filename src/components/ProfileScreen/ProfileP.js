@@ -12,7 +12,7 @@ import profileStyles from '../../styles/profileStyles';
 import {POSTS_BY_TOPIC, SINGLE_POST, PROFILE_PAGE} from '../../constants/navigation';
 import {PROFILE_BRANCH} from '../../constants/branches';
 
-const ProfileInfoP = ({username, navigation}) => (
+const ProfileP = ({username, navigation}) => (
   <View style={globalStyles.container}>
     <View style={profileStyles.userInfoBox}>
       <Text style={profileStyles.username}>{username}</Text>
@@ -37,4 +37,4 @@ const ProfileInfoP = ({username, navigation}) => (
   </View>
 );
 
-export default ProfileInfoP;
+export default ProfileP;
