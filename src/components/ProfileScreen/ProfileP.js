@@ -6,7 +6,7 @@ import {
 
 import PostsList from '../../containers/PostsList';
 
-import globalStyles from '../../styles/global/globalStyles';
+import globalStyles from '../../styles/globalStyles';
 import profileStyles from '../../styles/profileStyles';
 
 import {POSTS_BY_TOPIC, SINGLE_POST, PROFILE_PAGE} from '../../constants/navigation';

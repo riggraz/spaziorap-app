@@ -5,7 +5,7 @@ import {
   View,
 } from 'react-native';
 
-import formStyles from '../../styles/global/formStyles';
+import formStyles from '../../styles/formStyles';
 
 const TopicPicker = ({topics, selectedTopic, handleTopicChange}) =>
   <View style={formStyles.pickerWrapper}>

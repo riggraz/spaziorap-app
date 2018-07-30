@@ -5,7 +5,7 @@ import {
   TextInput,
 } from 'react-native';
 
-import formStyles from '../../../styles/global/formStyles';
+import formStyles from '../../../styles/formStyles';
 
 const YTPostSpecificField = ({value, handleChangeText}) =>
   <View>

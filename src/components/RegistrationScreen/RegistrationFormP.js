@@ -7,7 +7,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-import formStyles from '../../styles/global/formStyles';
+import formStyles from '../../styles/formStyles';
 
 import {HOME, LOGIN} from '../../constants/navigation';
 
@@ -52,13 +52,18 @@ class RegistrationFormP extends React.Component {
 
   render() {
     return(
-      <ScrollView keyboardShouldPersistTaps='handled' contentContainerStyle={formStyles.center} style={formStyles.container}>
+      <ScrollView
+        keyboardShouldPersistTaps='handled'
+        contentContainerStyle={formStyles.center}
+        style={formStyles.container}
+      >
         <Text style={formStyles.label}>
           Nome utente
         </Text>
         <TextInput
             value={this.state.usernameInputText}
             onChangeText={usernameInputText => this.setState({usernameInputText})}
+            autoFocus
             placeholder='Inserisci qui il tuo nome utente'
             autoCapitalize='none'
             autoCorrect={false}
@@ -84,6 +89,7 @@ class RegistrationFormP extends React.Component {
         <TextInput
             value={this.state.passwordConfirmationInputText}
             onChangeText={passwordConfirmationInputText => this.setState({passwordConfirmationInputText})}
+            onSubmitEditing={() => this._handleRegistration()}
             placeholder='Conferma qui la tua password'
             secureTextEntry
             underlineColorAndroid='white'

@@ -12,7 +12,7 @@ import PostsListItem from './PostsListItem';
 import SkeletonLoadingPost from '../SkeletonLoading/SkeletonLoadingPost';
 import SkeletonLoadingProfileInfo from '../SkeletonLoading/SkeletonLoadingProfileInfo';
 
-import globalStyles from '../../styles/global/globalStyles';
+import globalStyles from '../../styles/globalStyles';
 
 import friendlyDate from '../../helpers/friendlyDate';
 
