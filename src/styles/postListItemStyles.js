@@ -9,18 +9,14 @@ const postListItemStyles = StyleSheet.create({
 
     borderWidth: 1,
     borderColor: '#cbcbcb',
+    borderRadius: 16,
 
-    paddingTop: 16,
-    paddingLeft: 16,
-    paddingBottom: 16,
-    paddingRight: 16,
-
-    marginTop: 8,
-    marginBottom: 8,
+    padding: 16,
+    margin: 8,
   },
   
   postTitle: {
-    fontSize: 24,
+    fontSize: 22,
     color: '#95190C',
 
     marginBottom: 8,

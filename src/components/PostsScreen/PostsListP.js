@@ -12,8 +12,6 @@ import PostsListItem from './PostsListItem';
 import SkeletonLoadingPost from '../SkeletonLoading/SkeletonLoadingPost';
 import SkeletonLoadingProfileInfo from '../SkeletonLoading/SkeletonLoadingProfileInfo';
 
-import globalStyles from '../../styles/globalStyles';
-
 import friendlyDate from '../../helpers/friendlyDate';
 
 import {LATEST_BRANCH, TRENDING_BRANCH, PROFILE_BRANCH} from '../../constants/branches';
@@ -45,50 +43,47 @@ class PostsListP extends React.Component {
 
     return (!postsAreFetching && !topicsAreFetching) ?
       (
-        <View style={globalStyles.container}>
-          <FlatList
-            style={globalStyles.list}
-            data={posts}
-            renderItem={
-              ({item}) =>
-                <PostsListItem id={item.id}
-                  title={item.title}
-                  body={item.body}
-                  url={item.url}
-                  user={item.userUsername}
-                  topic={this._getTopicName(item.topicId, topics)}
-                  createdAt={friendlyDate(item.createdAt)}
+        <FlatList
+          data={posts}
+          renderItem={
+            ({item}) =>
+              <PostsListItem id={item.id}
+                title={item.title}
+                body={item.body}
+                url={item.url}
+                user={item.userUsername}
+                topic={this._getTopicName(item.topicId, topics)}
+                createdAt={friendlyDate(item.createdAt)}
 
-                  handlePress={
-                    () => navigateToSinglePostScreen(item.id, item.title)
+                handlePress={
+                  () => navigateToSinglePostScreen(item.id, item.title)
+                }
+                handleProfileChange={
+                  () => {
+                    handleProfileChange(item.userId);
+                    navigateToProfile(item.userUsername);
                   }
-                  handleProfileChange={
-                    () => {
-                      handleProfileChange(item.userId);
-                      navigateToProfile(item.userUsername);
-                    }
+                }
+                handleTopicChange={
+                  () => {
+                    const topicName = this._getTopicName(item.topicId, topics);
+                    handleTopicChange(item.topicId, topicName);
+                    navigateToPostsByTopic(topicName);
                   }
-                  handleTopicChange={
-                    () => {
-                      const topicName = this._getTopicName(item.topicId, topics);
-                      handleTopicChange(item.topicId, topicName);
-                      navigateToPostsByTopic(topicName);
-                    }
-                  }
-                />
-              }
-            keyExtractor={
-              post => post.id.toString()
-            }
-            refreshControl={
-              <RefreshControl
-                refreshing={postsAreFetching}
-                onRefresh={this._handleRefresh}
+                }
               />
             }
-            removeClippedSubviews
-          />
-        </View>
+          keyExtractor={
+            post => post.id.toString()
+          }
+          refreshControl={
+            <RefreshControl
+              refreshing={postsAreFetching}
+              onRefresh={this._handleRefresh}
+            />
+          }
+          removeClippedSubviews
+        />
       )
     :
       <View>

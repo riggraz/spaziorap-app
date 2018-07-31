@@ -20,19 +20,19 @@ const SkeletonLoadingPost = () => (
     duration={1000}
     delay={0}
   >
-    
-    <Placeholder style={[skeletonStyles.placeholderTitleText, { width: '85%' }]} />
 
     <View>
+      <Placeholder style={[skeletonStyles.placeholderTitleText, { width: '85%' }]} />
+
       <Placeholder style={[skeletonStyles.placeholderText, { width: '80%' }]} />
       <Placeholder style={[skeletonStyles.placeholderText, { width: '85%' }]} />
       <Placeholder style={[skeletonStyles.placeholderText, { width: '75%' }]} />
     </View>
 
-    <View style={{flexDirection: 'row', justifyContent: 'space-around',}}>
-      <Placeholder style={[skeletonStyles.placeholderBox, { width: '20%' }]} />
-      <Placeholder style={[skeletonStyles.placeholderBox, { width: '20%' }]} />
-      <Placeholder style={[skeletonStyles.placeholderBox, { width: '20%' }]} />
+    <View style={skeletonStyles.placeholderInfoBox}>
+      <Placeholder style={[skeletonStyles.placeholderInfoBoxText, { width: '20%' }]} />
+      <Placeholder style={[skeletonStyles.placeholderInfoBoxText, { width: '20%' }]} />
+      <Placeholder style={[skeletonStyles.placeholderInfoBoxText, { width: '20%' }]} />
     </View>
   </PlaceholderContainer>
 );

@@ -4,7 +4,7 @@ const postInfoBoxStyles = StyleSheet.create({
   infoBox: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
 
     marginTop: 8,
   },
@@ -13,7 +13,7 @@ const postInfoBoxStyles = StyleSheet.create({
     color: 'white',
     backgroundColor: '#a0a0a0',
 
-    fontSize: 14,
+    fontSize: 13,
 
     paddingTop: 4,
     paddingLeft: 8,

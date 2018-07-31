@@ -6,14 +6,13 @@ import {
 
 import PostsList from '../../containers/PostsList';
 
-import globalStyles from '../../styles/globalStyles';
 import profileStyles from '../../styles/profileStyles';
 
 import {POSTS_BY_TOPIC, SINGLE_POST, PROFILE_PAGE} from '../../constants/navigation';
 import {PROFILE_BRANCH} from '../../constants/branches';
 
 const ProfileP = ({username, navigation}) => (
-  <View style={globalStyles.container}>
+  <View style={{flex: 1}}>
     <View style={profileStyles.userInfoBox}>
       <Text style={profileStyles.username}>{username}</Text>
     </View>

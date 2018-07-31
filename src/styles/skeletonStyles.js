@@ -1,51 +1,52 @@
 import {StyleSheet} from 'react-native';
 
 const skeletonStyles = StyleSheet.create({
-  placeholderContainer: {
-    width: '100%',
+    placeholderContainer: {
+      alignSelf: 'stretch',
+  
+      backgroundColor: '#fefefe',
+  
+      borderWidth: 1,
+      borderColor: '#cbcbcb',
+      borderRadius: 16,
+  
+      margin: 8,
+      padding: 16,
+    },
+  
+    placeholderText: {
+      height: 16,
+      marginTop: 8,
+      marginLeft: 16,
+      marginRight: 16,
+      alignSelf: 'flex-start',
+      backgroundColor: '#eeeeee',
+    },
+  
+    placeholderTitleText: {
+      height: 38,
+      marginTop: 8,
+      marginLeft: 16,
+      marginRight: 16,
+      alignSelf: 'flex-start',
+      backgroundColor: '#eeeeee',
+    },
 
-    backgroundColor: '#fefefe',
-
-    borderWidth: 1,
-    borderColor: '#cbcbcb',
-
-    paddingTop: 16,
-    paddingLeft: 16,
-    paddingBottom: 16,
-    paddingRight: 16,
-
-    marginTop: 8,
-    marginBottom: 8,
-  },
-
-  placeholderText: {
-    height: 14,
-    marginTop: 8,
-    marginLeft: 24,
-    marginRight: 24,
-    alignSelf: 'flex-start',
-    backgroundColor: '#eeeeee',
-  },
-
-  placeholderTitleText: {
-    height: 35,
-    marginTop: 8,
-    marginLeft: 24,
-    marginRight: 24,
-    alignSelf: 'flex-start',
-    backgroundColor: '#eeeeee',
-  },
-
-  placeholderBox: {
-    height: 18,
-    marginTop: 8,
-    marginLeft: 24,
-    marginRight: 24,
-    borderRadius: 36,
-    alignSelf: 'flex-start',
-    justifyContent: 'center',
-    backgroundColor: '#eeeeee',
-  },
-});
+    placeholderInfoBox: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+  
+    placeholderInfoBoxText: {
+      height: 18,
+      marginTop: 8,
+      marginLeft: 24,
+      marginRight: 24,
+      borderRadius: 36,
+      alignSelf: 'flex-start',
+      justifyContent: 'center',
+      backgroundColor: '#eeeeee',
+    },
+  });
 
 export default skeletonStyles;
