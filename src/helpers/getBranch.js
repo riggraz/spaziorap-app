@@ -36,7 +36,7 @@ import {
   PROFILE_BRANCH,
 } from '../constants/branches';
 
-export default getBranch = navigation => {
+const getBranch = navigation => {
   if (!navigation) return LATEST_BRANCH;
 
   switch (navigation.state.routeName) {
@@ -59,3 +59,5 @@ export default getBranch = navigation => {
       return LATEST_BRANCH;
   }
 };
+
+export default getBranch;
