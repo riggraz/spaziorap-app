@@ -28,8 +28,8 @@ const postStyles = StyleSheet.create({
     color: 'black',
 
     marginTop: 8,
-    marginLeft: 16,
-    marginRight: 16,
+    // marginLeft: 16,
+    // marginRight: 16,
     marginBottom: 8,
   },
 });

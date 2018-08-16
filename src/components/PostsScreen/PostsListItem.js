@@ -5,10 +5,11 @@ import {
   Text
 } from 'react-native';
 
+import VideoThumbnail from '../../containers/VideoThumbnail';
 import PostBody from './PostBody';
-import PostVideoThumbnail from './PostVideoThumbnail';
 import PostInfoBox from '../PostInfoBox';
 
+import globalStyles from '../../styles/globalStyles';
 import postListItemStyles from '../../styles/postListItemStyles';
 
 const PostsListItem = ({
@@ -23,7 +24,7 @@ const PostsListItem = ({
   handleTopicChange,
   handlePress
 }) => (
-  <View style={postListItemStyles.postBox}>
+  <View style={globalStyles.box}>
     <TouchableOpacity onPress={handlePress}>
       <Text style={postListItemStyles.postTitle}>
         {
@@ -34,14 +35,14 @@ const PostsListItem = ({
         }
         {title}
       </Text>
-      
-      {
-        body ?
-          <PostBody body={body} />
-        :
-          <PostVideoThumbnail url={url} />
-      }
     </TouchableOpacity>
+    
+    {
+      body ?
+        <PostBody body={body} handlePress={handlePress} />
+      :
+        <VideoThumbnail url={url} />
+    }
 
     <PostInfoBox
       user={user}

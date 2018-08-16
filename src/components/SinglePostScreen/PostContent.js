@@ -10,7 +10,7 @@ import PostContentVideo from './PostContentVideo';
 import postStyles from '../../styles/postStyles';
 
 const PostContent = ({title, body, url}) =>
-  <View style={postStyles.postContentBox}>
+  <View>
     <Text style={postStyles.title}>{title}</Text>
     {
       body ?
