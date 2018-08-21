@@ -39,7 +39,7 @@ export const submitPost = (
     const headers = {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: accessToken
+      Authorization: accessToken,
     };
     const requestBody = {
       post: {

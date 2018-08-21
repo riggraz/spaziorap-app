@@ -24,6 +24,8 @@ import {
   PROFILE_BRANCH,
 } from '../constants/branches';
 
+import { LIKE_SUCCESSFUL } from '../actions/like';
+
 const posts = (
   state = {
     [LATEST_BRANCH]: {},
@@ -56,6 +58,13 @@ const posts = (
         ...state,
         [PROFILE_BRANCH]: postsBranch(state[PROFILE_BRANCH], action),
       };
+
+    case LIKE_SUCCESSFUL:
+      return {
+        [LATEST_BRANCH]: postsBranch(state[LATEST_BRANCH], action),
+        [SELECTEDTOPIC_BRANCH]: postsBranch(state[SELECTEDTOPIC_BRANCH], action),
+        [PROFILE_BRANCH]: postsBranch(state[PROFILE_BRANCH], action),
+      }
 
     default:
       return state;

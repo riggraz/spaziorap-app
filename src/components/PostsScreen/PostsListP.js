@@ -71,6 +71,8 @@ class PostsListP extends React.Component {
                     navigateToPostsByTopic(topicName);
                   }
                 }
+
+                branch={this.props.branch}
               />
             }
           keyExtractor={

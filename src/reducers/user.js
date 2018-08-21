@@ -18,6 +18,12 @@ import {
   POST_SUBMISSION_FAILURE,
 } from '../actions/submitPost';
 
+import {
+  START_PROFILE_SCORE_REQUEST,
+  PROFILE_SCORE_REQUEST_SUCCESSFUL,
+  PROFILE_SCORE_REQUEST_FAILURE,
+} from '../actions/requestProfileScore';
+
 import newPost from './newPost';
 
 const user = (
@@ -28,6 +34,7 @@ const user = (
 
     id: undefined,
     username: undefined,
+    score: 0,
     admin: false,
     accessToken: '',
 
@@ -53,6 +60,7 @@ const user = (
 
         id: action.user.id,
         username: action.user.attributes.username,
+        score: state.score,
         admin: action.user.attributes.admin,
         accessToken: action.user.attributes.access_token,
 
@@ -68,6 +76,7 @@ const user = (
 
         id: undefined,
         username: undefined,
+        score: 0,
         admin: false,
         accessToken: '',
 
@@ -90,10 +99,29 @@ const user = (
 
         id: undefined,
         username: undefined,
+        score: 0,
         admin: false,
         accessToken: '',
 
         newPost: {},
+      };
+
+    case START_PROFILE_SCORE_REQUEST:
+      return {
+        ...state,
+        score: '...',
+      };
+
+    case PROFILE_SCORE_REQUEST_SUCCESSFUL:
+      return {
+        ...state,
+        score: action.score,
+      };
+
+    case PROFILE_SCORE_REQUEST_FAILURE:
+      return {
+        ...state,
+        score: 'N/A',
       };
 
     default:

@@ -9,10 +9,13 @@ import VideoThumbnail from '../../containers/VideoThumbnail';
 import PostBody from './PostBody';
 import PostInfoBox from '../PostInfoBox';
 
+import LikeBox from '../../containers/LikeBox';
+
 import globalStyles from '../../styles/globalStyles';
 import postListItemStyles from '../../styles/postListItemStyles';
 
 const PostsListItem = ({
+  id,
   title,
   body,
   url,
@@ -22,7 +25,9 @@ const PostsListItem = ({
   
   handleProfileChange,
   handleTopicChange,
-  handlePress
+  handlePress,
+
+  branch,
 }) => (
   <View style={globalStyles.box}>
     <TouchableOpacity onPress={handlePress}>
@@ -35,14 +40,14 @@ const PostsListItem = ({
         }
         {title}
       </Text>
-    </TouchableOpacity>
     
-    {
-      body ?
-        <PostBody body={body} handlePress={handlePress} />
-      :
-        <VideoThumbnail url={url} />
-    }
+      {
+        body ?
+          <PostBody body={body} handlePress={handlePress} />
+        :
+          <VideoThumbnail url={url} />
+      }
+    </TouchableOpacity>
 
     <PostInfoBox
       user={user}
@@ -52,6 +57,8 @@ const PostsListItem = ({
       handleProfileChange={handleProfileChange}
       handleTopicChange={handleTopicChange}
     />
+
+    <LikeBox postId={id} branch={branch} margin />
   </View>
 );
 

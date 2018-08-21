@@ -24,7 +24,7 @@ export const register = (username, email, password) => dispatch => {
 
   const headers = {
     Accept: 'application/json',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
   }
   const body = {
     user: {

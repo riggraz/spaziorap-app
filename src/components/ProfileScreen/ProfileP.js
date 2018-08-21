@@ -11,10 +11,11 @@ import profileStyles from '../../styles/profileStyles';
 import {POSTS_BY_TOPIC, SINGLE_POST, PROFILE_PAGE} from '../../constants/navigation';
 import {PROFILE_BRANCH} from '../../constants/branches';
 
-const ProfileP = ({username, navigation}) => (
+const ProfileP = ({username, score, navigation}) => (
   <View style={{flex: 1}}>
     <View style={profileStyles.userInfoBox}>
       <Text style={profileStyles.username}>{username}</Text>
+      <Text style={profileStyles.score}>{score}</Text>
     </View>
 
     <PostsList branch={PROFILE_BRANCH}

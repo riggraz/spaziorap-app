@@ -16,6 +16,8 @@ import {
   PROFILE_POSTS_REQUEST_FAILURE,
 } from '../actions/requestProfilePosts';
 
+import {LIKE_SUCCESSFUL} from '../actions/like';
+
 const postsBranch = (
   state = {
     areFetching: true,
@@ -47,6 +49,7 @@ const postsBranch = (
           userId: post.attributes.user_id,
           userUsername: post.attributes.user_username,
           topicId: post.attributes.topic_id.toString(),
+          score: post.attributes.score,
           createdAt: post.attributes.created_at.toString(),
         })),
       };
@@ -57,7 +60,21 @@ const postsBranch = (
       return {
         areFetching: false,
         error: true,
-        items: state.posts.items,
+        items: state.items,
+      };
+
+    case LIKE_SUCCESSFUL:
+      return {
+        ...state,
+        items: state.items && state.items.map(post => {
+          if (post.id == action.postId) {
+            if (action.score == 1) post.score++;
+            else if (action.score == -1) post.score--;
+            else if (action.score == 0 && action.pressedButton == -1) post.score++;
+            else if (action.score == 0 && action.pressedButton == 1) post.score--;
+          }
+          return post;
+        }),
       };
 
     default:

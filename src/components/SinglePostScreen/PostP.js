@@ -6,6 +6,7 @@ import {
 
 import PostInfoBox from '../PostInfoBox';
 import PostContent from './PostContent';
+import LikeBox from '../../containers/LikeBox';
 
 import friendlyDate from '../../helpers/friendlyDate';
 
@@ -26,7 +27,9 @@ const PostP = ({
   handleProfileChange,
   handleTopicChange,
   navigateToProfile,
-  navigateToPostsByTopic
+  navigateToPostsByTopic,
+
+  branch,
 }) =>
   <ScrollView>
     <View style={globalStyles.box}>
@@ -57,6 +60,10 @@ const PostP = ({
         body={post.body}
         url={post.url}
       />
+    </View>
+
+    <View style={globalStyles.box}>
+      <LikeBox postId={post.id} branch={branch} />
     </View>
   </ScrollView>
 

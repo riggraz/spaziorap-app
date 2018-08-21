@@ -1,4 +1,5 @@
 import {API_URL} from '../constants/API';
+import {fetchProfileScore} from './requestProfileScore';
 
 export const START_PROFILE_POSTS_REQUEST = 'START_PROFILE_POSTS_REQUEST';
 const startProfilePostsRequest = () =>
@@ -21,6 +22,7 @@ const profilePostsRequestFailure = () =>
 
 export const fetchProfilePosts = user => dispatch => {
   dispatch(startProfilePostsRequest());
+  dispatch(fetchProfileScore(user));
 
   return fetch(`${API_URL}/users/${user}/posts`)
     .then(
