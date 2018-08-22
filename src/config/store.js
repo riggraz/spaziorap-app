@@ -3,6 +3,7 @@ import thunkMiddleware from 'redux-thunk';
 
 import rootReducer from '../reducers';
 
+import {fetchLatestSongs} from '../actions/requestLatestSongs';
 import {fetchLatestPosts} from '../actions/requestLatestPosts';
 import {fetchTopics} from '../actions/requestTopics';
 
@@ -17,6 +18,7 @@ store.subscribe(
   () => console.log(store.getState())
 );
 
+store.dispatch(fetchLatestSongs());
 store.dispatch(fetchTopics());
 store.dispatch(fetchLatestPosts());
 

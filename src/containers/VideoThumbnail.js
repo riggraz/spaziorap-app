@@ -12,7 +12,7 @@ const mapDispatchToProps = dispatch =>
     handlePlayVideo(videoId) {
       dispatch(setVideoId(videoId));
       dispatch(show());
-    }
+    },
   });
 
 const VideoThumbnail = connect(

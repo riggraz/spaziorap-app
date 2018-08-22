@@ -4,6 +4,7 @@ import {ScrollView} from 'react-native';
 import HeaderRight from '../../containers/HeaderRight';
 
 import Menu from './Menu';
+import LatestSongs from '../../containers/LatestSongs';
 import PostsListHorizontal from './PostsListHorizontal';
 
 class HomeScreen extends React.Component {
@@ -19,6 +20,9 @@ class HomeScreen extends React.Component {
     return (
       <ScrollView>
         <Menu navigation={navigation} />
+
+        <LatestSongs />
+
         <PostsListHorizontal branch='latest' navigation={navigation} />
       </ScrollView>
     );

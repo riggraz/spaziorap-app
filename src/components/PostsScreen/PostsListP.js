@@ -5,7 +5,7 @@ import {
   Button,
   FlatList,
   ActivityIndicator,
-  RefreshControl
+  RefreshControl,
 } from 'react-native';
 
 import PostsListItem from './PostsListItem';

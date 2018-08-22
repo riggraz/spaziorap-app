@@ -31,7 +31,9 @@ const globalStyles = StyleSheet.create({
 
   hiddenBox: {
     width: '100%',
-    height: 370,
+
+    marginTop: 8,
+    marginBottom: 8,
   },
 });
 
