@@ -41,6 +41,8 @@ class PostsListP extends React.Component {
     const {handleTopicChange, navigateToPostsByTopic} = this.props;
     const {navigateToSinglePostScreen} = this.props;
 
+    const {horizontal} = this.props;
+
     return (!postsAreFetching && !topicsAreFetching) ?
       (
         <FlatList
@@ -72,6 +74,8 @@ class PostsListP extends React.Component {
                   }
                 }
 
+                horizontal={horizontal}
+
                 branch={this.props.branch}
               />
             }
@@ -79,20 +83,27 @@ class PostsListP extends React.Component {
             post => post.id.toString()
           }
           refreshControl={
-            <RefreshControl
-              refreshing={postsAreFetching}
-              onRefresh={this._handleRefresh}
-            />
+            horizontal ?
+              null
+            :
+              <RefreshControl
+                refreshing={postsAreFetching}
+                onRefresh={this._handleRefresh}
+              />
           }
+          horizontal={horizontal}
           removeClippedSubviews
         />
       )
     :
-      <View>
+      horizontal ?
         <SkeletonLoadingPost />
-        <SkeletonLoadingPost />
-        <SkeletonLoadingPost />
-      </View>
+      :
+        <View>
+          <SkeletonLoadingPost />
+          <SkeletonLoadingPost />
+          <SkeletonLoadingPost />
+        </View>
   }
 }
 

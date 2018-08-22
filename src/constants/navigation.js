@@ -7,6 +7,8 @@
 */
 
 export const HOME = 'Home';
+
+export const POSTS = 'Messaggi';
   export const LATEST_POSTS = 'Messaggi recenti';
   export const TRENDING_POSTS = 'Messaggi di moda';
 

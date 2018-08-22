@@ -3,7 +3,11 @@ import {Text} from 'react-native';
 import {
   createBottomTabNavigator,
   createStackNavigator,
+  createSwitchNavigator,
 } from 'react-navigation';
+
+//Home stack
+import HomeScreen from '../components/HomeScreen';
 
 //Posts stack
 import PostsScreen from '../components/PostsScreen';
@@ -27,6 +31,8 @@ import RegistrationScreen from '../components/RegistrationScreen';
 
 import {
   HOME,
+
+  POSTS,
     LATEST_POSTS,
     TRENDING_POSTS,
 
@@ -62,6 +68,18 @@ const defaultNavigationOptions = {
 };
 
 const HomeStack = createStackNavigator(
+  {
+    [HOME]: HomeScreen,
+    [SINGLE_POST]: SinglePostScreen,
+    [PROFILE_PAGE]: ProfileScreen,
+  },
+  {
+    initialRouteName: HOME,
+    navigationOptions: defaultNavigationOptions,
+  },
+);
+
+const PostsStack = createStackNavigator(
   {
     [LATEST_POSTS]: PostsScreen,
     [TRENDING_POSTS]: PostsScreen,
@@ -103,6 +121,8 @@ const ProfileStack = createStackNavigator(
   {
     [PROFILE_PAGE]: ProfileScreen,
     [SINGLE_POST]: SinglePostScreen,
+    [LOGIN]: LoginScreen,
+    [REGISTRATION]: RegistrationScreen,
   },
   {
     initialRouteName: PROFILE_PAGE,
@@ -124,14 +144,14 @@ const AuthStack = createStackNavigator(
 const RootStack = createBottomTabNavigator(
   {
     [HOME]: HomeStack,
-    [TOPICS]: TopicsStack,
+    [POSTS]: PostsStack,
     [NEW_POST_MENU]: {
       screen: NewPostStack,
       navigationOptions: ({navigation}) => ({
         tabBarButtonComponent: () => <NewButton navigation={navigation} />,
       }),
     },
-    'Oggi': AuthStack,
+    [TOPICS]: TopicsStack,
     [PROFILE]: {
       screen: ProfileStack,
       navigationOptions: ({navigation}) => ({
@@ -155,8 +175,8 @@ const RootStack = createBottomTabNavigator(
         let icon;
 
         if (routeName === HOME) icon = '🏠';
+        else if (routeName === POSTS) icon = '💬';
         else if (routeName === TOPICS) icon = '📚';
-        else if (routeName === 'Oggi') icon = '❓';
         else if (routeName === PROFILE) icon = '👤';
 
         return <Text style={{fontSize: 18}}>{icon}</Text>;

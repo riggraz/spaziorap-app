@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import {HOME} from '../../constants/navigation';
+import {POSTS} from '../../constants/navigation';
 
 const LogoutButtonP = ({handleLogout, navigation}) => (
   <View style={styles.logoutBox}>
@@ -14,7 +14,7 @@ const LogoutButtonP = ({handleLogout, navigation}) => (
       onPress={
         () => {
           handleLogout();
-          navigation.navigate(HOME);
+          navigation.navigate(POSTS);
         }
       }
     >

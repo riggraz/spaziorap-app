@@ -27,9 +27,11 @@ const PostsListItem = ({
   handleTopicChange,
   handlePress,
 
+  horizontal,
+
   branch,
 }) => (
-  <View style={globalStyles.box}>
+  <View style={horizontal ? globalStyles.horizontalBox : globalStyles.box}>
     <TouchableOpacity onPress={handlePress}>
       <Text style={postListItemStyles.postTitle}>
         {

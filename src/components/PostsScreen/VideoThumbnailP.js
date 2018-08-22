@@ -12,7 +12,7 @@ const VideoThumbnailP = ({url, handlePlayVideo}) => (
   <TouchableOpacity onPress={() => handlePlayVideo(getVideoId(url))}>
     <Image
       source={{uri: `https://img.youtube.com/vi/${getVideoId(url)}/0.jpg`}}
-      style={{height: 170, marginBottom: 8}}
+      style={{height: 140, marginBottom: 8}}
     />
   </TouchableOpacity>
 );

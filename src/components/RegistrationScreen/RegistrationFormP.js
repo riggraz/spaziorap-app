@@ -9,7 +9,7 @@ import {
 
 import formStyles from '../../styles/formStyles';
 
-import {HOME, LOGIN} from '../../constants/navigation';
+import {POSTS, LOGIN} from '../../constants/navigation';
 
 class RegistrationFormP extends React.Component {
 
@@ -29,7 +29,7 @@ class RegistrationFormP extends React.Component {
 
   componentDidUpdate() {
     if (this.props.isLoggedIn) {
-      this.props.navigation.navigate(HOME);
+      this.props.navigation.navigate(POSTS);
     }
   }
 
