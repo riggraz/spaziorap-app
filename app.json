@@ -14,6 +14,13 @@
       "resizeMode": "contain",
       "image": "./assets/images/splash.png"
     },
-    "primaryColor": "#F15946"
+    "primaryColor": "#F15946",
+
+    "ios": {
+      "bundleIdentifier": "com.riccardograziosi.spaziorap"
+    },
+    "android": {
+      "package": "com.riccardograziosi.spaziorap"
+    }
   }
 }

@@ -5,18 +5,14 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import EmbeddedYTPlayer from './EmbeddedYTPlayer';
-
-import playerStyles from '../../styles/playerStyles';
+import Draggable from './Draggable';
 
 const PlayerP = ({videoId, visible, handleHide}) => (
   visible ?
-    <View style={playerStyles.playerBox}>
-      <EmbeddedYTPlayer videoId={videoId} />
-      <TouchableOpacity onPress={handleHide}>
-        <Text>Chiudi</Text>
-      </TouchableOpacity>
-    </View>
+    <Draggable
+      videoId={videoId}
+      handleHide={handleHide}
+    />
   :
     null
 );

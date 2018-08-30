@@ -6,7 +6,7 @@ const EmbeddedYTPlayer = ({videoId}) => (
     source={{uri: `http://html5examples.altervista.org/player-spaziorap2.html?videoId=${videoId}`}}
     javaScriptEnabled={true}
     mediaPlaybackRequiresUserAction={false}
-    style={{width: 360, height: 150,}}
+    style={{width: 240, height: 135}}
   />
 );
 
