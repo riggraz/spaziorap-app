@@ -78,6 +78,13 @@ class NewPostDefaultFormP extends React.Component {
         contentContainerStyle={formStyles.center}
         style={formStyles.container}
       >
+        {
+          this.props.error ?
+            <Text style={formStyles.redLabel}>Non hai compilato tutti i campi. Riprova.</Text>
+          :
+            null
+        }
+        
         <Text style={formStyles.label}>
           Titolo
         </Text>
@@ -108,22 +115,16 @@ class NewPostDefaultFormP extends React.Component {
 
         <TouchableOpacity
           onPress={() => this._handleSubmit()}
-          style={[formStyles.button, formStyles.marginBottomButton]}>
-          <Text style={formStyles.buttonText}>Invia</Text>
+          style={[formStyles.button,{marginBottom: 256}]}>
+          <Text style={formStyles.buttonText}>
+            {
+              this.props.isSubmitting ?
+                'Sto postando...'
+              :
+                'Invia'
+            }
+          </Text>
         </TouchableOpacity>
-
-        {
-          this.props.isSubmitting ?
-            <Text style={formStyles.label}>Sto postando...</Text>
-          :
-            null
-        }
-        {
-          this.props.error ?
-            <Text style={formStyles.redLabel}>Non hai compilato tutti i campi. Riprova.</Text>
-          :
-            null
-        }
       </ScrollView>
     );
   }

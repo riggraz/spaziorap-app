@@ -16,9 +16,10 @@ const TextPostSpecificField = ({value, handleChangeText}) =>
       value={value}
       onChangeText={text => handleChangeText(`body~${text}`)}
       multiline
-      numberOfLines={8}
+      numberOfLines={1}
       underlineColorAndroid='white'
-      style={[formStyles.input, {width: 300, textAlignVertical: "top",}]}
+      placeholder='Cosa vuoi dire?'
+      style={[formStyles.input, formStyles.multilineInput]}
     />
   </View>
 

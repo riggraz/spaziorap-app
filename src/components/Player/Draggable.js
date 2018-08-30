@@ -65,9 +65,6 @@ class Draggable extends Component {
 
       borderWidth: 1,
       borderColor: 'black',
-
-      // margin: 0,
-      // padding: 0,
     };
 
     return(

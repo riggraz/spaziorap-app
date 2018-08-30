@@ -1,4 +1,7 @@
-import {StyleSheet} from 'react-native';
+import {
+  StyleSheet,
+  Dimensions,
+} from 'react-native';
 
 const formStyles = StyleSheet.create({
   container: {
@@ -37,6 +40,11 @@ const formStyles = StyleSheet.create({
     textAlign: 'center',
   },
 
+  multilineInput: {
+    width: Dimensions.get('window').width - 32,
+    textAlignVertical: 'top',
+  },
+
   button: {
     marginLeft: 16,
     marginRight: 16,
@@ -57,7 +65,7 @@ const formStyles = StyleSheet.create({
 
   touchableText: {
     color: 'black',
-    fontSize: 15,
+    fontSize: 17,
     textAlign: 'center',
     textDecorationLine: 'underline',
 
@@ -93,10 +101,6 @@ const formStyles = StyleSheet.create({
     padding: 8,
     
     alignSelf: 'center',
-  },
-
-  marginBottomButton: {
-    marginBottom: 128,
   },
 });
 

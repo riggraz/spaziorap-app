@@ -121,8 +121,6 @@ const ProfileStack = createStackNavigator(
   {
     [PROFILE_PAGE]: ProfileScreen,
     [SINGLE_POST]: SinglePostScreen,
-    [LOGIN]: LoginScreen,
-    [REGISTRATION]: RegistrationScreen,
   },
   {
     initialRouteName: PROFILE_PAGE,
@@ -141,7 +139,7 @@ const AuthStack = createStackNavigator(
   },
 );
 
-const RootStack = createBottomTabNavigator(
+const BottomTabStack = createBottomTabNavigator(
   {
     [HOME]: HomeStack,
     [POSTS]: PostsStack,
@@ -191,6 +189,17 @@ const RootStack = createBottomTabNavigator(
       },
     },
   },
+);
+
+const RootStack = createSwitchNavigator(
+  {
+    [HOME]: BottomTabStack,
+    [AUTH]: AuthStack,
+  },
+  {
+    initialRouteName: HOME,
+    backBehavior: 'initialRoute',
+  }
 );
 
 export default RootStack;

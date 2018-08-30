@@ -9,7 +9,7 @@ import {
 
 import formStyles from '../../styles/formStyles';
 
-import {POSTS, LOGIN} from '../../constants/navigation';
+import {HOME, LOGIN} from '../../constants/navigation';
 
 class RegistrationFormP extends React.Component {
 
@@ -21,19 +21,17 @@ class RegistrationFormP extends React.Component {
       emailInputText: undefined,
       passwordInputText: '',
       passwordConfirmationInputText: '',
-      passwordDoesntMatch: false,
+      error: false,
     };
-
-    this._handleRegistration = this._handleRegistration.bind(this);
   }
 
   componentDidUpdate() {
     if (this.props.isLoggedIn) {
-      this.props.navigation.navigate(POSTS);
+      this.props.navigation.navigate(HOME);
     }
   }
 
-  _handleRegistration() {
+  _handleRegistration = () => {
     const {
       usernameInputText,
       emailInputText,
@@ -42,12 +40,31 @@ class RegistrationFormP extends React.Component {
     } = this.state;
     const {handleRegistration} = this.props;
 
-    if (passwordInputText === passwordConfirmationInputText) {
-      this.setState({passwordDoesntMatch: false});
+    if (
+      this._isUsernameOkay() &&
+      this._isPasswordOkay() &&
+      this._passwordsMatch()
+    ) {
+      this.setState({error: false});
       handleRegistration(usernameInputText, emailInputText, passwordInputText);
     } else {
-      this.setState({passwordDoesntMatch: true});
+      this.setState({error: true});
     }
+  }
+
+  _isUsernameOkay = () => {
+    const {usernameInputText} = this.state;
+    return usernameInputText.length >= 3;
+  }
+
+  _isPasswordOkay = () => {
+    const {passwordInputText} = this.state;
+    return passwordInputText.length >= 6;
+  }
+
+  _passwordsMatch = () => {
+    const {passwordInputText, passwordConfirmationInputText} = this.state;
+    return ((passwordInputText === passwordConfirmationInputText) && this._isPasswordOkay());
   }
 
   render() {
@@ -58,7 +75,7 @@ class RegistrationFormP extends React.Component {
         style={formStyles.container}
       >
         <Text style={formStyles.label}>
-          Nome utente
+          Nome utente (3+ caratteri) {this._isUsernameOkay() ? '✔️' : '✖️'}
         </Text>
         <TextInput
             value={this.state.usernameInputText}
@@ -72,7 +89,7 @@ class RegistrationFormP extends React.Component {
         />
 
         <Text style={formStyles.label}>
-          Password
+          Password (6+ caratteri) {this._isPasswordOkay() ? '✔️' : '✖️'}
         </Text>
         <TextInput
             value={this.state.passwordInputText}
@@ -84,7 +101,7 @@ class RegistrationFormP extends React.Component {
         />
 
         <Text style={formStyles.label}>
-          Conferma password
+          Conferma password {this._passwordsMatch() ? '✔️' : '✖️'}
         </Text>
         <TextInput
             value={this.state.passwordConfirmationInputText}
@@ -97,24 +114,29 @@ class RegistrationFormP extends React.Component {
         />
 
         <TouchableOpacity onPress={() => this._handleRegistration()} style={formStyles.button}>
-          <Text style={formStyles.buttonText}>Registrati</Text>
+          <Text style={formStyles.buttonText}>
+          {
+            this.props.isLoggingIn ?
+              'Registrando...'
+            :
+              'Registrati'
+          }
+          </Text>
         </TouchableOpacity>
 
         {
-          this.props.isLoggingIn ?
-            <Text style={formStyles.label}>Sto registrando...</Text>
+          this.state.error ?
+            <Text style={formStyles.redLabel}>Ci sono errori nella compilazione.</Text>
+              // this._isUsernameOkay() ? null : <Text>Il nome utente deve essere di 3 o più caratteri</Text>
+              // this._isPasswordOkay() ? null : <Text>La password deve essere di 6 o più caratteri</Text>
+              // this._passwordsMatch() ? null : <Text>La password e la conferma password devono coincidere</Text>
           :
             null
         }
+        
         {
           this.props.error ?
-            <Text style={formStyles.redLabel}>Si è verificato un errore nella registrazione.</Text>
-          :
-            null
-        }
-        {
-          this.state.passwordDoesntMatch ?
-            <Text style={formStyles.redLabel}>Le password non coincidono.</Text>
+            <Text style={formStyles.redLabel}>Il nome utente '{this.state.usernameInputText}'' è già stato preso.</Text>
           :
             null
         }
