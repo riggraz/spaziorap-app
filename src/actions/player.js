@@ -5,14 +5,14 @@ export const setVideoId = videoId =>
     videoId,
   });
 
-export const SHOW = 'SHOW';
-export const show = () =>
+export const OPEN_PLAYER = 'OPEN_PLAYER';
+export const openPlayer = () =>
   ({
-    type: SHOW,
+    type: OPEN_PLAYER,
   });
 
-export const HIDE = 'HIDE';
-export const hide = () =>
+export const CLOSE_PLAYER = 'CLOSE_PLAYER';
+export const closePlayer = () =>
   ({
-    type: HIDE,
+    type: CLOSE_PLAYER,
   });

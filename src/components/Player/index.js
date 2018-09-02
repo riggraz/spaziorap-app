@@ -7,12 +7,13 @@ import {
 
 import Draggable from './Draggable';
 
-const PlayerP = ({videoId, visible, handleHide}) => (
-  visible ?
+const PlayerP = ({videoId, open, handleHide}) => (
+  open ? (
     <Draggable
       videoId={videoId}
       handleHide={handleHide}
     />
+  )
   :
     null
 );

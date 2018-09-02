@@ -3,17 +3,28 @@ import {
   View,
   Text,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 
 import EmbeddedYTPlayer from './EmbeddedYTPlayer';
 
-const PlayerInterface = ({videoId, handleHide}) => (
-  <View>
-    <TouchableOpacity onPress={handleHide} style={{backgroundColor: 'white'}}>
-      <Text style={{marginLeft: 4}}>X Chiudi</Text>
-    </TouchableOpacity>
+import playerStyles from '../../styles/playerStyles';
 
-    <EmbeddedYTPlayer videoId={videoId} />
+const PlayerInterface = ({videoId, handleHide, handleMinimize}) => (
+  <View style={playerStyles.player}>
+    <View style={playerStyles.topBar}>
+      <TouchableOpacity onPress={handleHide} style={playerStyles.topBarButton}>
+        <Text style={playerStyles.topBarText}>X Chiudi</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={handleMinimize} style={playerStyles.topBarButton}>
+        <Text style={playerStyles.topBarText}>Minimizza -</Text>
+      </TouchableOpacity>
+    </View>
+
+    <View style={playerStyles.embeddedYTPlayer}>
+      <Image source={require('../../../assets/images/playerLoading.gif')} style={playerStyles.loading} />
+      <EmbeddedYTPlayer videoId={videoId} />
+    </View>
   </View>
 );
 

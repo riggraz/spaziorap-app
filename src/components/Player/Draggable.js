@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import {
+  AppState,
   PanResponder,
-  Animated
+  Animated,
+  Dimensions,
+  Text,
 } from 'react-native';
 
 import PlayerInterface from './PlayerInterface';
+
+import {PLAYER_HEIGHT, PLAYER_WIDTH} from '../../constants/player';
 
 class Draggable extends Component {
   constructor(props) {
@@ -13,12 +18,19 @@ class Draggable extends Component {
     this.size = props.size;
 
     this.state = {
-      pan: new Animated.ValueXY(),
+      pan: new Animated.ValueXY({
+        x: Dimensions.get('window').width / 4,
+        y: Dimensions.get('window').height / 4,
+      }),
 
       dragging: false,
 
       vx: 1,
-      vy: 1
+      vy: 1,
+
+      appState: AppState.currentState,
+
+      opacity: new Animated.Value(0.0),
     };
 
     this._panResponder = PanResponder.create({
@@ -47,6 +59,41 @@ class Draggable extends Component {
     });
   }
 
+  componentDidMount() {
+    AppState.addEventListener('change', this._handleAppStateChange);
+
+    Animated.timing(
+      this.state.opacity,
+      {
+        toValue: 1.0,
+        duration: 250,
+      }
+    ).start();
+  }
+
+  componentWillUnmount() {
+    AppState.removeEventListener('change', this._handleAppStateChange);
+  }
+
+  _handleAppStateChange = (nextAppState) => {        
+    this.setState({appState: nextAppState});
+  }
+
+  handleMinimize = () => {
+    Animated.spring(
+      this.state.pan, //the value to drive
+      {
+        toValue: {
+          x: Dimensions.get('window').width - 30,
+          y: Dimensions.get('window').height - PLAYER_HEIGHT - 10 - 60,
+        },
+
+        speed: 10,
+        bounciness: 10,
+      }
+    ).start();
+  }
+
   //The render method is called constantly as we are dragging the Animated View
   render() {
     const {pan, vx, vy} = this.state;
@@ -63,18 +110,24 @@ class Draggable extends Component {
 
       position: 'absolute',
 
-      borderWidth: 1,
-      borderColor: 'black',
+      opacity: this.state.opacity,
     };
 
     return(
       <Animated.View style={draggableStyle} {...this._panResponder.panHandlers}>
-        <PlayerInterface
-          videoId={this.props.videoId}
-          handleHide={this.props.handleHide}
-        />
+        {
+          this.state.appState === 'active' ?
+            <PlayerInterface
+              videoId={this.props.videoId}
+              handleHide={this.props.handleHide}
+              handleMinimize={this.handleMinimize}
+            />
+          :
+            null
+        }
       </Animated.View>
     );
   }
 }
+
 export default Draggable;

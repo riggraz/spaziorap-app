@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 
 import LatestSongsP from '../components/HomeScreen/LatestSongsP';
 
-import {setVideoId, show} from '../actions/player';
+import {setVideoId, openPlayer} from '../actions/player';
 
 const mapStateToProps = state =>
   ({
@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch =>
   ({
     handlePlaySong(videoId) {
       dispatch(setVideoId(videoId));
-      dispatch(show());
+      dispatch(openPlayer());
     },
   });
 

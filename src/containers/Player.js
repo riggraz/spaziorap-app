@@ -2,18 +2,18 @@ import {connect} from 'react-redux';
 
 import PlayerP from '../components/Player/index';
 
-import {hide} from '../actions/player';
+import {closePlayer} from '../actions/player';
 
 const mapStateToProps = state =>
   ({
     videoId: state.player.videoId,
-    visible: state.player.visible,
+    open: state.player.open,
   });
 
 const mapDispatchToProps = dispatch =>
   ({
     handleHide() {
-      dispatch(hide());
+      dispatch(closePlayer());
     },
   });
 

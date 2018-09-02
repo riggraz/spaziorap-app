@@ -1,13 +1,13 @@
 import {
   SET_VIDEO_ID,
-  SHOW,
-  HIDE,
+  OPEN_PLAYER,
+  CLOSE_PLAYER,
 } from '../actions/player';
 
 const player = (
   state = {
     videoId: '',
-    visible: false,
+    open: false,
   },
   action
 ) => {
@@ -18,16 +18,16 @@ const player = (
         videoId: action.videoId,
       };
 
-    case SHOW:
+    case OPEN_PLAYER:
       return {
         ...state,
-        visible: true,
+        open: true,
       };
 
-    case HIDE:
+    case CLOSE_PLAYER:
       return {
         ...state,
-        visible: false,
+        open: false,
       };
 
     default:

@@ -4,14 +4,14 @@ import VideoThumbnailP from '../components/PostsScreen/VideoThumbnailP';
 
 import {
   setVideoId,
-  show,
+  openPlayer,
 } from '../actions/player';
 
 const mapDispatchToProps = dispatch =>
   ({
     handlePlayVideo(videoId) {
       dispatch(setVideoId(videoId));
-      dispatch(show());
+      dispatch(openPlayer());
     },
   });
 
