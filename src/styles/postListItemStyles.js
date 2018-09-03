@@ -1,9 +1,11 @@
 import {StyleSheet} from 'react-native';
 
+import {TITLE_COLOR} from '../constants/colors';
+
 const postListItemStyles = StyleSheet.create({
   postTitle: {
     fontSize: 22,
-    color: '#95190C',
+    color: TITLE_COLOR,
 
     marginBottom: 8,
   },

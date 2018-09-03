@@ -6,11 +6,11 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import postListItemStyles from '../../styles/postListItemStyles';
+import postListItemStyles from '../../../styles/postListItemStyles';
 
-import getVideoId from '../../helpers/getVideoId';
+import getVideoId from '../../../helpers/getVideoId';
 
-import songStyles from '../../styles/songStyles';
+import songStyles from '../../../styles/songStyles';
 
 const Song = ({name, artist, url, handlePlaySong}) => (
   <TouchableOpacity onPress={() => handlePlaySong(getVideoId(url))}>

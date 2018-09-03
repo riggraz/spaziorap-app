@@ -15,6 +15,7 @@ import SkeletonLoadingProfileInfo from '../SkeletonLoading/SkeletonLoadingProfil
 import friendlyDate from '../../helpers/friendlyDate';
 
 import {LATEST_BRANCH, TRENDING_BRANCH, PROFILE_BRANCH} from '../../constants/branches';
+import globalStyles from '../../styles/globalStyles';
 
 class PostsListP extends React.Component {
 
@@ -93,6 +94,7 @@ class PostsListP extends React.Component {
           }
           horizontal={horizontal}
           removeClippedSubviews
+          style={globalStyles.container}
         />
       )
     :

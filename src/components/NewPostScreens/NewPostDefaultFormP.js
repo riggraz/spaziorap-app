@@ -8,6 +8,7 @@ import {
 
 import TopicPicker from './TopicPicker';
 
+import globalStyles from '../../styles/globalStyles';
 import formStyles from '../../styles/formStyles';
 
 class NewPostDefaultFormP extends React.Component {
@@ -76,7 +77,7 @@ class NewPostDefaultFormP extends React.Component {
       <ScrollView
         keyboardShouldPersistTaps='handled'
         contentContainerStyle={formStyles.center}
-        style={formStyles.container}
+        style={globalStyles.container}
       >
         {
           this.props.error ?
@@ -91,7 +92,6 @@ class NewPostDefaultFormP extends React.Component {
         <TextInput
             value={this.state.titleInputText}
             onChangeText={titleInputText => this.setState({titleInputText})}
-            autoFocus
             placeholder='Inserisci qui il titolo del post'
             underlineColorAndroid='white'
             style={formStyles.input}

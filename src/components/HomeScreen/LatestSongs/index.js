@@ -8,10 +8,10 @@ import {
 
 import Song from './Song';
 
-import SkeletonLoadingSong from '../SkeletonLoading/SkeletonLoadingSong';
+import SkeletonLoadingSong from '../../SkeletonLoading/SkeletonLoadingSong';
 
-import globalStyles from '../../styles/globalStyles';
-import homeStyles from '../../styles/homeStyles';
+import globalStyles from '../../../styles/globalStyles';
+import homeStyles from '../../../styles/homeStyles';
 
 const LatestSongsP = ({songs, areFetching, handlePlaySong}) => (
     <View style={globalStyles.hiddenBox}>
@@ -33,6 +33,7 @@ const LatestSongsP = ({songs, areFetching, handlePlaySong}) => (
           />
         :
         <View style={{flex: 1, flexDirection: 'row'}}>
+          <SkeletonLoadingSong />
           <SkeletonLoadingSong />
           <SkeletonLoadingSong />
         </View>

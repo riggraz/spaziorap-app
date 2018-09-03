@@ -3,9 +3,9 @@ import {View} from 'react-native';
 
 import MenuButton from './MenuButton';
 
-import {NEW_POST_MENU, POSTS} from '../../constants/navigation';
+import {NEW_POST_MENU, POSTS} from '../../../constants/navigation';
 
-import homeStyles from '../../styles/homeStyles';
+import homeStyles from '../../../styles/homeStyles';
 
 const Menu = ({navigation}) => (
   <View style={homeStyles.menu}>

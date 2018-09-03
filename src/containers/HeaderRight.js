@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import HeaderRightP from '../components/PostsScreen/HeaderRight';
+import HeaderRightP from '../components/Header/HeaderRight';
 
 import {fetchProfilePosts} from '../actions/requestProfilePosts';
 import {fetchProfileScore} from '../actions/requestProfileScore';

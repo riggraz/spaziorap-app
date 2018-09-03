@@ -1,11 +1,13 @@
 import {StyleSheet} from 'react-native';
 
+import {BOX_BACKGROUND_COLOR, BOX_BORDER_COLOR, TITLE_COLOR} from '../constants/colors';
+
 const newPostButtonStyles = StyleSheet.create({
   container: {
     width: '90%',
 
-    backgroundColor: '#fefefe',
-    borderColor: '#cbcbcb',
+    backgroundColor: BOX_BACKGROUND_COLOR,
+    borderColor: BOX_BORDER_COLOR,
     borderWidth: 1,
     borderRadius: 70,
     
@@ -18,7 +20,7 @@ const newPostButtonStyles = StyleSheet.create({
   
   title: {
     fontSize: 24,
-    color: '#95190C',
+    color: TITLE_COLOR,
     fontWeight: 'bold',
     textAlign: 'center',
 

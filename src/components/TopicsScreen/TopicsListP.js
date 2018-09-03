@@ -7,6 +7,8 @@ import {
 import TopicsListSectionHeader from './TopicsListSectionHeader';
 import TopicsListItem from './TopicsListItem';
 
+import globalStyles from '../../styles/globalStyles';
+
 const TopicsListP = ({topics, handleTopicChange, navigateToPostsListByTopic}) =>
   <SectionList
     renderItem={
@@ -29,6 +31,7 @@ const TopicsListP = ({topics, handleTopicChange, navigateToPostsListByTopic}) =>
     ]}
     keyExtractor={(item, index) => item + index}
     stickySectionHeadersEnabled
+    style={globalStyles.container}
   />
 
 export default TopicsListP;

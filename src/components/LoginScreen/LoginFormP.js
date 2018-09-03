@@ -7,6 +7,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 
+import globalStyles from '../../styles/globalStyles';
 import formStyles from '../../styles/formStyles';
 
 import {HOME, REGISTRATION} from '../../constants/navigation';
@@ -42,7 +43,7 @@ class LoginFormP extends React.Component {
       <ScrollView
         keyboardShouldPersistTaps='handled'
         contentContainerStyle={formStyles.center}
-        style={formStyles.container}
+        style={globalStyles.container}
       >
         <Text style={formStyles.label}>
           Nome utente
@@ -50,7 +51,6 @@ class LoginFormP extends React.Component {
         <TextInput
             value={this.state.usernameInputText}
             onChangeText={usernameInputText => this.setState({usernameInputText})}
-            autoFocus
             placeholder='Inserisci qui il tuo nome utente'
             autoCapitalize='none'
             autoCorrect={false}

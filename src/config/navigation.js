@@ -57,9 +57,11 @@ import {
 import store from './store';
 import {fetchProfilePosts} from '../actions/requestProfilePosts';
 
+import {MAIN_COLOR, MAIN_COLOR_DARKER} from '../constants/colors';
+
 const defaultNavigationOptions = {
   headerStyle: {
-    backgroundColor: '#F15946',
+    backgroundColor: MAIN_COLOR,
   },
   headerTintColor: '#fff',
   headerTitleStyle: {
@@ -182,7 +184,7 @@ const BottomTabStack = createBottomTabNavigator(
     }),
     initialRouteName: HOME,
     tabBarOptions: {
-      activeTintColor: '#95190C',
+      activeTintColor: MAIN_COLOR_DARKER,
       inactiveTintColor: 'gray',
       labelStyle: {
         fontSize: 14,
@@ -198,6 +200,7 @@ const RootStack = createSwitchNavigator(
   },
   {
     initialRouteName: HOME,
+    resetOnBlur: false,
     backBehavior: 'initialRoute',
   }
 );

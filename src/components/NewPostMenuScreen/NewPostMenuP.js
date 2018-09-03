@@ -12,8 +12,10 @@ import {
   LOGIN,
 } from '../../constants/navigation';
 
+import globalStyles from '../../styles/globalStyles';
+
 const NewPostMenuP = ({isLoggedIn, navigation}) => (
-  <ScrollView>
+  <ScrollView style={globalStyles.container}>
     <NewPostButton
       title='TESTO'
       emoji='📃'

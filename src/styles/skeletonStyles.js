@@ -1,13 +1,15 @@
 import {StyleSheet} from 'react-native';
 
+import {BOX_BACKGROUND_COLOR, BOX_BORDER_COLOR} from '../constants/colors';
+
 const skeletonStyles = StyleSheet.create({
     placeholderContainer: {
       alignSelf: 'stretch',
   
-      backgroundColor: '#fefefe',
+      backgroundColor: BOX_BACKGROUND_COLOR,
   
       borderWidth: 1,
-      borderColor: '#cbcbcb',
+      borderColor: BOX_BORDER_COLOR,
       borderRadius: 16,
   
       margin: 8,

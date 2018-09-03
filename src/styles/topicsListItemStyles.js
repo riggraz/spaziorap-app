@@ -1,12 +1,14 @@
 import {StyleSheet} from 'react-native';
 
+import {BOX_BACKGROUND_COLOR, BOX_BORDER_COLOR, MAIN_COLOR_DARKER} from '../constants/colors';
+
 const topicsListItemStyles = StyleSheet.create({
   topicSectionHeader: {
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center',
     color: 'white',
-    backgroundColor: '#95190C',
+    backgroundColor: MAIN_COLOR_DARKER,
 
     padding: 8,
   },
@@ -15,10 +17,10 @@ const topicsListItemStyles = StyleSheet.create({
     flex: 1,
     alignSelf: 'stretch',
 
-    backgroundColor: '#fefefe',
+    backgroundColor: BOX_BACKGROUND_COLOR,
 
     borderBottomWidth: 1,
-    borderColor: '#cbcbcb',
+    borderColor: BOX_BORDER_COLOR,
 
     paddingTop: 16,
     paddingLeft: 16,

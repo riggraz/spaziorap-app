@@ -3,12 +3,9 @@ import {
   Dimensions,
 } from 'react-native';
 
-const formStyles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#eeeeee',
-  },
+import {BUTTON_COLOR} from '../constants/colors';
 
+const formStyles = StyleSheet.create({
   center: {
     justifyContent: 'flex-start',
     alignItems: 'center',
@@ -50,7 +47,7 @@ const formStyles = StyleSheet.create({
     marginRight: 16,
     marginBottom: 16,
 
-    backgroundColor: '#95190C',
+    backgroundColor: BUTTON_COLOR,
 
     borderRadius: 16,
   },

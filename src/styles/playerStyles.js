@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 import {PLAYER_WIDTH, PLAYER_HEIGHT} from '../constants/player';
+import {MAIN_COLOR} from '../constants/colors';
 
 const playerStyles = StyleSheet.create({
   player: {
@@ -15,7 +16,7 @@ const playerStyles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
 
-    backgroundColor: '#F15946',
+    backgroundColor: MAIN_COLOR,
 
     // borderWidth: 2,
     // borderColor: 'black',

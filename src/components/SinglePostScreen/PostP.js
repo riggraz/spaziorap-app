@@ -31,7 +31,7 @@ const PostP = ({
 
   branch,
 }) =>
-  <ScrollView>
+  <ScrollView style={globalStyles.container}>
     <View style={globalStyles.box}>
       <PostInfoBox
         user={post.userUsername}

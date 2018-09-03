@@ -1,10 +1,12 @@
 import {StyleSheet} from 'react-native';
 
+import {BOX_BACKGROUND_COLOR, BOX_BORDER_COLOR, TITLE_COLOR} from '../constants/colors';
+
 const postStyles = StyleSheet.create({
   postContentBox: {
-    backgroundColor: '#fefefe',
+    backgroundColor: BOX_BACKGROUND_COLOR,
     borderWidth: 1,
-    borderColor: '#cbcbcb',
+    borderColor: BOX_BORDER_COLOR,
 
     marginTop: 16,
     marginBottom: 16,
@@ -15,7 +17,7 @@ const postStyles = StyleSheet.create({
     lineHeight: 24,
     textAlign: 'center',
 
-    color: '#95190C',
+    color: TITLE_COLOR,
 
     marginTop: 8,
     marginLeft: 24,

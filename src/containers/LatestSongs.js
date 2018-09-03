@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import LatestSongsP from '../components/HomeScreen/LatestSongsP';
+import LatestSongsP from '../components/HomeScreen/LatestSongs';
 
 import {setVideoId, openPlayer} from '../actions/player';
 

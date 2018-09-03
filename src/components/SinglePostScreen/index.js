@@ -1,6 +1,5 @@
 import React from 'react';
 
-import HeaderRight from '../PostsScreen/HeaderRight';
 import Post from '../../containers/Post';
 
 import {POSTS_BY_TOPIC, PROFILE_PAGE} from '../../constants/navigation';

@@ -1,8 +1,7 @@
 import React from 'react';
 
-import PostsList from '../../containers/PostsList';
-import HeaderLeft from '../../containers/HeaderLeft';
 import HeaderRight from '../../containers/HeaderRight';
+import PostsList from '../../containers/PostsList';
 
 import getBranch from '../../helpers/getBranch';
 

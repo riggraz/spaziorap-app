@@ -5,6 +5,8 @@ import {
   StyleSheet
 } from 'react-native';
 
+import {MAIN_COLOR} from '../constants/colors';
+
 import {NEW_POST_MENU} from '../constants/navigation';
 
 const NewButton = ({navigation}) =>
@@ -18,7 +20,7 @@ const styles = StyleSheet.create({
   button: {
     width: 64,
 
-    backgroundColor: '#F15946',
+    backgroundColor: MAIN_COLOR,
     borderRadius: 25,
   },
   text: {

@@ -1,5 +1,7 @@
 import {StyleSheet} from 'react-native';
 
+import {BOX_BACKGROUND_COLOR, BOX_BORDER_COLOR} from '../constants/colors';
+
 const profileStyles = StyleSheet.create({
   userInfoBox: {
     width: '100%',
@@ -10,9 +12,9 @@ const profileStyles = StyleSheet.create({
     alignItems: 'center',
 
     borderBottomWidth: 1,
-    borderColor: '#cbcbcb',
+    borderColor: BOX_BORDER_COLOR,
 
-    backgroundColor: '#fefefe',
+    backgroundColor: BOX_BACKGROUND_COLOR,
   },
 
   username: {
