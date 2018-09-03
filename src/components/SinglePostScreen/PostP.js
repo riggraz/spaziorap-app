@@ -2,6 +2,7 @@ import React from 'react';
 import {
   ScrollView,
   View,
+  Text,
 } from 'react-native';
 
 import PostInfoBox from '../PostInfoBox';
@@ -30,41 +31,48 @@ const PostP = ({
   navigateToPostsByTopic,
 
   branch,
-}) =>
-  <ScrollView style={globalStyles.container}>
-    <View style={globalStyles.box}>
-      <PostInfoBox
-        user={post.userUsername}
-        topic={_getTopicName(post.topicId, topics)}
-        createdAt={friendlyDate(post.createdAt)}
+}) => (
+  (post !== undefined) ? (
+    <ScrollView style={globalStyles.container}>
+      <View style={globalStyles.box}>
+        <PostInfoBox
+          user={post.userUsername}
+          topic={_getTopicName(post.topicId, topics)}
+          createdAt={friendlyDate(post.createdAt)}
 
-        handleProfileChange={
-          () => {
-            handleProfileChange(post.userId);
-            navigateToProfile(post.userUsername);
+          handleProfileChange={
+            () => {
+              handleProfileChange(post.userId);
+              navigateToProfile(post.userUsername);
+            }
           }
-        }
-        handleTopicChange={
-          () => {
-            const topicName = _getTopicName(post.topicId, topics);
-            handleTopicChange(post.topicId, topicName);
-            navigateToPostsByTopic(topicName);
+          handleTopicChange={
+            () => {
+              const topicName = _getTopicName(post.topicId, topics);
+              handleTopicChange(post.topicId, topicName);
+              navigateToPostsByTopic(topicName);
+            }
           }
-        }
-      />
-    </View>
+        />
+      </View>
 
-    <View style={globalStyles.box}>
-      <PostContent
-        title={post.title}
-        body={post.body}
-        url={post.url}
-      />
-    </View>
+      <View style={globalStyles.box}>
+        <PostContent
+          title={post.title}
+          body={post.body}
+          url={post.url}
+        />
+      </View>
 
+      <View style={globalStyles.box}>
+        <LikeBox postId={post.id} branch={branch} />
+      </View>
+    </ScrollView>
+  ) : (
     <View style={globalStyles.box}>
-      <LikeBox postId={post.id} branch={branch} />
+      <Text>Si è verificato un errore nel recupero del post.</Text>
     </View>
-  </ScrollView>
+  )
+);
 
 export default PostP;
