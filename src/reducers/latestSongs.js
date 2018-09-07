@@ -28,6 +28,7 @@ const latestSongs = (
           id: song.id,
           name: song.attributes.name,
           artist: song.attributes.artist_name,
+          foreign: song.attributes.foreign,
           url: song.attributes.url,
         })),
       };

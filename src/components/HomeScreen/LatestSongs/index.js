@@ -13,9 +13,12 @@ import SkeletonLoadingSong from '../../SkeletonLoading/SkeletonLoadingSong';
 import globalStyles from '../../../styles/globalStyles';
 import homeStyles from '../../../styles/homeStyles';
 
-const LatestSongsP = ({songs, areFetching, handlePlaySong}) => (
+const LatestSongsP = ({songs, foreign, areFetching, handlePlaySong}) => (
     <View style={globalStyles.hiddenBox}>
-      <Text style={homeStyles.title}>Ultime uscite</Text>
+      <Text style={homeStyles.title}>
+        {foreign ? '🇺🇸 ' : '🇮🇹 '}
+        Ultime uscite in {foreign ? 'America' : 'Italia'}
+      </Text>
       {
         !areFetching ?
           <FlatList

@@ -23,7 +23,9 @@ class HomeScreen extends React.Component {
       <ScrollView style={globalStyles.container}>
         <Menu navigation={navigation} />
 
-        <LatestSongs />
+        <LatestSongs foreign={false} />
+
+        <LatestSongs foreign />
 
         <PostsListHorizontal branch='latest' navigation={navigation} />
       </ScrollView>

@@ -4,9 +4,9 @@ import LatestSongsP from '../components/HomeScreen/LatestSongs';
 
 import {setVideoId, openPlayer} from '../actions/player';
 
-const mapStateToProps = state =>
+const mapStateToProps = (state, ownProps) =>
   ({
-    songs: state.home.latestSongs.items,
+    songs: !state.home.latestSongs.areFetching ? state.home.latestSongs.items.filter(song => song.foreign === ownProps.foreign) : [],
     areFetching: state.home.latestSongs.areFetching,
   });
 

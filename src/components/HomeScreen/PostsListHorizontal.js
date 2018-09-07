@@ -7,16 +7,14 @@ import {
 
 import PostsList from '../../containers/PostsList';
 
-import {POSTS, POSTS_BY_TOPIC, SINGLE_POST, PROFILE_PAGE} from '../../constants/navigation';
+import {POSTS_BY_TOPIC, SINGLE_POST, PROFILE_PAGE} from '../../constants/navigation';
 
 import globalStyles from '../../styles/globalStyles';
 import homeStyles from '../../styles/homeStyles';
 
 const PostsListHorizontal = ({branch, navigation}) => (
   <View style={globalStyles.hiddenBox}>
-    <TouchableOpacity onPress={() => navigation.navigate(POSTS)}>
-      <Text style={homeStyles.title}>Ultimi messaggi</Text>
-    </TouchableOpacity>
+    <Text style={homeStyles.title}>📃 Ultimi messaggi</Text>
     <PostsList branch={branch}
       navigateToProfile={
         profileName => navigation.navigate(PROFILE_PAGE, {profileName})
