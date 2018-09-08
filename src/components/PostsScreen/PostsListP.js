@@ -51,7 +51,6 @@ class PostsListP extends React.Component {
           renderItem={
             ({item}) =>
               <PostsListItem id={item.id}
-                title={item.title}
                 body={item.body}
                 url={item.url}
                 user={item.userUsername}
@@ -59,7 +58,7 @@ class PostsListP extends React.Component {
                 createdAt={friendlyDate(item.createdAt)}
 
                 handlePress={
-                  () => navigateToSinglePostScreen(item.id, item.title)
+                  () => navigateToSinglePostScreen(item.id, item.body)
                 }
                 handleProfileChange={
                   () => {

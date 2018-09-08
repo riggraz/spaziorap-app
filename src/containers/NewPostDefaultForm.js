@@ -17,8 +17,8 @@ const mapStateToProps = state =>
 
 const mapDispatchToProps = dispatch =>
   ({
-    handleSubmit(title, topicId, body, url, accessToken, navigation) {
-      dispatch(submitPost(title, topicId, body, url, accessToken, navigation));
+    handleSubmit(topicId, body, url, accessToken, navigation) {
+      dispatch(submitPost(topicId, body, url, accessToken, navigation));
     }
   });
 

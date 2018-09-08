@@ -4,15 +4,17 @@ const likeBoxStyles = StyleSheet.create({
   box: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'flex-start',
   },
 
   buttonText: {
-    fontSize: 24,
+    fontSize: 20,
+    marginRight: 4,
   },
 
   scoreText: {
-    fontSize: 24,
+    fontSize: 22,
+    marginHorizontal: 16,
   },
 });
 

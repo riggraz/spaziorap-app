@@ -16,7 +16,6 @@ class NewPostDefaultFormP extends React.Component {
     super();
 
     this.state = {
-      titleInputText: undefined,
       selectedTopic: undefined,
 
       bodyInputText: undefined,
@@ -26,7 +25,6 @@ class NewPostDefaultFormP extends React.Component {
 
   _handleSubmit = () => {
     const {
-      titleInputText,
       selectedTopic,
 
       bodyInputText,
@@ -36,7 +34,6 @@ class NewPostDefaultFormP extends React.Component {
     const {handleSubmit} = this.props;
 
     handleSubmit(
-      titleInputText,
       selectedTopic,
 
       bodyInputText,
@@ -85,17 +82,6 @@ class NewPostDefaultFormP extends React.Component {
           :
             null
         }
-        
-        <Text style={formStyles.label}>
-          Titolo
-        </Text>
-        <TextInput
-            value={this.state.titleInputText}
-            onChangeText={titleInputText => this.setState({titleInputText})}
-            placeholder='Inserisci qui il titolo del post'
-            underlineColorAndroid='white'
-            style={formStyles.input}
-        />
 
         <Text style={formStyles.label}>
           Argomento

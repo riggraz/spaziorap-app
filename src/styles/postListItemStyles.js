@@ -3,18 +3,38 @@ import {StyleSheet} from 'react-native';
 import {TITLE_COLOR} from '../constants/colors';
 
 const postListItemStyles = StyleSheet.create({
-  postTitle: {
-    fontSize: 22,
-    color: TITLE_COLOR,
+  postContent: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
 
-    marginBottom: 8,
+    marginVertical: 8,
   },
   
-  postExcerpt: {
-    fontSize: 16,
+  postBody: {
     color: 'black',
+    fontFamily: 'Roboto',
 
-    marginBottom: 8,
+    marginRight: 4,
+  },
+
+  postBodyLarge: {
+    fontSize: 28,
+    // fontFamily: 'sans-serif-condensed',
+  },
+
+  postBodyMedium: {
+    fontSize: 24,
+    // fontFamily: 'sans-serif-light',
+  },
+
+  postBodySmall: {
+    fontSize: 18,
+  },
+
+  postVideoThumbnail: {
+    flex: 2,
   },
 });
 

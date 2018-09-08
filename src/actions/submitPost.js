@@ -23,7 +23,6 @@ const postSubmissionFailure = () =>
   });
 
 export const submitPost = (
-  title,
   topicId,
 
   body,
@@ -43,7 +42,6 @@ export const submitPost = (
     };
     const requestBody = {
       post: {
-        title,
         topic_id: topicId,
 
         body,

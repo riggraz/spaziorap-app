@@ -8,8 +8,8 @@ import LikeButton from './LikeButton';
 
 import likeBoxStyles from '../../styles/likeBoxStyles';
 
-const LikeBoxP = ({postId, score, handleLike, accessToken, margin}) => (
-  <View style={[likeBoxStyles.box, margin ? {marginTop: 16} : {}]}>
+const LikeBoxP = ({postId, score, handleLike, accessToken}) => (
+  <View style={likeBoxStyles.box}>
     <LikeButton
       emoji='👍🏻'
       handleLike={() => handleLike(postId, 1, accessToken)}

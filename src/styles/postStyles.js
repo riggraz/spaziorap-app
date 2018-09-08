@@ -11,19 +11,6 @@ const postStyles = StyleSheet.create({
     marginTop: 16,
     marginBottom: 16,
   },
-  
-  title: {
-    fontSize: 24,
-    lineHeight: 24,
-    textAlign: 'center',
-
-    color: TITLE_COLOR,
-
-    marginTop: 8,
-    marginLeft: 24,
-    marginRight: 24,
-    marginBottom: 8,
-  },
 
   body: {
     fontSize: 16,

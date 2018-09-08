@@ -39,6 +39,8 @@ const formStyles = StyleSheet.create({
 
   multilineInput: {
     width: Dimensions.get('window').width - 32,
+    height: 160,
+
     textAlignVertical: 'top',
   },
 

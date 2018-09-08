@@ -1,22 +1,21 @@
 import React from 'react';
 import {
   View,
-  Text,
 } from 'react-native';
 
-import PostContentBody from './PostContentBody';
-import PostContentVideo from './PostContentVideo';
+import PostBody from '../PostsScreen/PostBody';
+import VideoThumbnail from '../../containers/VideoThumbnail';
 
 import postStyles from '../../styles/postStyles';
 
-const PostContent = ({title, body, url}) =>
+const PostContent = ({body, url}) =>
   <View>
-    <Text style={postStyles.title}>{title}</Text>
+    <PostBody body={body} />
     {
-      body ?
-        <PostContentBody body={body} />
+      url ?
+        <VideoThumbnail url={url} height={160} />
       :
-        <PostContentVideo url={url} />
+        null
     }
   </View>
 

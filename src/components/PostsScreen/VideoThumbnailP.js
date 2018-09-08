@@ -8,11 +8,11 @@ import postListItemStyles from '../../styles/postListItemStyles';
 
 import getVideoId from '../../helpers/getVideoId';
 
-const VideoThumbnailP = ({url, handlePlayVideo}) => (
-  <TouchableOpacity onPress={() => handlePlayVideo(getVideoId(url))}>
+const VideoThumbnailP = ({url, height, handlePlayVideo}) => (
+  <TouchableOpacity onPress={() => handlePlayVideo(getVideoId(url))} style={postListItemStyles.postVideoThumbnail}>
     <Image
       source={{uri: `https://img.youtube.com/vi/${getVideoId(url)}/0.jpg`}}
-      style={{height: 140, marginBottom: 8}}
+      style={{height: height}}
     />
   </TouchableOpacity>
 );

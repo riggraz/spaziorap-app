@@ -23,7 +23,8 @@ const globalStyles = StyleSheet.create({
     borderColor: BOX_BORDER_COLOR,
     borderRadius: 16,
 
-    padding: 16,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
     margin: 8,
   },
 

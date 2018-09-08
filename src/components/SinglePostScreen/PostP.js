@@ -7,7 +7,7 @@ import {
 
 import PostInfoBox from '../PostInfoBox';
 import PostContent from './PostContent';
-import LikeBox from '../../containers/LikeBox';
+import LikeAndCommentBox from '../LikeAndCommentBox';
 
 import friendlyDate from '../../helpers/friendlyDate';
 
@@ -58,14 +58,13 @@ const PostP = ({
 
       <View style={globalStyles.box}>
         <PostContent
-          title={post.title}
           body={post.body}
           url={post.url}
         />
       </View>
 
       <View style={globalStyles.box}>
-        <LikeBox postId={post.id} branch={branch} />
+        <LikeAndCommentBox postId={post.id} branch={branch} />
       </View>
     </ScrollView>
   ) : (

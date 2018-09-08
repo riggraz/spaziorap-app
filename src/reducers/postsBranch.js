@@ -43,7 +43,6 @@ const postsBranch = (
         error: false,
         items: action.posts.map(post => ({
           id: post.id,
-          title: post.attributes.title,
           body: post.attributes.body,
           url: post.attributes.url,
           userId: post.attributes.user_id,
