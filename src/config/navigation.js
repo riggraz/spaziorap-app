@@ -17,10 +17,8 @@ import SinglePostScreen from '../components/SinglePostScreen';
 import TopicsScreen from '../components/TopicsScreen';
 
 //NewPost stack
-import NewButton from '../components/NewButton'; //bottomTab button
-import NewPostMenuScreen from '../components/NewPostMenuScreen';
-import NewTextPostScreen from '../components/NewPostScreens/NewTextPostScreen';
-import NewYTPostScreen from '../components/NewPostScreens/NewYTPostScreen';
+import NewButton from '../containers/NewButton'; //bottomTab button
+import NewPostScreen from '../components/NewPostScreen/';
 
 //Profile stack
 import ProfileScreen from '../components/ProfileScreen';
@@ -41,9 +39,7 @@ import {
   POSTS_BY_TOPIC,
   SINGLE_POST,
 
-  NEW_POST_MENU,
-    NEW_TEXT_POST,
-    NEW_YT_POST,
+  NEW_POST,
 
   PROFILE,
   PROFILE_PAGE,
@@ -109,12 +105,10 @@ const TopicsStack = createStackNavigator(
 
 const NewPostStack = createStackNavigator(
   {
-    [NEW_POST_MENU]: NewPostMenuScreen,
-    [NEW_TEXT_POST]: NewTextPostScreen,
-    [NEW_YT_POST]: NewYTPostScreen,
+    [NEW_POST]: NewPostScreen,
   },
   {
-    initialRouteName: NEW_POST_MENU,
+    initialRouteName: NEW_POST,
     navigationOptions: defaultNavigationOptions,
   },
 );
@@ -145,7 +139,7 @@ const BottomTabStack = createBottomTabNavigator(
   {
     [HOME]: HomeStack,
     [POSTS]: PostsStack,
-    [NEW_POST_MENU]: {
+    [NEW_POST]: {
       screen: NewPostStack,
       navigationOptions: ({navigation}) => ({
         tabBarButtonComponent: () => <NewButton navigation={navigation} />,

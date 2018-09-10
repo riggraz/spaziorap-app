@@ -2,19 +2,23 @@ import React from 'react';
 import {
   TouchableOpacity,
   Text,
-  StyleSheet
+  StyleSheet,
 } from 'react-native';
 
 import {MAIN_COLOR} from '../constants/colors';
 
-import {NEW_POST_MENU} from '../constants/navigation';
+import {NEW_POST, LOGIN} from '../constants/navigation';
 
-const NewButton = ({navigation}) =>
-  <TouchableOpacity onPress={() => navigation.navigate(NEW_POST_MENU)} style={styles.button}>
+const NewButtonP = ({isUserLoggedIn, navigation}) => (
+  <TouchableOpacity
+    onPress={() => isUserLoggedIn ? navigation.navigate(NEW_POST) : navigation.navigate(NEW_POST)} //DA CAMBIARE
+    style={styles.button}
+  >
     <Text style={styles.text}>+</Text>
   </TouchableOpacity>
+);
 
-export default NewButton;
+export default NewButtonP;
 
 const styles = StyleSheet.create({
   button: {
@@ -23,6 +27,7 @@ const styles = StyleSheet.create({
     backgroundColor: MAIN_COLOR,
     borderRadius: 25,
   },
+  
   text: {
     color: 'white',
     textAlign: 'center',

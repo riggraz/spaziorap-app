@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   Picker,
   View,
@@ -7,7 +6,7 @@ import {
 
 import formStyles from '../../styles/formStyles';
 
-const TopicPicker = ({topics, selectedTopic, handleTopicChange}) =>
+const TopicPicker = ({topics, selectedTopic, handleTopicChange}) => (
   <View style={formStyles.pickerWrapper}>
     <Picker
       selectedValue={selectedTopic}
@@ -15,7 +14,7 @@ const TopicPicker = ({topics, selectedTopic, handleTopicChange}) =>
       mode='dropdown'
       style={formStyles.picker}
     >
-      <Picker.Item label='Seleziona un argomento' value={undefined} />
+      <Picker.Item label='nessuna categoria' value={1} />
       {
         topics.map(topic =>
           <Picker.Item label={topic.name} value={topic.id} key={topic.id} />
@@ -23,5 +22,6 @@ const TopicPicker = ({topics, selectedTopic, handleTopicChange}) =>
       }
     </Picker>
   </View>
+);
 
 export default TopicPicker;

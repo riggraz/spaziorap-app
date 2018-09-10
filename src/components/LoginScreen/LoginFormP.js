@@ -51,7 +51,7 @@ class LoginFormP extends React.Component {
         <TextInput
             value={this.state.usernameInputText}
             onChangeText={usernameInputText => this.setState({usernameInputText})}
-            placeholder='Inserisci qui il tuo nome utente'
+            // placeholder='Inserisci qui il tuo nome utente'
             autoCapitalize='none'
             autoCorrect={false}
             underlineColorAndroid='white'
@@ -65,7 +65,7 @@ class LoginFormP extends React.Component {
             value={this.state.passwordInputText}
             onChangeText={passwordInputText => this.setState({passwordInputText})}
             onSubmitEditing={() => this._handleLogin()}
-            placeholder='Inserisci qui la tua password'
+            // placeholder='Inserisci qui la tua password'
             secureTextEntry
             underlineColorAndroid='white'
             style={formStyles.input}

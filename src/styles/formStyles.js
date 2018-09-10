@@ -22,13 +22,13 @@ const formStyles = StyleSheet.create({
   },
 
   input: {
-    width: '90%',
+    width: '100%',
 
     backgroundColor: 'white',
-    borderRadius: 16,
+    // borderRadius: 16,
 
-    marginLeft: 16,
-    marginRight: 16,
+    // marginLeft: 16,
+    // marginRight: 16,
     marginBottom: 8,
     padding: 8,
 
@@ -38,8 +38,8 @@ const formStyles = StyleSheet.create({
   },
 
   multilineInput: {
-    width: Dimensions.get('window').width - 32,
-    height: 160,
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height / 4,
 
     textAlignVertical: 'top',
   },
@@ -85,18 +85,18 @@ const formStyles = StyleSheet.create({
   },
 
   pickerWrapper: {
-    width: '90%',
-
+    width: '100%',
     backgroundColor: 'white',
-    borderRadius: 16,
 
-    marginLeft: 16,
-    marginRight: 16,
-    marginBottom: 8,
+    marginVertical: 8,
+    marginHorizontal: 0,
+
+    padding: 0,
   },
 
   picker: {
-    width: '90%',
+    width: '100%',
+
     padding: 8,
     
     alignSelf: 'center',

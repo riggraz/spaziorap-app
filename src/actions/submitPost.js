@@ -3,6 +3,12 @@ import {LATEST_POSTS} from '../constants/navigation';
 
 import {fetchLatestPosts} from './requestLatestPosts';
 
+export const RESET_POST_SUBMISSION = 'RESET_POST_SUBMISSION';
+export const resetPostSubmission = () =>
+  ({
+    type: RESET_POST_SUBMISSION,
+  });
+
 export const START_POST_SUBMISSION = 'START_POST_SUBMISSION';
 const startPostSubmission = () =>
   ({
@@ -29,8 +35,6 @@ export const submitPost = (
   url,
 
   accessToken,
-
-  navigation,
 ) =>
   dispatch => {
     dispatch(startPostSubmission());
@@ -65,8 +69,8 @@ export const submitPost = (
               dispatch(postSubmissionFailure());
             } else {
               dispatch(postSubmissionSuccessful(json));
+              dispatch(resetPostSubmission());
               dispatch(fetchLatestPosts());
-              navigation.navigate(LATEST_POSTS);
             }
           },
           () => dispatch(postSubmissionFailure())

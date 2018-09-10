@@ -13,16 +13,25 @@ import {
 import {LOGOUT} from '../actions/logout';
 
 import {
+  RESET_POST_SUBMISSION,
   START_POST_SUBMISSION,
   POST_SUBMISSION_SUCCESSFUL,
   POST_SUBMISSION_FAILURE,
 } from '../actions/submitPost';
+
+import {SELECT_POST_TYPE} from '../actions/selectPostType';
 
 import {
   START_PROFILE_SCORE_REQUEST,
   PROFILE_SCORE_REQUEST_SUCCESSFUL,
   PROFILE_SCORE_REQUEST_FAILURE,
 } from '../actions/requestProfileScore';
+
+import {
+  CHANGE_SELECTED_TOPIC,
+  CHANGE_BODY,
+  CHANGE_URL,
+} from '../actions/changeNewPostForm';
 
 import newPost from './newPost';
 
@@ -38,7 +47,7 @@ const user = (
     admin: false,
     accessToken: '',
 
-    newPost: {},
+    newPost: newPost(undefined, {}),
   },
   action
 ) => {
@@ -54,6 +63,7 @@ const user = (
     case LOGIN_SUCCESSFUL:
     case REGISTRATION_SUCCESSFUL:
       return {
+        ...state,
         isLoggingIn: false,
         isLoggedIn: true,
         error: false,
@@ -63,8 +73,6 @@ const user = (
         score: state.score,
         admin: action.user.attributes.admin,
         accessToken: action.user.attributes.access_token,
-
-        newPost: {},
       };
 
     case LOGIN_FAILURE:
@@ -83,9 +91,16 @@ const user = (
         newPost: {},
       };
 
+    case RESET_POST_SUBMISSION:
     case START_POST_SUBMISSION:
     case POST_SUBMISSION_SUCCESSFUL:
     case POST_SUBMISSION_FAILURE:
+
+    case SELECT_POST_TYPE:
+
+    case CHANGE_SELECTED_TOPIC:
+    case CHANGE_BODY:
+    case CHANGE_URL:
       return {
         ...state,
         newPost: newPost(state.newPost, action),

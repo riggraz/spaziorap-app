@@ -81,7 +81,7 @@ class RegistrationFormP extends React.Component {
         <TextInput
             value={this.state.usernameInputText}
             onChangeText={usernameInputText => this.setState({usernameInputText})}
-            placeholder='Inserisci qui il tuo nome utente'
+            // placeholder='Inserisci qui il tuo nome utente'
             autoCapitalize='none'
             autoCorrect={false}
             underlineColorAndroid='white'
@@ -94,7 +94,7 @@ class RegistrationFormP extends React.Component {
         <TextInput
             value={this.state.passwordInputText}
             onChangeText={passwordInputText => this.setState({passwordInputText})}
-            placeholder='Inserisci qui la tua password'
+            // placeholder='Inserisci qui la tua password'
             secureTextEntry
             underlineColorAndroid='white'
             style={formStyles.input}
@@ -107,7 +107,7 @@ class RegistrationFormP extends React.Component {
             value={this.state.passwordConfirmationInputText}
             onChangeText={passwordConfirmationInputText => this.setState({passwordConfirmationInputText})}
             onSubmitEditing={() => this._handleRegistration()}
-            placeholder='Conferma qui la tua password'
+            // placeholder='Conferma qui la tua password'
             secureTextEntry
             underlineColorAndroid='white'
             style={formStyles.input}
