@@ -11,7 +11,7 @@ import {NEW_POST, LOGIN} from '../constants/navigation';
 
 const NewButtonP = ({isUserLoggedIn, navigation}) => (
   <TouchableOpacity
-    onPress={() => isUserLoggedIn ? navigation.navigate(NEW_POST) : navigation.navigate(NEW_POST)} //DA CAMBIARE
+    onPress={() => isUserLoggedIn ? navigation.navigate(NEW_POST) : navigation.navigate(LOGIN)}
     style={styles.button}
   >
     <Text style={styles.text}>+</Text>

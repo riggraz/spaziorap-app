@@ -8,6 +8,7 @@ const mapStateToProps = (state, ownProps) =>
   ({
     score: state.posts[ownProps.branch].items.find(post => post.id === ownProps.postId).score,
     accessToken: state.user.accessToken,
+    isLoggedIn: state.user.isLoggedIn,
   });
 
 const mapDispatchToProps = dispatch =>

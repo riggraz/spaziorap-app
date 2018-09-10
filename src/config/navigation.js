@@ -68,6 +68,7 @@ const defaultNavigationOptions = {
 const HomeStack = createStackNavigator(
   {
     [HOME]: HomeScreen,
+    [POSTS_BY_TOPIC]: PostsScreen,
     [SINGLE_POST]: SinglePostScreen,
     [PROFILE_PAGE]: ProfileScreen,
   },
@@ -81,6 +82,7 @@ const PostsStack = createStackNavigator(
   {
     [LATEST_POSTS]: PostsScreen,
     [TRENDING_POSTS]: PostsScreen,
+    [POSTS_BY_TOPIC]: PostsScreen,
     [SINGLE_POST]: SinglePostScreen,
     [PROFILE_PAGE]: ProfileScreen,
   },

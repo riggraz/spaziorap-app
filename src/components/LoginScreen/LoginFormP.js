@@ -93,12 +93,6 @@ class LoginFormP extends React.Component {
             Non hai un account? Crealo subito.
           </Text>
         </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => this.props.navigation.navigate(HOME)}>
-          <Text style={formStyles.touchableText}>
-            Non voglio accedere.
-          </Text>
-        </TouchableOpacity>
       </ScrollView>
     );
   }
