@@ -9,17 +9,18 @@ import VideoThumbnail from '../../containers/VideoThumbnail';
 
 import postListItemStyles from '../../styles/postListItemStyles';
 
-const PostContent = ({body, url, handlePress}) => (
-  <View style={postListItemStyles.postContent}>
-    <TouchableOpacity onPress={handlePress} style={{flex: 3,}}>
-      <PostBody body={body} makeExcerpt />
+import {MEDIUM} from '../../constants/sizes';
+
+const PostContent = ({body, url, handlePress, horizontal}) => (
+  <View style={[
+    postListItemStyles.postContent,
+    horizontal ? {flexDirection: 'column'} : {flexDirection: 'row'},
+  ]}>
+    <TouchableOpacity onPress={handlePress} style={horizontal ? {width: '100%'} : {flex: 1}}>
+      <PostBody body={body} makeExcerpt horizontal={horizontal} hasUrl={url} />
     </TouchableOpacity>
-    {
-      url ?
-        <VideoThumbnail url={url} height={80} />
-      :
-        null
-    }
+
+    { url ? <VideoThumbnail url={url} size={MEDIUM} /> : null }
   </View>
 );
 

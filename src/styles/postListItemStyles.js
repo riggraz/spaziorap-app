@@ -8,6 +8,7 @@ const postListItemStyles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    alignSelf: 'center',
 
     marginVertical: 8,
   },
@@ -20,21 +21,15 @@ const postListItemStyles = StyleSheet.create({
   },
 
   postBodyLarge: {
-    fontSize: 28,
-    // fontFamily: 'sans-serif-condensed',
+    fontSize: 26,
   },
 
   postBodyMedium: {
-    fontSize: 24,
-    // fontFamily: 'sans-serif-light',
+    fontSize: 22,
   },
 
   postBodySmall: {
     fontSize: 18,
-  },
-
-  postVideoThumbnail: {
-    flex: 2,
   },
 });
 

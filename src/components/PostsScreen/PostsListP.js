@@ -92,7 +92,6 @@ class PostsListP extends React.Component {
               />
           }
           horizontal={horizontal}
-          removeClippedSubviews
           style={globalStyles.container}
         />
       )

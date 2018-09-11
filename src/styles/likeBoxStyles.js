@@ -13,7 +13,7 @@ const likeBoxStyles = StyleSheet.create({
   },
 
   scoreText: {
-    fontSize: 22,
+    fontSize: 24,
     marginHorizontal: 16,
   },
 });

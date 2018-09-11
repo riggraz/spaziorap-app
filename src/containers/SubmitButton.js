@@ -10,6 +10,8 @@ const mapStateToProps = state =>
     body: state.user.newPost.form.body,
     url: state.user.newPost.form.url,
 
+    isSubmitting: state.user.newPost.isSubmitting,
+
     accessToken: state.user.accessToken,
    
     selectedPostType: state.user.newPost.postType,

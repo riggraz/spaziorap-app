@@ -2,6 +2,7 @@ import React from 'react';
 import {
   TouchableOpacity,
   Text,
+  ActivityIndicator,
   StyleSheet,
 } from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
@@ -36,6 +37,8 @@ class SubmitButtonP extends React.Component {
       body,
       url,
 
+      isSubmitting,
+
       accessToken,
 
       handleSubmit,
@@ -43,7 +46,7 @@ class SubmitButtonP extends React.Component {
 
     const submittable = this._submittable();
 
-    return (
+    return !isSubmitting ? (
       <TouchableOpacity
         onPress={() => handleSubmit(selectedTopic, body, url, accessToken)}
         disabled={!submittable}
@@ -58,6 +61,8 @@ class SubmitButtonP extends React.Component {
           ]}
         />
       </TouchableOpacity>
+    ) : (
+      <ActivityIndicator size='large' color='white' style={styles.submitButton} />
     );
   }
 }

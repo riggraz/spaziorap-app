@@ -6,16 +6,16 @@ const friendlyDate = date => {
   
   if (secondsPast < 60) {
     secondsPast = parseInt(secondsPast);
-    return secondsPast + (secondsPast === 1 ? ' secondo fa' : ' secondi fa');
+    return secondsPast + (secondsPast === 1 ? 's' : 's');
   } else if (secondsPast < 3600) {
     let minutesPast = parseInt(secondsPast / 60);
-    return minutesPast + (minutesPast === 1 ? ' minuto fa' : ' minuti fa');
+    return minutesPast + (minutesPast === 1 ? 'm' : 'm');
   } else if (secondsPast <= 86400) {
     let hoursPast = parseInt(secondsPast / 3600);
-    return hoursPast + (hoursPast === 1 ? ' ora fa' : ' ore fa');
+    return hoursPast + (hoursPast === 1 ? 'h' : 'h');
   } else {
     let daysPast = parseInt(secondsPast / 86400);
-    return daysPast + (daysPast === 1 ? ' giorno fa' : ' giorni fa');
+    return daysPast + (daysPast === 1 ? 'g' : 'g');
   }
 }
 

@@ -14,7 +14,7 @@ import homeStyles from '../../styles/homeStyles';
 
 const PostsListHorizontal = ({branch, navigation}) => (
   <View style={globalStyles.hiddenBox}>
-    <Text style={homeStyles.title}>📃 Ultimi messaggi</Text>
+    <Text style={homeStyles.title}>Ultimi messaggi</Text>
     <PostsList branch={branch}
       navigateToProfile={
         profileName => navigation.navigate(PROFILE_PAGE, {profileName})

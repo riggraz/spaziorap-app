@@ -5,22 +5,26 @@ import {
 
 import postBodySize from '../../helpers/postBodySize';
 import excerptOf from '../../helpers/excerptOf';
+import excerptLength from '../../helpers/excerptLength';
 
 import postListItemStyles from '../../styles/postListItemStyles';
 
-const PostBody = ({body, makeExcerpt}) => (
+import {LARGE, MEDIUM} from '../../constants/sizes';
+
+const PostBody = ({body, makeExcerpt, horizontal, hasUrl}) => (
   <Text
     style={
       [
         postListItemStyles.postBody,
-        postBodySize(body) === 'large' ? postListItemStyles.postBodyLarge
-          : postBodySize(body) === 'medium' ? postListItemStyles.postBodyMedium
-            : postListItemStyles.postBodySmall
+        horizontal ? postListItemStyles.postBodyMedium :
+          postBodySize(body) === LARGE ? postListItemStyles.postBodyLarge
+            : postBodySize(body) === MEDIUM ? postListItemStyles.postBodyMedium
+              : postListItemStyles.postBodySmall
       ]
     }>
     {
       makeExcerpt ?
-        excerptOf(body, 150)
+        excerptOf(body, excerptLength(horizontal, hasUrl))
       :
         body
     }

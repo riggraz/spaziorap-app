@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, TouchableWithoutFeedback} from 'react-native';
 
 import PostInfoBox from '../PostInfoBox';
 import PostContent from './PostContent';
@@ -24,27 +24,30 @@ const PostsListItem = ({
 
   branch,
 }) => (
-  <View style={horizontal ? globalStyles.horizontalBox : globalStyles.box}>
-    <PostInfoBox
-      user={user}
-      topic={topic}
-      createdAt={createdAt}
+  <TouchableWithoutFeedback onPress={handlePress}>
+    <View style={horizontal ? globalStyles.horizontalBox : globalStyles.box}>
+      <PostInfoBox
+        user={user}
+        topic={topic}
+        createdAt={createdAt}
 
-      handleProfileChange={handleProfileChange}
-      handleTopicChange={handleTopicChange}
-    />
+        handleProfileChange={handleProfileChange}
+        handleTopicChange={handleTopicChange}
+      />
 
-    <PostContent
-      body={body}
-      url={url}
-      handlePress={handlePress}
-    />
+      <PostContent
+        body={body}
+        url={url}
+        handlePress={handlePress}
+        horizontal={horizontal}
+      />
 
-    <LikeAndCommentBox
-      postId={id}
-      branch={branch}
-    />
-  </View>
+      <LikeAndCommentBox
+        postId={id}
+        branch={branch}
+      />
+    </View>
+  </TouchableWithoutFeedback>
 );
 
 export default PostsListItem;

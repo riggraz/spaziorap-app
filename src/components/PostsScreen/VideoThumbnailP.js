@@ -1,19 +1,38 @@
 import React from 'react';
 import {
-  Image,
   TouchableOpacity,
+  Image,
+  Text,
 } from 'react-native';
 
-import postListItemStyles from '../../styles/postListItemStyles';
+import postVideoThumbnailStyles from '../../styles/postVideoThumbnailStyles';
 
 import getVideoId from '../../helpers/getVideoId';
 
-const VideoThumbnailP = ({url, height, handlePlayVideo}) => (
-  <TouchableOpacity onPress={() => handlePlayVideo(getVideoId(url))} style={postListItemStyles.postVideoThumbnail}>
+import {LARGE} from '../../constants/sizes';
+
+const VideoThumbnailP = ({url, handlePlayVideo, size}) => (
+  <TouchableOpacity
+    onPress={() => handlePlayVideo(getVideoId(url))}
+    style={[
+      postVideoThumbnailStyles.postVideoThumbnail,
+      size === LARGE ?
+        postVideoThumbnailStyles.postVideoThumbnailBig
+      :
+        postVideoThumbnailStyles.postVideoThumbnailNormal
+    ]}
+  >
     <Image
       source={{uri: `https://img.youtube.com/vi/${getVideoId(url)}/0.jpg`}}
-      style={{height: height}}
+      style={
+        size === LARGE ?
+          postVideoThumbnailStyles.postVideoThumbnailImageBig
+        :
+          postVideoThumbnailStyles.postVideoThumbnailImage
+      }
     />
+
+    <Text style={postVideoThumbnailStyles.playArrow}>▶</Text>
   </TouchableOpacity>
 );
 

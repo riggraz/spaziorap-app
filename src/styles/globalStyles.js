@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 
 import {
   BOX_BACKGROUND_COLOR,
@@ -29,7 +29,8 @@ const globalStyles = StyleSheet.create({
   },
 
   horizontalBox: {
-    width: 320,
+    flex: 0,
+    width: Dimensions.get('window').width - 64,
 
     backgroundColor: BOX_BACKGROUND_COLOR,
 
