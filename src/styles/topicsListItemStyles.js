@@ -15,6 +15,7 @@ const topicsListItemStyles = StyleSheet.create({
 
   topicBox: {
     flex: 1,
+    flexDirection: 'row',
     alignSelf: 'stretch',
 
     backgroundColor: BOX_BACKGROUND_COLOR,
@@ -32,6 +33,13 @@ const topicsListItemStyles = StyleSheet.create({
     fontSize: 18,
     color: 'black'
   },
+
+  icon: {
+    width: 32,
+    height: 32,
+    
+    marginRight: 16,
+  }
 });
 
 export default topicsListItemStyles;

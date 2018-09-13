@@ -32,6 +32,7 @@ const topics = (
         items: action.topics.map(topic => ({
           id: topic.id,
           name: topic.attributes.name,
+          description: topic.attributes.description,
         })),
       };
 

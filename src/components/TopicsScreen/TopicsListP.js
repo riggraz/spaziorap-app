@@ -22,15 +22,15 @@ const TopicsListP = ({topics, handleTopicChange, navigateToPostsListByTopic}) =>
           key={index}
         />
     }
-    renderSectionHeader={
-      ({section: {title}}) =>
-        <TopicsListSectionHeader title={title} />
-    }
+    // renderSectionHeader={
+    //   ({section: {title}}) =>
+    //     <TopicsListSectionHeader title={title} />
+    // }
     sections={[
       {title: 'Tutti', data: topics},
     ]}
-    keyExtractor={(item, index) => item + index}
     stickySectionHeadersEnabled
+    keyExtractor={(item, index) => item + index}
     style={globalStyles.container}
   />
 

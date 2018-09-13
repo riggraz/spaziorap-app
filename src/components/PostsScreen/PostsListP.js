@@ -11,11 +11,12 @@ import {
 import PostsListItem from './PostsListItem';
 import SkeletonLoadingPost from '../SkeletonLoading/SkeletonLoadingPost';
 import SkeletonLoadingProfileInfo from '../SkeletonLoading/SkeletonLoadingProfileInfo';
+import PostsListTopicHeader from './PostsListTopicHeader';
 import PostsListHorizontalFooter from '../HomeScreen/PostsListHorizontalFooter';
 
 import friendlyDate from '../../helpers/friendlyDate';
 
-import {LATEST_BRANCH, TRENDING_BRANCH, PROFILE_BRANCH} from '../../constants/branches';
+import {LATEST_BRANCH, TRENDING_BRANCH, PROFILE_BRANCH, SELECTEDTOPIC_BRANCH} from '../../constants/branches';
 import globalStyles from '../../styles/globalStyles';
 
 class PostsListP extends React.Component {
@@ -27,12 +28,28 @@ class PostsListP extends React.Component {
       'nessuna'
   );
 
+  _getTopicDescription = (topicId, topics) => (
+    (topicId && topics) ?
+      topics.find(topic => topic.id === topicId).description
+    :
+      'nessuna descrizione disponibile'
+  );
+
   _handleRefresh = () => {
     const {handleRefresh, selectedTopic, selectedProfile, branch} = this.props;
 
     if (branch === LATEST_BRANCH || branch === TRENDING_BRANCH) handleRefresh(branch);
     else if (branch === PROFILE_BRANCH) handleRefresh(branch, selectedProfile);
     else handleRefresh(branch, selectedTopic);
+  }
+
+  _renderTopicHeaderComponent = (topicId) => {
+    return (
+      <PostsListTopicHeader
+        topicName={this._getTopicName(topicId, this.props.topics)}
+        topicDescription={this._getTopicDescription(topicId, this.props.topics)}
+      />
+    );
   }
 
   _renderFooterComponent = () => {
@@ -48,11 +65,18 @@ class PostsListP extends React.Component {
     const {navigateToSinglePostScreen} = this.props;
 
     const {horizontal} = this.props;
+    const {branch} = this.props;
 
     return (!postsAreFetching && !topicsAreFetching) ?
       (
         <FlatList
           data={horizontal ? posts.slice(0, 9) : posts}
+          ListHeaderComponent={
+            branch === SELECTEDTOPIC_BRANCH ?
+              this._renderTopicHeaderComponent(this.props.selectedTopic)
+            :
+              null
+          }
           ListFooterComponent={horizontal ? this._renderFooterComponent : null}
           renderItem={
             ({item}) =>
