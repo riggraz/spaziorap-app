@@ -11,6 +11,7 @@ import {
 import PostsListItem from './PostsListItem';
 import SkeletonLoadingPost from '../SkeletonLoading/SkeletonLoadingPost';
 import SkeletonLoadingProfileInfo from '../SkeletonLoading/SkeletonLoadingProfileInfo';
+import PostsListHorizontalFooter from '../HomeScreen/PostsListHorizontalFooter';
 
 import friendlyDate from '../../helpers/friendlyDate';
 
@@ -34,6 +35,10 @@ class PostsListP extends React.Component {
     else handleRefresh(branch, selectedTopic);
   }
 
+  _renderFooterComponent = () => {
+    return <PostsListHorizontalFooter handleNavigateToPosts={this.props.navigateToPosts} />;
+  }
+
   render() {
     const {posts, postsAreFetching} = this.props;
     const {topics, topicsAreFetching} = this.props;
@@ -47,7 +52,8 @@ class PostsListP extends React.Component {
     return (!postsAreFetching && !topicsAreFetching) ?
       (
         <FlatList
-          data={posts}
+          data={horizontal ? posts.slice(0, 9) : posts}
+          ListFooterComponent={horizontal ? this._renderFooterComponent : null}
           renderItem={
             ({item}) =>
               <PostsListItem id={item.id}

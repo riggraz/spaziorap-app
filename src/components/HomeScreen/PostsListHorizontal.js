@@ -7,7 +7,7 @@ import {
 
 import PostsList from '../../containers/PostsList';
 
-import {POSTS_BY_TOPIC, SINGLE_POST, PROFILE_PAGE} from '../../constants/navigation';
+import {POSTS_BY_TOPIC, SINGLE_POST, PROFILE_PAGE, POSTS} from '../../constants/navigation';
 
 import globalStyles from '../../styles/globalStyles';
 import homeStyles from '../../styles/homeStyles';
@@ -31,6 +31,7 @@ const PostsListHorizontal = ({branch, navigation}) => (
         }
       }
       horizontal
+      navigateToPosts={() => navigation.navigate(POSTS)}
     />
   </View>
 );
