@@ -2,6 +2,8 @@ import {API_URL} from '../constants/API';
 
 import {fetchProfilePosts} from '../actions/requestProfilePosts';
 
+import {saveValueByKey} from '../config/localStorage';
+
 export const START_LOGIN = 'START_LOGIN';
 const startLogin = () =>
   ({
@@ -48,6 +50,7 @@ export const login = (username, password) => dispatch => {
           if (json.error === undefined) {
             dispatch(loginSuccessful(json.data));
             dispatch(fetchProfilePosts(json.data.id));
+            saveValueByKey('accessToken', json.data.attributes.access_token);
 
           } else {
             dispatch(loginFailure());

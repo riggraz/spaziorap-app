@@ -33,6 +33,13 @@ import {
   CHANGE_URL,
 } from '../actions/changeNewPostForm';
 
+import {
+  START_VERIFY_ACCESS_TOKEN,
+  VERIFY_ACCESS_TOKEN_SUCCESSFUL,
+  VERIFY_ACCESS_TOKEN_GENERIC_FAILURE,
+  VERIFY_ACCESS_TOKEN_UNAUTHORIZED_FAILURE,
+} from '../actions/verifyAccessToken';
+
 import newPost from './newPost';
 
 const user = (
@@ -54,6 +61,7 @@ const user = (
   switch (action.type) {
     case START_LOGIN:
     case START_REGISTRATION:
+    case START_VERIFY_ACCESS_TOKEN:
       return {
         ...state,
         isLoggingIn: true,
@@ -62,6 +70,7 @@ const user = (
 
     case LOGIN_SUCCESSFUL:
     case REGISTRATION_SUCCESSFUL:
+    case VERIFY_ACCESS_TOKEN_SUCCESSFUL:
       return {
         ...state,
         isLoggingIn: false,
@@ -70,13 +79,14 @@ const user = (
 
         id: action.user.id,
         username: action.user.attributes.username,
-        score: state.score,
         admin: action.user.attributes.admin,
         accessToken: action.user.attributes.access_token,
       };
 
     case LOGIN_FAILURE:
     case REGISTRATION_FAILURE:
+    case VERIFY_ACCESS_TOKEN_GENERIC_FAILURE:
+    case VERIFY_ACCESS_TOKEN_UNAUTHORIZED_FAILURE:
       return {
         isLoggingIn: false,
         isLoggedIn: false,

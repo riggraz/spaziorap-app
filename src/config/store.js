@@ -6,6 +6,9 @@ import rootReducer from '../reducers';
 import {fetchLatestSongs} from '../actions/requestLatestSongs';
 import {fetchLatestPosts} from '../actions/requestLatestPosts';
 import {fetchTopics} from '../actions/requestTopics';
+import {verifyAccessToken} from '../actions/verifyAccessToken';
+
+import {loadValueByKey} from './localStorage';
 
 const store = createStore(
   rootReducer,
@@ -21,5 +24,11 @@ store.subscribe(
 store.dispatch(fetchLatestSongs());
 store.dispatch(fetchTopics());
 store.dispatch(fetchLatestPosts());
+
+const loadAccessToken = async () => {
+  const accessToken = await loadValueByKey('accessToken');
+  if (accessToken) store.dispatch(verifyAccessToken(accessToken));
+}
+loadAccessToken();
 
 export default store;

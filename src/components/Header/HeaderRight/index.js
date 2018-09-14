@@ -5,11 +5,13 @@ import UserInfo from './UserInfo';
 
 import {LOGIN, PROFILE} from '../../../constants/navigation';
 
-const HeaderRightP = ({userId, username, score, navigation, handleProfileRefresh}) =>
+const HeaderRightP = ({userId, username, score, isLoggingIn, navigation, handleProfileRefresh}) =>
   <View>
     <UserInfo
       username={username}
       score={score}
+      isLoggingIn={isLoggingIn}
+      
       handleUsernamePress={
         () => {
           handleProfileRefresh(userId);

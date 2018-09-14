@@ -15,7 +15,6 @@ class PostsScreen extends React.Component {
         'Messaggi'
       :
         'Categoria: ' + navigation.getParam('topicName'),
-    headerRight: <HeaderRight navigation={navigation} />,
   });
 
   render() {

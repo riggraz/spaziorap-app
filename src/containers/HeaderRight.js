@@ -10,6 +10,7 @@ const mapStateToProps = state =>
     userId: state.user.id,
     username: state.user.username,
     score: state.user.score,
+    isLoggingIn: state.user.isLoggingIn,
   });
 
 const mapDispatchToProps = dispatch =>

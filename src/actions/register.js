@@ -1,5 +1,7 @@
 import {API_URL} from '../constants/API';
 
+import {saveValueByKey} from '../config/localStorage';
+
 export const START_REGISTRATION = 'START_REGISTRATION';
 const startRegistration = () =>
   ({
@@ -48,6 +50,7 @@ export const register = (username, email, password) => dispatch => {
         json => {
           if (json.error === undefined) {
             dispatch(registrationSuccessful(json.data));
+            saveValueByKey('accessToken', json.data.attributes.access_token);
           } else {
             dispatch(registrationFailure());
           }

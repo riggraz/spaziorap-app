@@ -1,5 +1,12 @@
+import {deleteValueByKey} from "../config/localStorage";
+
 export const LOGOUT = 'LOGOUT';
-export const logout = () =>
+const logoutUser = () =>
   ({
     type: LOGOUT,
   });
+
+export const logout = () => dispatch => {
+  deleteValueByKey('accessToken');
+  dispatch(logoutUser());
+}

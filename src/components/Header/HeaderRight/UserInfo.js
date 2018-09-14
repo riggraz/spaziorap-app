@@ -1,24 +1,28 @@
 import React from 'react';
 import {
+  ActivityIndicator,
   Text,
   View,
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
 
-const UserInfo = ({username, score, handleUsernamePress, handleLoginPress}) => (
+const UserInfo = ({username, score, isLoggingIn, handleUsernamePress, handleLoginPress}) => (
   <View style={styles.userInfoBox}>
   {
-    username ?
-      <TouchableOpacity onPress={handleUsernamePress}>
-        <Text style={styles.userInfoText}>
-          {username}
-        </Text>
-      </TouchableOpacity>
+    isLoggingIn ?
+      <ActivityIndicator size='large' color='white' />
     :
-      <TouchableOpacity onPress={handleLoginPress}>
-        <Text style={styles.userInfoText}>Accedi</Text>
-      </TouchableOpacity>
+      username ?
+        <TouchableOpacity onPress={handleUsernamePress}>
+          <Text style={styles.userInfoText}>
+            {username}
+          </Text>
+        </TouchableOpacity>
+      :
+        <TouchableOpacity onPress={handleLoginPress}>
+          <Text style={styles.userInfoText}>Accedi</Text>
+        </TouchableOpacity>
   }
   </View>
 );
