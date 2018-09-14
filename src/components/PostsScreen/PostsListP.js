@@ -64,6 +64,8 @@ class PostsListP extends React.Component {
     const {handleTopicChange, navigateToPostsByTopic} = this.props;
     const {navigateToSinglePostScreen} = this.props;
 
+    const {admin, accessToken, handleDeletePost} = this.props;
+
     const {horizontal} = this.props;
     const {branch} = this.props;
 
@@ -104,8 +106,12 @@ class PostsListP extends React.Component {
                   }
                 }
 
-                horizontal={horizontal}
+                admin={admin}
+                handleDeletePost={
+                  () => handleDeletePost(item.id, accessToken)
+                }
 
+                horizontal={horizontal}
                 branch={this.props.branch}
               />
             }

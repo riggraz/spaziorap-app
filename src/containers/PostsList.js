@@ -6,6 +6,7 @@ import {fetchPosts} from '../actions/requestPosts';
 import {fetchLatestPosts} from '../actions/requestLatestPosts';
 import {selectTopic} from '../actions/selectTopic';
 import {fetchProfilePosts} from '../actions/requestProfilePosts';
+import {deletePost} from '../actions/deletePost';
 
 import {
   LATEST_BRANCH,
@@ -25,6 +26,9 @@ const mapStateToProps = (state, ownProps) =>
     //used only for handleRefresh
     selectedTopic: state.topics.selectedTopic,
     selectedProfile: state.posts.profile.items && state.posts.profile.items[0] && state.posts.profile.items[0].userId,
+
+    admin: state.user.admin,
+    accessToken: state.user.accessToken,
   });
 
 const mapDispatchToProps = dispatch =>
@@ -43,6 +47,10 @@ const mapDispatchToProps = dispatch =>
       else if (whatToRefresh === TRENDING_BRANCH) 0//to implement
       else if (whatToRefresh === SELECTEDTOPIC_BRANCH) dispatch(fetchPosts(id));
       else if (whatToRefresh === PROFILE_BRANCH) dispatch(fetchProfilePosts(id));
+    },
+
+    handleDeletePost(postId, accessToken) {
+      dispatch(deletePost(postId, accessToken));
     },
   });
 

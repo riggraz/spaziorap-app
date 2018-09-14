@@ -4,6 +4,7 @@ import {View, TouchableWithoutFeedback} from 'react-native';
 import PostInfoBox from '../PostInfoBox';
 import PostContent from './PostContent';
 import LikeAndCommentBox from '../LikeAndCommentBox';
+import DeleteButton from './DeleteButton';
 
 import globalStyles from '../../styles/globalStyles';
 import postListItemStyles from '../../styles/postListItemStyles';
@@ -20,8 +21,10 @@ const PostsListItem = ({
   handleTopicChange,
   handlePress,
 
-  horizontal,
+  admin,
+  handleDeletePost,
 
+  horizontal,
   branch,
 }) => (
   <TouchableWithoutFeedback onPress={handlePress}>
@@ -46,6 +49,8 @@ const PostsListItem = ({
         postId={id}
         branch={branch}
       />
+
+      {admin ? <DeleteButton handleDeletePost={handleDeletePost} /> : null}
     </View>
   </TouchableWithoutFeedback>
 );
