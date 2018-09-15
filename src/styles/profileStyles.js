@@ -22,7 +22,7 @@ const profileStyles = StyleSheet.create({
   },
 
   score: {
-    fontSize: 22,
+    fontSize: 20,
   }
 });
 

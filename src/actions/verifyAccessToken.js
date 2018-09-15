@@ -2,6 +2,8 @@ import {API_URL} from '../constants/API';
 
 import {deleteValueByKey} from "../config/localStorage";
 
+import {fetchProfilePosts} from './requestProfilePosts';
+
 export const START_VERIFY_ACCESS_TOKEN = 'START_VERIFY_ACCESS_TOKEN';
 const startVerifyAccessToken = () =>
   ({
@@ -51,6 +53,7 @@ export const verifyAccessToken = accessToken => dispatch => {
             if (!json.error) {
               //accessToken is correct
               dispatch(verifyAccessTokenSuccessful(json.data));
+              dispatch(fetchProfilePosts(json.data.id));
             } else {
               //accessToken is not correct (unauthorized error)
               dispatch(verifyAccessTokenUnauthorizedFailure());

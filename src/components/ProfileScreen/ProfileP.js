@@ -15,7 +15,7 @@ const ProfileP = ({username, score, navigation}) => (
   <View style={{flex: 1}}>
     <View style={profileStyles.userInfoBox}>
       <Text style={profileStyles.username}>{username}</Text>
-      <Text style={profileStyles.score}>{score}</Text>
+      <Text style={profileStyles.score}>punteggio: {score}</Text>
     </View>
 
     <PostsList branch={PROFILE_BRANCH}

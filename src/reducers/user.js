@@ -50,6 +50,7 @@ const defaultState = {
   id: undefined,
   username: undefined,
   score: 0,
+  visitedProfileScore: 0,
   admin: false,
   accessToken: '',
 
@@ -115,19 +116,22 @@ const user = (
     case START_PROFILE_SCORE_REQUEST:
       return {
         ...state,
-        score: '...',
+        score: action.userId == state.id ? '...' : state.score,
+        visitedProfileScore: '...',
       };
 
     case PROFILE_SCORE_REQUEST_SUCCESSFUL:
       return {
         ...state,
-        score: action.score,
+        score: action.userId == state.id ? action.score : state.score,
+        visitedProfileScore: action.score,
       };
 
     case PROFILE_SCORE_REQUEST_FAILURE:
       return {
         ...state,
-        score: 'N/A',
+        score: action.userId == state.id ? 'N/A' : state.score,
+        visitedProfileScore: 'N/A',
       };
 
     default:

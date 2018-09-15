@@ -5,7 +5,7 @@ import ProfileP from '../components/ProfileScreen/ProfileP';
 const mapStateToProps = (state, ownProps) =>
   ({
     username: ownProps.profileName ? ownProps.profileName : state.user.username,
-    score: state.user.score,
+    score: state.user.visitedProfileScore,
   });
 
 const Profile = connect(

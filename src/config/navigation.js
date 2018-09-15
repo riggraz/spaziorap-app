@@ -155,8 +155,8 @@ const BottomTabStack = createBottomTabNavigator(
           const currentUser = store.getState().user.id;
 
           if (currentUser) {
-            store.dispatch(fetchProfilePosts(currentUser));
             navigation.navigate(PROFILE);
+            store.dispatch(fetchProfilePosts(currentUser));
           } else {
             navigation.navigate(LOGIN);
           }

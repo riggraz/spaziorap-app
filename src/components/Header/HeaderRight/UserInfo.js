@@ -16,7 +16,7 @@ const UserInfo = ({username, score, isLoggingIn, handleUsernamePress, handleLogi
       username ?
         <TouchableOpacity onPress={handleUsernamePress}>
           <Text style={styles.userInfoText}>
-            {username}
+            {username} ({score})
           </Text>
         </TouchableOpacity>
       :
