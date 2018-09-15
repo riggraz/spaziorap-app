@@ -42,21 +42,23 @@ import {
 
 import newPost from './newPost';
 
+const defaultState = {
+  isLoggingIn: false,
+  isLoggedIn: false,
+  error: false,
+
+  id: undefined,
+  username: undefined,
+  score: 0,
+  admin: false,
+  accessToken: '',
+
+  newPost: newPost(undefined, {}),
+};
+
 const user = (
-  state = {
-    isLoggingIn: false,
-    isLoggedIn: false,
-    error: false,
-
-    id: undefined,
-    username: undefined,
-    score: 0,
-    admin: false,
-    accessToken: '',
-
-    newPost: newPost(undefined, {}),
-  },
-  action
+  state = defaultState,
+  action,
 ) => {
   switch (action.type) {
     case START_LOGIN:
@@ -88,17 +90,8 @@ const user = (
     case VERIFY_ACCESS_TOKEN_GENERIC_FAILURE:
     case VERIFY_ACCESS_TOKEN_UNAUTHORIZED_FAILURE:
       return {
-        isLoggingIn: false,
-        isLoggedIn: false,
-        error: true,
-
-        id: undefined,
-        username: undefined,
-        score: 0,
-        admin: false,
-        accessToken: '',
-
-        newPost: {},
+        ...defaultState,
+        error: action.type,
       };
 
     case RESET_POST_SUBMISSION:
@@ -117,19 +110,7 @@ const user = (
       };
 
     case LOGOUT:
-      return {
-        isLoggingIn: false,
-        isLoggedIn: false,
-        error: false,
-
-        id: undefined,
-        username: undefined,
-        score: 0,
-        admin: false,
-        accessToken: '',
-
-        newPost: {},
-      };
+      return defaultState;
 
     case START_PROFILE_SCORE_REQUEST:
       return {

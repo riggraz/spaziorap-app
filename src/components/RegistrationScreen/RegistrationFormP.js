@@ -1,11 +1,14 @@
 import React from 'react';
 import {
   ScrollView,
+  View,
   Text,
   TextInput,
   Button,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
+
+import {REGISTRATION_FAILURE} from '../../actions/register';
 
 import globalStyles from '../../styles/globalStyles';
 import formStyles from '../../styles/formStyles';
@@ -68,6 +71,15 @@ class RegistrationFormP extends React.Component {
     return ((passwordInputText === passwordConfirmationInputText) && this._isPasswordOkay());
   }
 
+  _renderErrors = () => (
+  <View>
+    <Text style={formStyles.redLabel}>Ci sono errori nella compilazione.</Text>
+    { this._isUsernameOkay() ? null : <Text>Il nome utente dev'essere compreso tra 3 e 32 caratteri.</Text> }
+    { this._isPasswordOkay() ? null : <Text>La password dev'essere di 6 o più caratteri.</Text> }
+    { this._passwordsMatch() ? null : <Text>La password e la conferma password devono coincidere.</Text> }
+  </View>
+);
+
   render() {
     return(
       <ScrollView
@@ -81,11 +93,10 @@ class RegistrationFormP extends React.Component {
         <TextInput
             value={this.state.usernameInputText}
             onChangeText={usernameInputText => this.setState({usernameInputText})}
-            // placeholder='Inserisci qui il tuo nome utente'
             autoCapitalize='none'
             autoCorrect={false}
             underlineColorAndroid='white'
-            style={formStyles.input}
+            style={[formStyles.input, formStyles.inputCenterText]}
         />
 
         <Text style={formStyles.label}>
@@ -94,10 +105,9 @@ class RegistrationFormP extends React.Component {
         <TextInput
             value={this.state.passwordInputText}
             onChangeText={passwordInputText => this.setState({passwordInputText})}
-            // placeholder='Inserisci qui la tua password'
             secureTextEntry
             underlineColorAndroid='white'
-            style={formStyles.input}
+            style={[formStyles.input, formStyles.inputCenterText]}
         />
 
         <Text style={formStyles.label}>
@@ -107,10 +117,9 @@ class RegistrationFormP extends React.Component {
             value={this.state.passwordConfirmationInputText}
             onChangeText={passwordConfirmationInputText => this.setState({passwordConfirmationInputText})}
             onSubmitEditing={() => this._handleRegistration()}
-            // placeholder='Conferma qui la tua password'
             secureTextEntry
             underlineColorAndroid='white'
-            style={formStyles.input}
+            style={[formStyles.input, formStyles.inputCenterText]}
         />
 
         <TouchableOpacity onPress={() => this._handleRegistration()} style={formStyles.button}>
@@ -126,17 +135,14 @@ class RegistrationFormP extends React.Component {
 
         {
           this.state.error ?
-            <Text style={formStyles.redLabel}>Ci sono errori nella compilazione.</Text>
-              // this._isUsernameOkay() ? null : <Text>Il nome utente deve essere di 3 o più caratteri</Text>
-              // this._isPasswordOkay() ? null : <Text>La password deve essere di 6 o più caratteri</Text>
-              // this._passwordsMatch() ? null : <Text>La password e la conferma password devono coincidere</Text>
+            this._renderErrors()
           :
             null
         }
         
         {
-          this.props.error ?
-            <Text style={formStyles.redLabel}>Il nome utente '{this.state.usernameInputText}'' è già stato preso.</Text>
+          this.props.error === REGISTRATION_FAILURE ?
+            <Text style={formStyles.redLabel}>Il nome utente '{this.state.usernameInputText}' è già stato preso.</Text>
           :
             null
         }

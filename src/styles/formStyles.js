@@ -24,24 +24,28 @@ const formStyles = StyleSheet.create({
   input: {
     width: '100%',
 
+    fontSize: 18,
     backgroundColor: 'white',
-    // borderRadius: 16,
 
-    // marginLeft: 16,
-    // marginRight: 16,
     marginBottom: 8,
     padding: 8,
+  },
 
-    fontSize: 18,
-
+  inputCenterText: {
     textAlign: 'center',
   },
 
   multilineInput: {
-    width: Dimensions.get('window').width,
+    //width is setted by state
     height: Dimensions.get('window').height / 4,
 
     textAlignVertical: 'top',
+    
+    fontSize: 18,
+    backgroundColor: 'white',
+
+    marginBottom: 8,
+    padding: 8,
   },
 
   button: {

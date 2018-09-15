@@ -7,6 +7,8 @@ import {
   TouchableOpacity
 } from 'react-native';
 
+import {LOGIN_FAILURE} from '../../actions/login';
+
 import globalStyles from '../../styles/globalStyles';
 import formStyles from '../../styles/formStyles';
 
@@ -51,11 +53,10 @@ class LoginFormP extends React.Component {
         <TextInput
             value={this.state.usernameInputText}
             onChangeText={usernameInputText => this.setState({usernameInputText})}
-            // placeholder='Inserisci qui il tuo nome utente'
             autoCapitalize='none'
             autoCorrect={false}
             underlineColorAndroid='white'
-            style={formStyles.input}
+            style={[formStyles.input, formStyles.inputCenterText]}
         />
 
         <Text style={formStyles.label}>
@@ -65,24 +66,24 @@ class LoginFormP extends React.Component {
             value={this.state.passwordInputText}
             onChangeText={passwordInputText => this.setState({passwordInputText})}
             onSubmitEditing={() => this._handleLogin()}
-            // placeholder='Inserisci qui la tua password'
             secureTextEntry
             underlineColorAndroid='white'
-            style={formStyles.input}
+            style={[formStyles.input, formStyles.inputCenterText]}
         />
 
         <TouchableOpacity onPress={() => this._handleLogin()} style={formStyles.button}>
-          <Text style={formStyles.buttonText}>Accedi</Text>
+          <Text style={formStyles.buttonText}>
+            {
+              this.props.isLoggingIn ?
+                'Accedendo...'
+              :
+                'Accedi'
+            }
+          </Text>
         </TouchableOpacity>
 
         {
-          this.props.isLoggingIn ?
-            <Text style={formStyles.label}>Sto accedendo...</Text>
-          :
-            null
-        }
-        {
-          this.props.error ?
+          this.props.error === LOGIN_FAILURE ?
             <Text style={formStyles.redLabel}>Combinazione nome utente e password sbagliata.</Text>
           :
             null
