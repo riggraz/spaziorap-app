@@ -21,17 +21,27 @@ const LatestSongsP = ({songs, foreign, areFetching, handlePlaySong}) => (
       {
         !areFetching ?
           <FlatList
-          data={songs}
-          renderItem={({item}) =>
-            <Song
-              name={item.name}
-              artist={item.artist}
-              url={item.url}
-              handlePlaySong={songId => handlePlaySong(songId)}
-            />
-          }
-          keyExtractor={song => song.id.toString()}
-          horizontal
+            data={songs}
+            renderItem={({item}) =>
+              <Song
+                name={item.name}
+                artist={item.artist}
+                url={item.url}
+                handlePlaySong={songId => handlePlaySong(songId)}
+              />
+            }
+            keyExtractor={song => song.id.toString()}
+
+            getItemLayout={
+              (data, index) =>
+                ({
+                  length: 200, //width of a Song as specified in songStyles.js
+                  offset: 200 * index,
+                  index
+                })
+            }
+
+            horizontal
           />
         :
         <View style={{flex: 1, flexDirection: 'row'}}>

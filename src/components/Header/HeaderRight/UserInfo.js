@@ -7,30 +7,37 @@ import {
   StyleSheet,
 } from 'react-native';
 
-const UserInfo = ({username, score, isLoggingIn, handleUsernamePress, handleLoginPress}) => (
-  <View style={styles.userInfoBox}>
-  {
+const UserInfo = ({username, score, isLoggingIn, handleUsernamePress, handleLoginPress}) =>
     isLoggingIn ?
-      <ActivityIndicator size='large' color='white' />
+      <ActivityIndicator size='large' color='white' style={styles.marginRight} />
     :
       username ?
         <TouchableOpacity onPress={handleUsernamePress}>
-          <Text style={styles.userInfoText}>
-            {username} ({score})
-          </Text>
+          <View style={[{flexDirection: 'row'}, styles.marginRight]}>
+            <Text style={styles.userInfoText}>
+              {username}
+            </Text>
+            {
+              score === '...' ?
+                <View style={{flexDirection: 'row'}}>
+                  <Text style={styles.userInfoText}>(</Text>
+                  <ActivityIndicator size='small' color='white' />
+                  <Text style={styles.userInfoText}>)</Text>
+                </View>
+              :
+                <Text style={styles.userInfoText}> ({score})</Text>
+            }
+          </View>
         </TouchableOpacity>
       :
-        <TouchableOpacity onPress={handleLoginPress}>
+        <TouchableOpacity onPress={handleLoginPress} style={styles.marginRight}>
           <Text style={styles.userInfoText}>Accedi</Text>
         </TouchableOpacity>
-  }
-  </View>
-);
 
 export default UserInfo;
 
 const styles = StyleSheet.create({
-  userInfoBox: {
+  marginRight: {
     marginRight: 16,
   },
 

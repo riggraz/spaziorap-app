@@ -22,7 +22,8 @@ const postsBranch = (
   state = {
     areFetching: true,
     error: false,
-    items: []
+    page: 1,
+    items: [],
   },
   action,
 ) => {
@@ -33,25 +34,45 @@ const postsBranch = (
       return {
         ...state,
         areFetching: true,
+        page: action.page,
       };
 
     case LATEST_POSTS_REQUEST_SUCCESSFUL:
     case POSTS_REQUEST_SUCCESSFUL:
     case PROFILE_POSTS_REQUEST_SUCCESSFUL:
-      return {
-        areFetching: false,
-        error: false,
-        items: action.posts.map(post => ({
-          id: post.id,
-          body: post.attributes.body,
-          url: post.attributes.url,
-          userId: post.attributes.user_id,
-          userUsername: post.attributes.user_username,
-          topicId: post.attributes.topic_id.toString(),
-          score: post.attributes.score,
-          createdAt: post.attributes.created_at.toString(),
-        })),
-      };
+      if (action.page === 1) {
+        return {
+          areFetching: false,
+          error: false,
+          page: 1,
+          items: action.posts.map(post => ({
+            id: post.id,
+            body: post.attributes.body,
+            url: post.attributes.url,
+            userId: post.attributes.user_id,
+            userUsername: post.attributes.user_username,
+            topicId: post.attributes.topic_id.toString(),
+            score: post.attributes.score,
+            createdAt: post.attributes.created_at.toString(),
+          })),
+        };
+      } else {
+        return {
+          areFetching: false,
+          error: false,
+          page: action.page,
+          items: [...state.items, ...action.posts.map(post => ({
+            id: post.id,
+            body: post.attributes.body,
+            url: post.attributes.url,
+            userId: post.attributes.user_id,
+            userUsername: post.attributes.user_username,
+            topicId: post.attributes.topic_id.toString(),
+            score: post.attributes.score,
+            createdAt: post.attributes.created_at.toString(),
+          }))],
+        };
+      }
 
     case LATEST_POSTS_REQUEST_FAILURE:
     case POSTS_REQUEST_FAILURE:

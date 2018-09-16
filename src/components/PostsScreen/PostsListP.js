@@ -6,6 +6,7 @@ import {
   FlatList,
   ActivityIndicator,
   RefreshControl,
+  Dimensions,
 } from 'react-native';
 
 import PostsListItem from './PostsListItem';
@@ -16,8 +17,15 @@ import PostsListHorizontalFooter from '../HomeScreen/PostsListHorizontalFooter';
 
 import friendlyDate from '../../helpers/friendlyDate';
 
-import {LATEST_BRANCH, TRENDING_BRANCH, PROFILE_BRANCH, SELECTEDTOPIC_BRANCH} from '../../constants/branches';
 import globalStyles from '../../styles/globalStyles';
+
+import {MAIN_COLOR} from '../../constants/colors';
+import {
+  LATEST_BRANCH,
+  TRENDING_BRANCH,
+  SELECTEDTOPIC_BRANCH,
+  PROFILE_BRANCH,
+} from '../../constants/branches';
 
 class PostsListP extends React.Component {
 
@@ -43,103 +51,196 @@ class PostsListP extends React.Component {
     else handleRefresh(branch, selectedTopic);
   }
 
-  _renderTopicHeaderComponent = (topicId) => {
+  _renderListHeader = () => {
+    const {branch} = this.props;
+
+    if (branch === SELECTEDTOPIC_BRANCH) {
+      return (
+        <PostsListTopicHeader
+          topicName={this._getTopicName(this.props.selectedTopic, this.props.topics)}
+          topicDescription={this._getTopicDescription(this.props.selectedTopic, this.props.topics)}
+        />
+      );
+    } else {
+      return null;
+    }
+  }
+
+  _renderListFooter = () => {
+    const {postsAreFetching, horizontal} = this.props;
+
+    if (horizontal) {
+      return <PostsListHorizontalFooter handleNavigateToPosts={this.props.navigateToPosts} />;
+    } else {
+      if (postsAreFetching) {
+        return <ActivityIndicator size='large' color={MAIN_COLOR} style={{marginBottom: 8}} />
+      }
+    }
+
+    return null;
+  }
+
+  _renderListItem = item => {
+    const {
+      topics,
+
+      handleTopicChange,
+      handleProfileChange,
+
+      navigateToSinglePostScreen,
+      navigateToPostsByTopic,
+      navigateToProfile,
+
+      admin,
+      accessToken,
+      handleDeletePost,
+
+      horizontal,
+
+      branch,
+    } = this.props;
+    
     return (
-      <PostsListTopicHeader
-        topicName={this._getTopicName(topicId, this.props.topics)}
-        topicDescription={this._getTopicDescription(topicId, this.props.topics)}
+      <PostsListItem
+        id={item.id}
+        body={item.body}
+        url={item.url}
+        user={item.userUsername}
+        topic={this._getTopicName(item.topicId, topics)}
+        createdAt={friendlyDate(item.createdAt)}
+
+        handlePress={
+          () => navigateToSinglePostScreen(item.id, item.body)
+        }
+        handleProfileChange={
+          () => {
+            handleProfileChange(item.userId);
+            navigateToProfile(item.userUsername);
+          }
+        }
+        handleTopicChange={
+          () => {
+            const topicName = this._getTopicName(item.topicId, topics);
+            handleTopicChange(item.topicId, topicName);
+            navigateToPostsByTopic(topicName);
+          }
+        }
+
+        admin={admin}
+        handleDeletePost={
+          () => handleDeletePost(item.id, accessToken)
+        }
+
+        horizontal={horizontal}
+
+        branch={branch}
       />
     );
   }
 
-  _renderFooterComponent = () => {
-    return <PostsListHorizontalFooter handleNavigateToPosts={this.props.navigateToPosts} />;
+  _renderRefreshControl = () => {
+    const {postsAreFetching, horizontal} = this.props;
+
+    if (horizontal) {
+      return null;
+    } else {
+      return (
+        <RefreshControl
+          refreshing={postsAreFetching}
+          onRefresh={this._handleRefresh}
+        />
+      );
+    }
   }
 
-  render() {
-    const {posts, postsAreFetching} = this.props;
-    const {topics, topicsAreFetching} = this.props;
+  _handleEndReached = () => {
+    const {
+      handleLoadMore,
+      page,
 
-    const {handleProfileChange, navigateToProfile} = this.props;
-    const {handleTopicChange, navigateToPostsByTopic} = this.props;
-    const {navigateToSinglePostScreen} = this.props;
+      selectedTopic,
+      selectedProfile,
 
-    const {admin, accessToken, handleDeletePost} = this.props;
+      horizontal,
 
+      branch,
+    } = this.props;
+
+    if (!horizontal) {
+      handleLoadMore(
+        branch,
+        branch === SELECTEDTOPIC_BRANCH ? selectedTopic : selectedProfile,
+        page,
+      );
+    }
+  }
+
+  _getItemLayout = (data, index) => {
+    //This is the width of a horizontalBox (see globalStyles.js)
+    const POST_WIDTH = Dimensions.get('window').width - 64;
+
+    return {
+      length: POST_WIDTH,
+      offset: POST_WIDTH * index,
+      index,
+    };
+  }
+
+  _shouldRenderList = () => {
+    const {postsAreFetching, page, topicsAreFetching} = this.props;
+
+    return (
+      !topicsAreFetching &&
+      (page !== 1 || (!postsAreFetching && page === 1))
+    );
+  }
+
+  _renderLoadingPosts = () => {
     const {horizontal} = this.props;
-    const {branch} = this.props;
 
-    return (!postsAreFetching && !topicsAreFetching) ?
-      (
-        <FlatList
-          data={horizontal ? posts.slice(0, 9) : posts}
-          ListHeaderComponent={
-            branch === SELECTEDTOPIC_BRANCH ?
-              this._renderTopicHeaderComponent(this.props.selectedTopic)
-            :
-              null
-          }
-          ListFooterComponent={horizontal ? this._renderFooterComponent : null}
-          renderItem={
-            ({item}) =>
-              <PostsListItem id={item.id}
-                body={item.body}
-                url={item.url}
-                user={item.userUsername}
-                topic={this._getTopicName(item.topicId, topics)}
-                createdAt={friendlyDate(item.createdAt)}
-
-                handlePress={
-                  () => navigateToSinglePostScreen(item.id, item.body)
-                }
-                handleProfileChange={
-                  () => {
-                    handleProfileChange(item.userId);
-                    navigateToProfile(item.userUsername);
-                  }
-                }
-                handleTopicChange={
-                  () => {
-                    const topicName = this._getTopicName(item.topicId, topics);
-                    handleTopicChange(item.topicId, topicName);
-                    navigateToPostsByTopic(topicName);
-                  }
-                }
-
-                admin={admin}
-                handleDeletePost={
-                  () => handleDeletePost(item.id, accessToken)
-                }
-
-                horizontal={horizontal}
-                branch={this.props.branch}
-              />
-            }
-          keyExtractor={
-            post => post.id.toString()
-          }
-          refreshControl={
-            horizontal ?
-              null
-            :
-              <RefreshControl
-                refreshing={postsAreFetching}
-                onRefresh={this._handleRefresh}
-              />
-          }
-          horizontal={horizontal}
-          style={globalStyles.container}
-        />
-      )
-    :
-      horizontal ?
-        <SkeletonLoadingPost />
-      :
+    if (horizontal) {
+      return <SkeletonLoadingPost />
+    }
+    else {
+      return (
         <View>
           <SkeletonLoadingPost />
           <SkeletonLoadingPost />
           <SkeletonLoadingPost />
         </View>
+      );
+    }
+  }
+
+  render() {
+    const {posts, horizontal} = this.props;
+
+    return this._shouldRenderList() ?
+      (
+        <FlatList
+          horizontal={horizontal}
+          data={horizontal ? posts.slice(0, 9) : posts}
+
+          refreshControl={this._renderRefreshControl()}
+          ListHeaderComponent={this._renderListHeader}
+          renderItem={({item}) => this._renderListItem(item)}
+          ListFooterComponent={this._renderListFooter}
+
+          onEndReached={this._handleEndReached}
+          onEndReachedThreshold={0.6}
+
+          keyExtractor={post => post.id}
+
+          initialNumToRender={10}
+          maxToRenderPerBatch={10}
+          updateCellsBatchingPeriod={100}
+          getItemLayout={horizontal ? (data, index) => this._getItemLayout(data, index) : null}
+
+          style={globalStyles.container}
+        />
+      )
+    :
+      this._renderLoadingPosts()
   }
 }
 

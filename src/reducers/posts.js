@@ -24,7 +24,7 @@ import {
   PROFILE_BRANCH,
 } from '../constants/branches';
 
-import { LIKE_SUCCESSFUL } from '../actions/like';
+import {LIKE_SUCCESSFUL} from '../actions/like';
 
 const posts = (
   state = {

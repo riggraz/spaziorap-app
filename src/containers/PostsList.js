@@ -19,11 +19,12 @@ const mapStateToProps = (state, ownProps) =>
   ({
     posts: state.posts[ownProps.branch].items,
     postsAreFetching: state.posts[ownProps.branch].areFetching,
+    page: state.posts[ownProps.branch].page,
 
     topics: state.topics.items,
     topicsAreFetching: state.topics.areFetching,
 
-    //used only for handleRefresh
+    //used only for handleRefresh and handleLoadMore
     selectedTopic: state.topics.selectedTopic,
     selectedProfile: state.posts.profile.items && state.posts.profile.items[0] && state.posts.profile.items[0].userId,
 
@@ -47,6 +48,13 @@ const mapDispatchToProps = dispatch =>
       else if (whatToRefresh === TRENDING_BRANCH) 0//to implement
       else if (whatToRefresh === SELECTEDTOPIC_BRANCH) dispatch(fetchPosts(id));
       else if (whatToRefresh === PROFILE_BRANCH) dispatch(fetchProfilePosts(id));
+    },
+
+    handleLoadMore(whatToLoadMore, id, page) {
+      if (whatToLoadMore === LATEST_BRANCH) dispatch(fetchLatestPosts(page+1));
+      else if (whatToLoadMore === TRENDING_BRANCH) 0//to implement
+      else if (whatToLoadMore === SELECTEDTOPIC_BRANCH) dispatch(fetchPosts(id, page+1));
+      else if (whatToLoadMore === PROFILE_BRANCH) dispatch(fetchProfilePosts(id, page+1));
     },
 
     handleDeletePost(postId, accessToken) {

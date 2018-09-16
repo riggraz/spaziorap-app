@@ -2,6 +2,7 @@ import React from 'react';
 import {
   View,
   Text,
+  ActivityIndicator,
 } from  'react-native';
 
 import PostsList from '../../containers/PostsList';
@@ -15,7 +16,15 @@ const ProfileP = ({username, score, navigation}) => (
   <View style={{flex: 1}}>
     <View style={profileStyles.userInfoBox}>
       <Text style={profileStyles.username}>{username}</Text>
-      <Text style={profileStyles.score}>punteggio: {score}</Text>
+      <View style={{flexDirection: 'row'}}>
+        <Text style={profileStyles.score}>punteggio: </Text>
+        {
+          score === '...' ?
+            <ActivityIndicator size='small' color='black' />
+          :
+            <Text style={profileStyles.score}>{score}</Text>
+        }
+      </View>
     </View>
 
     <PostsList branch={PROFILE_BRANCH}
