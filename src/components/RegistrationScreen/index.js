@@ -8,8 +8,8 @@ import {LOGIN} from '../../constants/navigation';
 class RegistrationScreen extends React.Component {
   static navigationOptions = ({navigation}) => 
   ({
-    title: 'Registrati',
-    headerRight: <HeaderButton label='Hai già un account?' size='s' handlePress={() => navigation.navigate(LOGIN)} />,
+    title: 'registrati',
+    headerRight: <HeaderButton label='hai già un account?' size='s' handlePress={() => navigation.navigate(LOGIN)} />,
   });
 
   render() {

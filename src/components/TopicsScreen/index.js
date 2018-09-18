@@ -7,7 +7,7 @@ import {POSTS_BY_TOPIC} from '../../constants/navigation';
 class TopicsScreen extends React.Component {
   static navigationOptions = ({navigation}) =>
   ({
-    title: 'Argomenti',
+    title: 'categorie',
   });
 
   render() {

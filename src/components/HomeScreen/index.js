@@ -5,14 +5,17 @@ import HeaderRight from '../../containers/HeaderRight';
 
 import Menu from './Menu';
 import LatestSongs from '../../containers/LatestSongs';
+import TopicsListHorizontal from '..//../containers/TopicsListHorizontal';
 import PostsListHorizontal from './PostsListHorizontal';
 
 import globalStyles from '../../styles/globalStyles';
 
+import {POSTS_BY_TOPIC} from '../../constants/navigation';
+
 class HomeScreen extends React.Component {
   static navigationOptions = ({navigation}) =>
   ({
-    title: 'Spazio Rap',
+    title: 'spazio rap',
     headerRight: <HeaderRight navigation={navigation} />,
   });
 
@@ -27,7 +30,17 @@ class HomeScreen extends React.Component {
 
         <LatestSongs foreign />
 
-        <PostsListHorizontal branch='latest' navigation={navigation} />
+        <TopicsListHorizontal
+          titleVisible
+          navigateToPostsListByTopic={
+            topicName => this.props.navigation.navigate(POSTS_BY_TOPIC, { topicName })
+          }
+        />
+
+        <PostsListHorizontal
+          branch='latest'
+          navigation={navigation}
+        />
       </ScrollView>
     );
   }

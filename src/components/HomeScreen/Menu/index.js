@@ -9,10 +9,10 @@ import homeStyles from '../../../styles/homeStyles';
 
 const Menu = ({navigation}) => (
   <View style={homeStyles.menu}>
-    <MenuButton text='➕ Nuovo'
+    <MenuButton text='➕ nuovo'
       onPress={() => navigation.navigate(NEW_POST)}
     />
-    <MenuButton text='💬 Leggi'
+    <MenuButton text='💬 leggi'
       onPress={() => navigation.navigate(POSTS)}
     />
   </View>

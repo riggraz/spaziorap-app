@@ -9,9 +9,9 @@ import {HOME, REGISTRATION} from '../../constants/navigation';
 class LoginScreen extends React.Component {
   static navigationOptions = ({navigation}) =>
   ({
-    title: 'Accedi',
+    title: 'accedi',
     headerLeft: <BackButton handlePress={() => navigation.navigate(HOME)} />,
-    headerRight: <HeaderButton label='Non hai un account?' size='s' handlePress={() => navigation.navigate(REGISTRATION)} />,
+    headerRight: <HeaderButton label='non hai un account?' size='s' handlePress={() => navigation.navigate(REGISTRATION)} />,
   });
 
   render() {

@@ -16,17 +16,17 @@ import postTypePickerStyles from '../../../styles/postTypePickerStyles';
 
 const PostTypePickerP = ({selectedPostType, handlePostTypeChange}) => (
   <View style={postTypePickerStyles.container}>
-    <Text style={postTypePickerStyles.text}>Nuovo post: </Text>
+    <Text style={postTypePickerStyles.text}>nuovo post: </Text>
 
     <PostTypeOption
-      label='Testo'
+      label='testo'
       postType={TEXT_POST}
       selectedPostType={selectedPostType}
       handlePostTypeChange={handlePostTypeChange}
     />
 
     <PostTypeOption
-      label='Video'
+      label='video'
       postType={VIDEO_POST}
       selectedPostType={selectedPostType}
       handlePostTypeChange={handlePostTypeChange}

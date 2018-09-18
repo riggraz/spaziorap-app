@@ -23,6 +23,7 @@ const postsBranch = (
     areFetching: true,
     error: false,
     page: 1,
+    endReached: false,
     items: [],
   },
   action,
@@ -40,11 +41,20 @@ const postsBranch = (
     case LATEST_POSTS_REQUEST_SUCCESSFUL:
     case POSTS_REQUEST_SUCCESSFUL:
     case PROFILE_POSTS_REQUEST_SUCCESSFUL:
+      if (action.posts.length === 0) {
+        return {
+          ...state,
+          areFetching: false,
+          endReached: true,
+        };
+      }
+
       if (action.page === 1) {
         return {
           areFetching: false,
           error: false,
           page: 1,
+          endReached: false,
           items: action.posts.map(post => ({
             id: post.id,
             body: post.attributes.body,
@@ -61,6 +71,7 @@ const postsBranch = (
           areFetching: false,
           error: false,
           page: action.page,
+          endReached: false,
           items: [...state.items, ...action.posts.map(post => ({
             id: post.id,
             body: post.attributes.body,
@@ -78,6 +89,7 @@ const postsBranch = (
     case POSTS_REQUEST_FAILURE:
     case PROFILE_POSTS_REQUEST_FAILURE:
       return {
+        ...state,
         areFetching: false,
         error: true,
         items: state.items,

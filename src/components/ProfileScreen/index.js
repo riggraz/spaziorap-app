@@ -8,9 +8,9 @@ class ProfileScreen extends React.Component {
   static navigationOptions = ({navigation}) =>
   ({
     title: navigation.getParam('profileName') ?
-      ('Profilo di ' + navigation.getParam('profileName'))
+      ('profilo di ' + navigation.getParam('profileName'))
       :
-      ('Il tuo profilo'),
+      ('il tuo profilo'),
 
     headerRight: navigation.getParam('profileName') ?
       null

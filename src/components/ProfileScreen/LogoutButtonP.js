@@ -18,7 +18,7 @@ const LogoutButtonP = ({handleLogout, navigation}) => (
         }
       }
     >
-      <Text style={styles.logoutText}>Esci</Text>
+      <Text style={styles.logoutText}>esci</Text>
     </TouchableOpacity>
   </View>
 );

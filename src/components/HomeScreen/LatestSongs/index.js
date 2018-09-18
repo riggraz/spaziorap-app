@@ -16,7 +16,7 @@ import homeStyles from '../../../styles/homeStyles';
 const LatestSongsP = ({songs, foreign, areFetching, handlePlaySong}) => (
     <View style={globalStyles.hiddenBox}>
       <Text style={homeStyles.title}>
-        Ultime uscite in {foreign ? 'America 🇺🇸' : 'Italia 🇮🇹'}
+        ultime uscite in {foreign ? 'america 🇺🇸' : 'italia 🇮🇹'}
       </Text>
       {
         !areFetching ?

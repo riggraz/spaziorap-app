@@ -4,7 +4,7 @@ import {BOX_BACKGROUND_COLOR, BOX_BORDER_COLOR} from '../constants/colors';
 
 const homeStyles = StyleSheet.create({
   title: {
-    fontSize: 24,
+    fontSize: 25,
     marginLeft: 8,
   },
 

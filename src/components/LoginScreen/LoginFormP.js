@@ -48,7 +48,7 @@ class LoginFormP extends React.Component {
         style={globalStyles.container}
       >
         <Text style={formStyles.label}>
-          Nome utente
+          nome utente
         </Text>
         <TextInput
             value={this.state.usernameInputText}
@@ -60,7 +60,7 @@ class LoginFormP extends React.Component {
         />
 
         <Text style={formStyles.label}>
-          Password
+          password
         </Text>
         <TextInput
             value={this.state.passwordInputText}
@@ -75,9 +75,9 @@ class LoginFormP extends React.Component {
           <Text style={formStyles.buttonText}>
             {
               this.props.isLoggingIn ?
-                'Accedendo...'
+                'accedendo...'
               :
-                'Accedi'
+                'accedi'
             }
           </Text>
         </TouchableOpacity>

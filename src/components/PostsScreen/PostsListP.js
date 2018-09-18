@@ -12,7 +12,9 @@ import {
 import PostsListItem from './PostsListItem';
 import SkeletonLoadingPost from '../SkeletonLoading/SkeletonLoadingPost';
 import SkeletonLoadingProfileInfo from '../SkeletonLoading/SkeletonLoadingProfileInfo';
+import TopicsListHorizontal from '../../containers/TopicsListHorizontal';
 import PostsListTopicHeader from './PostsListTopicHeader';
+import PostsListEndReachedFooter from './PostsListEndReachedFooter';
 import PostsListHorizontalFooter from '../HomeScreen/PostsListHorizontalFooter';
 
 import friendlyDate from '../../helpers/friendlyDate';
@@ -20,6 +22,7 @@ import friendlyDate from '../../helpers/friendlyDate';
 import globalStyles from '../../styles/globalStyles';
 
 import {MAIN_COLOR} from '../../constants/colors';
+import {POSTS_BY_TOPIC} from '../../constants/navigation';
 import {
   LATEST_BRANCH,
   TRENDING_BRANCH,
@@ -52,7 +55,9 @@ class PostsListP extends React.Component {
   }
 
   _renderListHeader = () => {
-    const {branch} = this.props;
+    const {horizontal, branch} = this.props;
+
+    if (horizontal) return null;
 
     if (branch === SELECTEDTOPIC_BRANCH) {
       return (
@@ -61,19 +66,30 @@ class PostsListP extends React.Component {
           topicDescription={this._getTopicDescription(this.props.selectedTopic, this.props.topics)}
         />
       );
-    } else {
-      return null;
+    } else if (branch === LATEST_BRANCH) {
+      return (
+        <TopicsListHorizontal
+          titleVisible={false}
+          navigateToPostsListByTopic={this.props.navigateToPostsByTopic}
+        />
+      );
     }
+
+    return null;
   }
 
   _renderListFooter = () => {
-    const {postsAreFetching, horizontal} = this.props;
+    const {postsAreFetching, endReached, horizontal} = this.props;
 
     if (horizontal) {
       return <PostsListHorizontalFooter handleNavigateToPosts={this.props.navigateToPosts} />;
     } else {
       if (postsAreFetching) {
         return <ActivityIndicator size='large' color={MAIN_COLOR} style={{marginBottom: 8}} />
+      }
+
+      if (endReached) {
+        return <PostsListEndReachedFooter />;
       }
     }
 
@@ -141,9 +157,7 @@ class PostsListP extends React.Component {
   _renderRefreshControl = () => {
     const {postsAreFetching, horizontal} = this.props;
 
-    if (horizontal) {
-      return null;
-    } else {
+    if (!horizontal) {
       return (
         <RefreshControl
           refreshing={postsAreFetching}
@@ -151,12 +165,17 @@ class PostsListP extends React.Component {
         />
       );
     }
+
+    return null;
   }
 
   _handleEndReached = () => {
     const {
+      postsAreFetching,
+
       handleLoadMore,
       page,
+      endReached,
 
       selectedTopic,
       selectedProfile,
@@ -166,7 +185,7 @@ class PostsListP extends React.Component {
       branch,
     } = this.props;
 
-    if (!horizontal) {
+    if (!horizontal && !postsAreFetching && !endReached) {
       handleLoadMore(
         branch,
         branch === SELECTEDTOPIC_BRANCH ? selectedTopic : selectedProfile,

@@ -31,7 +31,7 @@ const UserInfo = ({username, score, isLoggingIn, handleUsernamePress, handleLogi
         </TouchableOpacity>
       :
         <TouchableOpacity onPress={handleLoginPress} style={styles.marginRight}>
-          <Text style={styles.userInfoText}>Accedi</Text>
+          <Text style={styles.userInfoText}>accedi</Text>
         </TouchableOpacity>
 
 export default UserInfo;

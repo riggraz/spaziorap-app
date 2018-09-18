@@ -52,9 +52,9 @@ class SubmitButtonP extends React.Component {
         disabled={!submittable}
       >
         <Ionicons
-          name="ios-paper-plane"
+          name='ios-paper-plane'
           size={42}
-          color="white"
+          color='white'
           style={[
             styles.submitButton,
             submittable ? styles.submittable : styles.notSubmittable,

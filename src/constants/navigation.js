@@ -6,22 +6,22 @@
   cambiarlo a piacere modificando semplicemente questo file.
 */
 
-export const HOME = 'Home';
+export const HOME = 'home';
 
-export const POSTS = 'Messaggi';
-  export const LATEST_POSTS = 'Messaggi recenti';
-  export const TRENDING_POSTS = 'Messaggi di moda';
+export const POSTS = 'messaggi';
+  export const LATEST_POSTS = 'messaggi recenti';
+  export const TRENDING_POSTS = 'messaggi di moda';
 
-export const TOPICS = 'Argomenti';
-export const TOPICS_LIST = 'Lista Argomenti';
-export const POSTS_BY_TOPIC = 'Messaggi per argomento';
-export const SINGLE_POST = 'Messaggio';
+export const TOPICS = 'categorie';
+export const TOPICS_LIST = 'lista categorie';
+export const POSTS_BY_TOPIC = 'messaggi per categoria';
+export const SINGLE_POST = 'messaggio';
 
-export const NEW_POST = 'Nuovo';
+export const NEW_POST = 'nuovo';
 
-export const PROFILE = 'Profilo';
-export const PROFILE_PAGE = 'Pagina di profilo';
+export const PROFILE = 'profilo';
+export const PROFILE_PAGE = 'pagina di profilo';
 
-export const AUTH = 'Autenticazione';
-  export const LOGIN = 'Login';
-  export const REGISTRATION = 'Registration';
+export const AUTH = 'autenticazione';
+  export const LOGIN = 'login';
+  export const REGISTRATION = 'registration';

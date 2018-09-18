@@ -11,10 +11,10 @@ class PostsScreen extends React.Component {
   static navigationOptions = ({navigation}) =>
   ({
     title:
-      navigation.getParam('topicName', 'Messaggi') === 'Messaggi' ?
-        'Messaggi'
+      navigation.getParam('topicName', 'messaggi') === 'messaggi' ?
+        'messaggi'
       :
-        'Categoria: ' + navigation.getParam('topicName'),
+        'categoria: ' + navigation.getParam('topicName'),
   });
 
   render() {

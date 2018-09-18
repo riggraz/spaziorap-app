@@ -88,7 +88,7 @@ class RegistrationFormP extends React.Component {
         style={globalStyles.container}
       >
         <Text style={formStyles.label}>
-          Nome utente (3+ caratteri) {this._isUsernameOkay() ? '✔️' : '✖️'}
+          nome utente (3+ caratteri) {this._isUsernameOkay() ? '✔️' : '✖️'}
         </Text>
         <TextInput
             value={this.state.usernameInputText}
@@ -100,7 +100,7 @@ class RegistrationFormP extends React.Component {
         />
 
         <Text style={formStyles.label}>
-          Password (6+ caratteri) {this._isPasswordOkay() ? '✔️' : '✖️'}
+          password (6+ caratteri) {this._isPasswordOkay() ? '✔️' : '✖️'}
         </Text>
         <TextInput
             value={this.state.passwordInputText}
@@ -111,7 +111,7 @@ class RegistrationFormP extends React.Component {
         />
 
         <Text style={formStyles.label}>
-          Conferma password {this._passwordsMatch() ? '✔️' : '✖️'}
+          conferma password {this._passwordsMatch() ? '✔️' : '✖️'}
         </Text>
         <TextInput
             value={this.state.passwordConfirmationInputText}
@@ -126,9 +126,9 @@ class RegistrationFormP extends React.Component {
           <Text style={formStyles.buttonText}>
           {
             this.props.isLoggingIn ?
-              'Registrando...'
+              'registrando...'
             :
-              'Registrati'
+              'registrati'
           }
           </Text>
         </TouchableOpacity>

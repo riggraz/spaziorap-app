@@ -20,6 +20,7 @@ const mapStateToProps = (state, ownProps) =>
     posts: state.posts[ownProps.branch].items,
     postsAreFetching: state.posts[ownProps.branch].areFetching,
     page: state.posts[ownProps.branch].page,
+    endReached: state.posts[ownProps.branch].endReached,
 
     topics: state.topics.items,
     topicsAreFetching: state.topics.areFetching,
