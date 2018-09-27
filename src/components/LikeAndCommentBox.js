@@ -9,11 +9,11 @@ import LikeBox from '../containers/LikeBox';
 
 import likeAndCommentBoxStyles from '../styles/likeAndCommentBoxStyles';
 
-const LikeAndCommentBox = ({postId, branch}) => (
+const LikeAndCommentBox = ({postId, commentsCount, branch}) => (
   <View style={likeAndCommentBoxStyles.container}>
-    <LikeBox postId={postId} branch={branch} />
+    <LikeBox type='post' id={postId} branch={branch} />
     <Text style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end', textAlign: 'right', fontSize: 24}}>
-      <MaterialCommunityIcons name='comment-multiple-outline' size={26} color='black' /> 0
+      <MaterialCommunityIcons name='comment-multiple-outline' size={26} color='black' /> {commentsCount}
     </Text>
   </View>
 );

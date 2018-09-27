@@ -7,7 +7,7 @@ import {
 
 import postInfoBoxStyles from '../styles/postInfoBoxStyles';
 
-const PostInfoBox = ({user, topic, createdAt, handleProfileChange, handleTopicChange}) =>
+const PostInfoBox = ({user, topic, createdAt, handleProfileChange, handleTopicChange}) => (
   <View style={postInfoBoxStyles.infoBox}>
     <TouchableOpacity onPress={handleProfileChange}>
       <Text style={postInfoBoxStyles.infoBoxText}>👤 {user}</Text>
@@ -19,5 +19,6 @@ const PostInfoBox = ({user, topic, createdAt, handleProfileChange, handleTopicCh
       <Text style={postInfoBoxStyles.infoBoxText}>⏳ {createdAt}</Text>
     </TouchableOpacity>
   </View>
+);
 
 export default PostInfoBox;

@@ -6,15 +6,19 @@ import {like} from '../actions/like';
 
 const mapStateToProps = (state, ownProps) =>
   ({
-    score: state.posts[ownProps.branch].items.find(post => post.id === ownProps.postId).score,
+    score: ownProps.type === 'post' ?
+      state.posts[ownProps.branch].items.find(post => post.id === ownProps.id).score
+      :
+      state.currentPost.comments.items.find(comment => comment.id === ownProps.id).score
+    ,
     accessToken: state.user.accessToken,
     isLoggedIn: state.user.isLoggedIn,
   });
 
 const mapDispatchToProps = dispatch =>
   ({
-    handleLike(postId, score, accessToken) {
-      dispatch(like(postId, score, accessToken));
+    handleLike(type, id, score, accessToken) {
+      dispatch(like(type, id, score, accessToken));
     },
   });
 

@@ -15,6 +15,7 @@ const PostsListItem = ({
   url,
   user,
   topic,
+  commentsCount,
   createdAt,
   
   handleProfileChange,
@@ -47,6 +48,7 @@ const PostsListItem = ({
 
       <LikeAndCommentBox
         postId={id}
+        commentsCount={commentsCount}
         branch={branch}
       />
 

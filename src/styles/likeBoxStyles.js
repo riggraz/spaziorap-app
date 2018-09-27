@@ -12,10 +12,20 @@ const likeBoxStyles = StyleSheet.create({
     marginRight: 4,
   },
 
+  buttonTextSmall: {
+    fontSize: 16,
+    marginRight: 4,
+  },
+
   scoreText: {
     fontSize: 24,
     marginHorizontal: 16,
   },
+
+  scoreTextSmall: {
+    fontSize: 16,
+    marginHorizontal: 16,
+  }
 });
 
 export default likeBoxStyles;

@@ -2,6 +2,7 @@ import {connect} from 'react-redux';
 
 import PostsListP from '../components/PostsScreen/PostsListP';
 
+import {setCurrentPostId} from '../actions/setCurrentPostId';
 import {fetchPosts} from '../actions/requestPosts';
 import {fetchLatestPosts} from '../actions/requestLatestPosts';
 import {selectTopic} from '../actions/selectTopic';
@@ -35,6 +36,10 @@ const mapStateToProps = (state, ownProps) =>
 
 const mapDispatchToProps = dispatch =>
   ({
+    handlePostPress(postId) {
+      dispatch(setCurrentPostId(postId));
+    },
+
     handleProfileChange(userId) {
       dispatch(fetchProfilePosts(userId));
     },

@@ -6,9 +6,9 @@ import {
 
 import likeBoxStyles from '../../styles/likeBoxStyles';
 
-const LikeButton = ({emoji, handleLike}) => (
+const LikeButton = ({emoji, handleLike, type}) => (
   <TouchableOpacity onPress={handleLike}>
-    <Text style={likeBoxStyles.buttonText}>
+    <Text style={type === 'comment' ? likeBoxStyles.buttonTextSmall : likeBoxStyles.buttonText}>
       {emoji}
     </Text>
   </TouchableOpacity>

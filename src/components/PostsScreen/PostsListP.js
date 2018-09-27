@@ -100,6 +100,7 @@ class PostsListP extends React.Component {
     const {
       topics,
 
+      handlePostPress,
       handleTopicChange,
       handleProfileChange,
 
@@ -123,10 +124,14 @@ class PostsListP extends React.Component {
         url={item.url}
         user={item.userUsername}
         topic={this._getTopicName(item.topicId, topics)}
+        commentsCount={item.commentsCount}
         createdAt={friendlyDate(item.createdAt)}
 
         handlePress={
-          () => navigateToSinglePostScreen(item.id, item.body)
+          () => {
+            handlePostPress(item.id);
+            navigateToSinglePostScreen(item.id, item.body);
+          }
         }
         handleProfileChange={
           () => {

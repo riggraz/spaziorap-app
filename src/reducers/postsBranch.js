@@ -16,7 +16,7 @@ import {
   PROFILE_POSTS_REQUEST_FAILURE,
 } from '../actions/requestProfilePosts';
 
-import {LIKE_SUCCESSFUL} from '../actions/like';
+import {LIKE_SUCCESSFUL_POST} from '../actions/like';
 
 const postsBranch = (
   state = {
@@ -63,6 +63,7 @@ const postsBranch = (
             userUsername: post.attributes.user_username,
             topicId: post.attributes.topic_id.toString(),
             score: post.attributes.score,
+            commentsCount: post.attributes.comments_count,
             createdAt: post.attributes.created_at.toString(),
           })),
         };
@@ -80,6 +81,7 @@ const postsBranch = (
             userUsername: post.attributes.user_username,
             topicId: post.attributes.topic_id.toString(),
             score: post.attributes.score,
+            commentsCount: post.attributes.comments_count,
             createdAt: post.attributes.created_at.toString(),
           }))],
         };
@@ -95,7 +97,7 @@ const postsBranch = (
         items: state.items,
       };
 
-    case LIKE_SUCCESSFUL:
+    case LIKE_SUCCESSFUL_POST:
       return {
         ...state,
         items: state.items && state.items.map(post => {
