@@ -3,6 +3,7 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  Keyboard,
   ActivityIndicator,
   StyleSheet,
 } from 'react-native';
@@ -32,6 +33,7 @@ class NewCommentForm extends React.Component {
         <TextInput
           placeholder='commenta...'
           onChangeText={(commentText) => this.setState({commentText})}
+          value={this.state.commentText}
           underlineColorAndroid='transparent'
           multiline
           style={[formStyles.input, {width: '90%', maxHeight: 100, margin: 0}]}
@@ -42,9 +44,9 @@ class NewCommentForm extends React.Component {
             <TouchableOpacity
               onPress={
                 () => {
-                  const body = this.state.commentText;
+                  Keyboard.dismiss();
+                  handleCommentSubmit(this.state.commentText, postId, parentId, accessToken);
                   this.setState({commentText: ''});
-                  handleCommentSubmit(body, postId, parentId, accessToken);
                 }
               }
               disabled={!submittable}

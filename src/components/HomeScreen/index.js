@@ -3,10 +3,11 @@ import {ScrollView} from 'react-native';
 
 import HeaderRight from '../../containers/HeaderRight';
 
-import Menu from './Menu';
+import Menu from './Menu/Menu';
 import LatestSongs from '../../containers/LatestSongs';
 import TopicsListHorizontal from '..//../containers/TopicsListHorizontal';
 import PostsListHorizontal from './PostsListHorizontal';
+import BottomMenu from './Menu/BottomMenu';
 
 import globalStyles from '../../styles/globalStyles';
 
@@ -41,6 +42,8 @@ class HomeScreen extends React.Component {
           branch='latest'
           navigation={navigation}
         />
+
+        <BottomMenu navigation={navigation} />
       </ScrollView>
     );
   }

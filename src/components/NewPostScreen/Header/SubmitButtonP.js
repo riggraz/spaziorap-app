@@ -2,6 +2,7 @@ import React from 'react';
 import {
   TouchableOpacity,
   Text,
+  Keyboard,
   ActivityIndicator,
   StyleSheet,
 } from 'react-native';
@@ -48,7 +49,12 @@ class SubmitButtonP extends React.Component {
 
     return !isSubmitting ? (
       <TouchableOpacity
-        onPress={() => handleSubmit(selectedTopic, body, url, accessToken)}
+        onPress={
+          () => {
+            Keyboard.dismiss();
+            handleSubmit(selectedTopic, body, url, accessToken);
+          }
+        }
         disabled={!submittable}
       >
         <Ionicons

@@ -39,6 +39,7 @@ class PostP extends React.Component {
       comments,
       commentsPostId,
       newCommentIsSubmitting,
+      fetchComments,
       
       handleCommentSubmit,
       handleProfileChange,
@@ -58,7 +59,10 @@ class PostP extends React.Component {
       );
     } else {
       return (
-        <ScrollView style={globalStyles.container} keyboardShouldPersistTaps='handled'>
+        <ScrollView
+          style={globalStyles.container}
+          keyboardShouldPersistTaps='handled'
+        >
           <View style={globalStyles.box}>
             <PostInfoBox
               user={post.userUsername}
@@ -115,6 +119,8 @@ class PostP extends React.Component {
             :
               <ActivityIndicator size='large' color={MAIN_COLOR} />
           }
+
+          <View style={{height: 300}} />
         </ScrollView>
       );
     }

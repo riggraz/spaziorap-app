@@ -7,6 +7,7 @@
 */
 
 export const HOME = 'home';
+  export const INFO = 'info';
 
 export const POSTS = 'messaggi';
   export const LATEST_POSTS = 'messaggi recenti';

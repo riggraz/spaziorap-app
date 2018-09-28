@@ -8,6 +8,7 @@ import {
 
 //Home stack
 import HomeScreen from '../components/HomeScreen';
+import InfoScreen from '../components/InfoScreen';
 
 //Posts stack
 import PostsScreen from '../components/PostsScreen';
@@ -29,6 +30,7 @@ import RegistrationScreen from '../components/RegistrationScreen';
 
 import {
   HOME,
+    INFO,
 
   POSTS,
     LATEST_POSTS,
@@ -71,6 +73,8 @@ const HomeStack = createStackNavigator(
     [POSTS_BY_TOPIC]: PostsScreen,
     [SINGLE_POST]: SinglePostScreen,
     [PROFILE_PAGE]: ProfileScreen,
+
+    [INFO]: InfoScreen,
   },
   {
     initialRouteName: HOME,
@@ -118,6 +122,7 @@ const NewPostStack = createStackNavigator(
 const ProfileStack = createStackNavigator(
   {
     [PROFILE_PAGE]: ProfileScreen,
+    [POSTS_BY_TOPIC]: PostsScreen,
     [SINGLE_POST]: SinglePostScreen,
   },
   {

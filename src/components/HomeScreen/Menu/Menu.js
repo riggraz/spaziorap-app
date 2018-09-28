@@ -12,7 +12,7 @@ const Menu = ({navigation}) => (
     <MenuButton text='➕ nuovo'
       onPress={() => navigation.navigate(NEW_POST)}
     />
-    <MenuButton text='💬 leggi'
+    <MenuButton text='📖 leggi'
       onPress={() => navigation.navigate(POSTS)}
     />
   </View>
