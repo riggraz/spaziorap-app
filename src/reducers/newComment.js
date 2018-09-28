@@ -7,6 +7,7 @@ import {
 const newComment = (
   state = {
     isSubmitting: false,
+    hasSubmitted: false,
     error: false,
   },
   action,
@@ -15,18 +16,21 @@ const newComment = (
     case START_COMMENT_SUBMISSION:
       return {
         isSubmitting: true,
+        hasSubmitted: false,
         error: false,
       };
 
     case COMMENT_SUBMISSION_SUCCESSFUL:
       return {
         isSubmitting: false,
+        hasSubmitted: true,
         error: false,
       };
 
     case COMMENT_SUBMISSION_FAILURE:
       return {
         isSubmitting: false,
+        hasSubmitted: false,
         error: true,
       };
 

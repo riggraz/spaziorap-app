@@ -40,7 +40,13 @@ class NewCommentForm extends React.Component {
         {
           !isSubmitting ?
             <TouchableOpacity
-              onPress={() => handleCommentSubmit(this.state.commentText, postId, parentId, accessToken)}
+              onPress={
+                () => {
+                  const body = this.state.commentText;
+                  this.setState({commentText: ''});
+                  handleCommentSubmit(body, postId, parentId, accessToken);
+                }
+              }
               disabled={!submittable}
               style={{marginBottom: 8}}
             >

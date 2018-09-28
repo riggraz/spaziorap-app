@@ -58,7 +58,7 @@ class PostP extends React.Component {
       );
     } else {
       return (
-        <ScrollView style={globalStyles.container}>
+        <ScrollView style={globalStyles.container} keyboardShouldPersistTaps='handled'>
           <View style={globalStyles.box}>
             <PostInfoBox
               user={post.userUsername}

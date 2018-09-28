@@ -171,7 +171,7 @@ const BottomTabStack = createBottomTabNavigator(
         let icon;
 
         if (routeName === HOME) icon = '🏠';
-        else if (routeName === POSTS) icon = '💬';
+        else if (routeName === POSTS) icon = '📖';
         else if (routeName === TOPICS) icon = '📚';
         else if (routeName === PROFILE) icon = '👤';
 

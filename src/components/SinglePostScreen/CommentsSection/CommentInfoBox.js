@@ -8,7 +8,17 @@ import {
 
 import LikeBox from '../../../containers/LikeBox';
 
-const CommentInfoBox = ({commentId, username, handleProfileChange, postId, branch}) => (
+const CommentInfoBox = ({
+  commentId,
+  username,
+  newCommentOpen,
+  
+  handleReplyPress,
+  handleProfileChange,
+  
+  postId,
+  branch
+}) => (
   <View style={styles.infoBox}>
     <TouchableOpacity onPress={handleProfileChange}>
       <Text style={styles.infoBoxText}>👤 {username}</Text>
@@ -18,8 +28,13 @@ const CommentInfoBox = ({commentId, username, handleProfileChange, postId, branc
       <LikeBox type='comment' id={commentId} branch={branch} />
     </View>
 
-    <TouchableOpacity onPress={() => null}>
-      <Text>💬 rispondi</Text>
+    <TouchableOpacity onPress={handleReplyPress}>
+      {
+        newCommentOpen ?
+          <Text>✖️ elimina</Text>
+        :
+          <Text>💬 rispondi</Text>
+      }
     </TouchableOpacity>
   </View>
 );

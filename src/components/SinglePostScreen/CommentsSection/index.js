@@ -20,6 +20,7 @@ const CommentsSection = ({comments, handleCommentSubmit, ...other}) => (
 
     <Comments
       comments={comments}
+      handleCommentSubmit={handleCommentSubmit}
       parentId={null}
       level={0}
       
