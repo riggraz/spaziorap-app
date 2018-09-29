@@ -22,6 +22,8 @@ class SinglePostScreen extends React.Component {
         navigateToPostsByTopic={
           topicName => navigation.navigate(POSTS_BY_TOPIC, {topicName})
         }
+
+        navigation={navigation}
       />
     );
   }

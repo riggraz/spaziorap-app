@@ -31,12 +31,14 @@ class Comment extends React.Component {
     } = this.props;
     const {newCommentOpen} = this.state;
 
+    const maxLevelDepth = 7;
+
     return (
       <View
         style={[
           globalStyles.box,
           {
-            marginLeft: 8 + 16 * level,
+            marginLeft: 8 + 16 * Math.min(level, maxLevelDepth),
             marginTop: 0,
             marginBottom: 4,
           },
@@ -66,7 +68,10 @@ class Comment extends React.Component {
               isSubmitting={other.newCommentIsSubmitting}
         
               postId={other.postId}
+
+              isLoggedIn={other.isLoggedIn}
               accessToken={other.accessToken}
+              navigation={other.navigation}
             />
           :
             null

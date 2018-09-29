@@ -15,7 +15,10 @@ const CommentsSection = ({comments, handleCommentSubmit, ...other}) => (
       isSubmitting={other.newCommentIsSubmitting}
 
       postId={other.postId}
+
+      isLoggedIn={other.isLoggedIn}
       accessToken={other.accessToken}
+      navigation={other.navigation}
     />
 
     <Comments

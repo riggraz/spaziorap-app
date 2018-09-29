@@ -34,6 +34,15 @@ const TopicsListHorizontalP = ({titleVisible, topics, handleTopicChange, navigat
 
       keyExtractor={item => item.id}
 
+      getItemLayout={
+        (data, index) =>
+          ({
+            length: 72,
+            offset: 72 * index,
+            index
+          })
+      }
+
       style={styles.box}
     />
   </View>
@@ -50,6 +59,6 @@ const styles = StyleSheet.create({
     borderRadius: 16,
 
     padding: 16,
-    marginHorizontal: 8,
+    margin: 8,
   },
 });

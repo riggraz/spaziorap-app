@@ -47,8 +47,10 @@ class PostP extends React.Component {
       navigateToProfile,
       navigateToPostsByTopic,
 
+      isLoggedIn,
       accessToken,
       branch,
+      navigation,
     } = this.props;
 
     if (post === undefined) {
@@ -112,8 +114,10 @@ class PostP extends React.Component {
                 }
                 postId={post.id}
 
+                isLoggedIn={isLoggedIn}
                 accessToken={accessToken}
                 branch={branch}
+                navigation={navigation}
               />
             )
             :

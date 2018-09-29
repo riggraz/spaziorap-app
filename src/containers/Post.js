@@ -17,6 +17,7 @@ const mapStateToProps = (state, ownProps) =>
     commentsPostId: state.currentPost.comments.postId,
     newCommentIsSubmitting: state.currentPost.newComment.isSubmitting,
 
+    isLoggedIn: state.user.isLoggedIn,
     accessToken: state.user.accessToken,
   });
 

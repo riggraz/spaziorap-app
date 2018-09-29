@@ -42,7 +42,7 @@ class NewPostFormP extends React.Component {
 
   _renderErrorMessage = error => {
     if (error) {
-      return <Text style={formStyles.redLabel}>Non hai compilato tutti i campi. Riprova.</Text>;
+      return <Text style={formStyles.redLabel}>non hai compilato tutti i campi, prova di nuovo.</Text>;
     }
   }
 

@@ -24,7 +24,7 @@ const likeBoxStyles = StyleSheet.create({
 
   scoreTextSmall: {
     fontSize: 16,
-    marginHorizontal: 16,
+    marginHorizontal: 8,
   }
 });
 

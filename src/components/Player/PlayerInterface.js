@@ -14,10 +14,10 @@ const PlayerInterface = ({videoId, handleHide, handleMinimize}) => (
   <View style={playerStyles.player}>
     <View style={playerStyles.topBar}>
       <TouchableOpacity onPress={handleHide} style={playerStyles.topBarButton}>
-        <Text style={playerStyles.topBarText}>X Chiudi</Text>
+        <Text style={playerStyles.topBarText}>x chiudi</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={handleMinimize} style={playerStyles.topBarButton}>
-        <Text style={playerStyles.topBarText}>Minimizza -</Text>
+        <Text style={playerStyles.topBarText}>minimizza -</Text>
       </TouchableOpacity>
     </View>
 

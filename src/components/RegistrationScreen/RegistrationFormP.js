@@ -149,7 +149,7 @@ class RegistrationFormP extends React.Component {
 
         <TouchableOpacity onPress={() => this.props.navigation.navigate(LOGIN)}>
           <Text style={formStyles.touchableText}>
-            Hai già un account? Accedi subito.
+            hai già un account? accedi in 5 secondi.
           </Text>
         </TouchableOpacity>
       </ScrollView>

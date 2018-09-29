@@ -84,14 +84,14 @@ class LoginFormP extends React.Component {
 
         {
           this.props.error === LOGIN_FAILURE ?
-            <Text style={formStyles.redLabel}>Combinazione nome utente e password sbagliata.</Text>
+            <Text style={formStyles.redLabel}>combinazione nome utente e password sbagliata.</Text>
           :
             null
         }
 
         <TouchableOpacity onPress={() => this.props.navigation.navigate(REGISTRATION)}>
           <Text style={formStyles.touchableText}>
-            Non hai un account? Crealo subito.
+            non hai un account? crealo in 10 secondi.
           </Text>
         </TouchableOpacity>
       </ScrollView>

@@ -80,16 +80,15 @@ class Draggable extends Component {
   }
 
   handleMinimize = () => {
-    Animated.spring(
+    Animated.timing(
       this.state.pan, //the value to drive
       {
         toValue: {
-          x: Dimensions.get('window').width - 30,
+          x: Dimensions.get('window').width - 23,
           y: Dimensions.get('window').height - PLAYER_HEIGHT - 10 - 60,
         },
 
-        speed: 10,
-        bounciness: 10,
+        duration: 200,
       }
     ).start();
   }
