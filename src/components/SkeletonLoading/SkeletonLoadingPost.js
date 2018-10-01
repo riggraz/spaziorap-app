@@ -12,27 +12,41 @@ import {
 import Gradient from './Gradient';
 
 import skeletonStyles from '../../styles/skeletonStyles';
+import likeAndCommentBoxStyles from '../../styles/likeAndCommentBoxStyles';
+import globalStyles from '../../styles/globalStyles';
+import postInfoBoxStyles from '../../styles/postInfoBoxStyles';
 
 const SkeletonLoadingPost = () => (
   <PlaceholderContainer
-    style={skeletonStyles.placeholderContainer}
+    style={globalStyles.box}
     animatedComponent={<Gradient />}
     duration={1000}
     delay={0}
   >
 
-    <View>
-      <Placeholder style={[skeletonStyles.placeholderTitleText, { width: '85%' }]} />
-
-      <Placeholder style={[skeletonStyles.placeholderText, { width: '80%' }]} />
-      <Placeholder style={[skeletonStyles.placeholderText, { width: '85%' }]} />
-      <Placeholder style={[skeletonStyles.placeholderText, { width: '75%' }]} />
+    <View style={postInfoBoxStyles.infoBox}>
+      <Placeholder style={[skeletonStyles.placeholderInfoBoxText, { width: '20%' }]} />
+      <Placeholder style={[skeletonStyles.placeholderInfoBoxText, { width: '20%' }]} />
+      <Placeholder style={[skeletonStyles.placeholderInfoBoxText, { width: '20%' }]} />
     </View>
 
-    <View style={skeletonStyles.placeholderInfoBox}>
-      <Placeholder style={[skeletonStyles.placeholderInfoBoxText, { width: '20%' }]} />
-      <Placeholder style={[skeletonStyles.placeholderInfoBoxText, { width: '20%' }]} />
-      <Placeholder style={[skeletonStyles.placeholderInfoBoxText, { width: '20%' }]} />
+    <View>
+      <Placeholder style={[skeletonStyles.placeholderText, { width: '90%' }]} />
+      <Placeholder style={[skeletonStyles.placeholderText, { width: '80%' }]} />
+      <Placeholder style={[skeletonStyles.placeholderText, { width: '85%' }]} />
+    </View>
+
+    <View style={likeAndCommentBoxStyles.container}>
+      <View style={{flexDirection: 'row'}}>
+        <Placeholder style={skeletonStyles.placeholderEmoji} />
+        <Placeholder style={[skeletonStyles.placeholderText, { width: 20 }]} />
+        <Placeholder style={skeletonStyles.placeholderEmoji} />
+      </View>
+
+      <View style={{flexDirection: 'row'}}>
+        <Placeholder style={[skeletonStyles.placeholderText, { width: 20 }]} />
+        <Placeholder style={skeletonStyles.placeholderEmoji} />
+      </View>
     </View>
   </PlaceholderContainer>
 );

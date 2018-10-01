@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   View,
+  ScrollView,
   Text,
   Button,
   FlatList,
@@ -227,11 +228,12 @@ class PostsListP extends React.Component {
     }
     else {
       return (
-        <View>
+        <ScrollView style={{flex: 1}}>
+          {this._renderListHeader()}
           <SkeletonLoadingPost />
           <SkeletonLoadingPost />
           <SkeletonLoadingPost />
-        </View>
+        </ScrollView>
       );
     }
   }

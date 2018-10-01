@@ -13,24 +13,48 @@ const skeletonStyles = StyleSheet.create({
       borderRadius: 16,
   
       margin: 8,
-      padding: 16,
+      padding: 4,
     },
   
     placeholderText: {
-      height: 16,
+      height: 20,
       marginTop: 8,
-      marginLeft: 16,
-      marginRight: 16,
+      marginLeft: 8,
+      marginRight: 8,
       alignSelf: 'flex-start',
       backgroundColor: '#eeeeee',
     },
-  
-    placeholderTitleText: {
-      height: 38,
+
+    placeholderSmallText: {
+      height: 13,
       marginTop: 8,
-      marginLeft: 16,
-      marginRight: 16,
+      marginLeft: 8,
+      marginRight: 8,
       alignSelf: 'flex-start',
+      backgroundColor: '#eeeeee',
+    },
+
+    placeholderEmoji: {
+      width: 24,
+      height: 24,
+      borderRadius: 24,
+      marginTop: 8,
+      alignSelf: 'flex-start',
+      backgroundColor: '#eeeeee',
+    },
+
+    placeholderTopicContainer: {
+      width: 90,
+      height: 90,
+
+      marginHorizontal: 4,
+    },
+
+    placeholderTopicIcon: {
+      width: 50,
+      height: 50,
+      borderRadius: 50,
+      alignSelf: 'center',
       backgroundColor: '#eeeeee',
     },
 
@@ -41,9 +65,7 @@ const skeletonStyles = StyleSheet.create({
   
     placeholderInfoBoxText: {
       height: 18,
-      marginTop: 8,
-      marginLeft: 24,
-      marginRight: 24,
+      margin: 8,
       borderRadius: 36,
       alignSelf: 'flex-start',
       justifyContent: 'center',

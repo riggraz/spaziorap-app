@@ -8,6 +8,7 @@ import {selectTopic} from '../actions/selectTopic';
 const mapStateToProps = state =>
   ({
     topics: state.topics.items,
+    areFetching: state.topics.areFetching,
     selectedTopic: state.topics.selectedTopic,
   });
 

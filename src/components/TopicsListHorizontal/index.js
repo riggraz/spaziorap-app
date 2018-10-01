@@ -12,39 +12,45 @@ import globalStyles from '../../styles/globalStyles';
 import homeStyles from '../../styles/homeStyles';
 
 import {BOX_BACKGROUND_COLOR, BOX_BORDER_COLOR} from '../../constants/colors';
+import SkeletonLoadingTopics from '../SkeletonLoading/SkeletonLoadingTopics';
 
-const TopicsListHorizontalP = ({titleVisible, topics, handleTopicChange, navigateToPostsListByTopic}) => (
+const TopicsListHorizontalP = ({titleVisible, topics, areFetching, handleTopicChange, navigateToPostsListByTopic}) => (
   <View style={globalStyles.hiddenBox}>
     { titleVisible ? <Text style={homeStyles.title}>categorie</Text> : null }
-    <FlatList
-      horizontal={true}
-      data={topics}
+    {
+      !areFetching ?
+        <FlatList
+          horizontal={true}
+          data={topics}
 
-      renderItem={
-        ({item}) => (
-          <TopicsListHorizontalItem
-            name={item.name}
-            handlePress={() => {
-              handleTopicChange(item.id);
-              navigateToPostsListByTopic(item.name);
-            }}
-          />
-        )
-      }
+          renderItem={
+            ({item}) => (
+              <TopicsListHorizontalItem
+                name={item.name}
+                handlePress={() => {
+                  handleTopicChange(item.id);
+                  navigateToPostsListByTopic(item.name);
+                }}
+              />
+            )
+          }
 
-      keyExtractor={item => item.id}
+          keyExtractor={item => item.id}
 
-      getItemLayout={
-        (data, index) =>
-          ({
-            length: 72,
-            offset: 72 * index,
-            index
-          })
-      }
+          getItemLayout={
+            (data, index) =>
+              ({
+                length: 72,
+                offset: 72 * index,
+                index
+              })
+          }
 
-      style={styles.box}
-    />
+          style={styles.box}
+        />
+      :
+        <SkeletonLoadingTopics />
+    }
   </View>
 );
 
