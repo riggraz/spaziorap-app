@@ -23,7 +23,9 @@ class Comment extends React.Component {
     const {
       id,
       body,
+      handleProfileChange,
       handleCommentSubmit,
+      userId,
       username,
       createdAt,
       level,
@@ -49,6 +51,7 @@ class Comment extends React.Component {
           username={username}
           newCommentOpen={newCommentOpen}
           handleReplyPress={() => this.setState({newCommentOpen: !this.state.newCommentOpen})}
+          handleProfileChange={() => handleProfileChange(userId, username)}
           
           {...other}
         />

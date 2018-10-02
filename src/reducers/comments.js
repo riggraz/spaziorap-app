@@ -33,6 +33,7 @@ const comments = (
             ({
               id: comment.id,
               body: comment.attributes.body,
+              userId: comment.attributes.user_id,
               userUsername: comment.attributes.user_username,
               parentId: comment.attributes.parent_id,
               postId: comment.attributes.post_id,

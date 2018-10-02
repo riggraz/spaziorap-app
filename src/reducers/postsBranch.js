@@ -44,6 +44,8 @@ const postsBranch = (
       if (action.posts.length === 0) {
         return {
           ...state,
+          //solve profile with no post bug
+          items: action.page === 1 ? [] : state.items,
           areFetching: false,
           endReached: true,
         };

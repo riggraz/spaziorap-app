@@ -107,9 +107,9 @@ class PostP extends React.Component {
                 newCommentIsSubmitting={newCommentIsSubmitting}
 
                 handleProfileChange={
-                  () => {
-                    handleProfileChange(post.userId);
-                    navigateToProfile(post.userUsername);
+                  (userId, userUsername) => {
+                    handleProfileChange(userId);
+                    navigateToProfile(userUsername);
                   }
                 }
                 postId={post.id}

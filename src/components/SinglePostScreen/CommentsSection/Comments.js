@@ -17,6 +17,7 @@ const Comments = ({comments, parentId, level, ...other}) => (
               <Comment
                 id={comment.id}
                 body={comment.body}
+                userId={comment.userId}
                 username={comment.userUsername}
                 createdAt={comment.createdAt}
                 level={level}
