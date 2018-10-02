@@ -4,9 +4,10 @@
 
     "name": "Spazio Rap",
     "slug": "spaziorap",
-    "description": "La prima app sul rap in Italia: opinioni, discussioni e ultime uscite!",
+    "version": "1.0.0",
+    "description": "Il primo social italiano sul rap! Scrivi messaggi. Ascolta musica. Spazio Rap.",
     
-    "privacy": "unlisted",
+    "privacy": "public",
 
     "icon": "./assets/images/icon.png",
     "splash": {
