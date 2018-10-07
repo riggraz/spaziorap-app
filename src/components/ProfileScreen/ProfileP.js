@@ -36,7 +36,7 @@ const ProfileP = ({username, score, navigation}) => (
       }
       navigateToSinglePostScreen={
         (postId, postTitle) => {
-          navigation.push(
+          navigation.navigate(
             SINGLE_POST,
             {postId, postTitle, branch: PROFILE_BRANCH},
           );

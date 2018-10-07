@@ -10,10 +10,14 @@ import {submitComment} from '../actions/submitComment';
 
 const mapStateToProps = (state, ownProps) =>
   ({
-    post: state.posts[ownProps.branch].items.find(post => post.id === ownProps.id),
+    post: state.currentPost.post,
+    isFetching: state.currentPost.isFetching,
+    error: state.currentPost.error,
+
     topics: state.topics.items,
 
     comments: state.currentPost.comments.items,
+    commentsAreFetching: state.currentPost.comments.areFetching,
     commentsPostId: state.currentPost.comments.postId,
     newCommentIsSubmitting: state.currentPost.newComment.isSubmitting,
 

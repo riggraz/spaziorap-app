@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import PostsListP from '../components/PostsScreen/PostsListP';
 
 import {setCurrentPostId} from '../actions/setCurrentPostId';
+import {fetchPost} from '../actions/requestPost';
+import {fetchComments} from '../actions/requestComments';
 import {fetchPosts} from '../actions/requestPosts';
 import {fetchLatestPosts} from '../actions/requestLatestPosts';
 import {selectTopic} from '../actions/selectTopic';
@@ -38,6 +40,8 @@ const mapDispatchToProps = dispatch =>
   ({
     handlePostPress(postId) {
       dispatch(setCurrentPostId(postId));
+      dispatch(fetchPost(postId));
+      dispatch(fetchComments(postId));
     },
 
     handleProfileChange(userId) {

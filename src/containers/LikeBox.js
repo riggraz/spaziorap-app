@@ -7,9 +7,9 @@ import {like} from '../actions/like';
 const mapStateToProps = (state, ownProps) =>
   ({
     score: ownProps.type === 'post' ?
-      state.posts[ownProps.branch].items.find(post => post.id === ownProps.id).score
+      state.posts[ownProps.branch].items.find(post => post.id === ownProps.id) && state.posts[ownProps.branch].items.find(post => post.id === ownProps.id).score
       :
-      state.currentPost.comments.items.find(comment => comment.id === ownProps.id).score
+      state.currentPost.comments.items.find(comment => comment.id === ownProps.id) && state.currentPost.comments.items.find(comment => comment.id === ownProps.id).score
     ,
     accessToken: state.user.accessToken,
     isLoggedIn: state.user.isLoggedIn,

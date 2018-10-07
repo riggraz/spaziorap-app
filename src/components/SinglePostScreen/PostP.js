@@ -19,11 +19,6 @@ import homeStyles from '../../styles/homeStyles';
 import {MAIN_COLOR} from '../../constants/colors';
 
 class PostP extends React.Component {
-  componentDidMount() {
-    const {post, commentsPostId, fetchComments} = this.props;
-
-    if (commentsPostId !== post.id) fetchComments(post.id);
-  }
 
   _getTopicName = (topicId, topics) => (
     (topicId && topics) ?
@@ -34,9 +29,15 @@ class PostP extends React.Component {
 
   render() {
     const {
+      id,
+      
       post,
+      isFetching,
+      error,
+
       topics,
       comments,
+      commentsAreFetching,
       commentsPostId,
       newCommentIsSubmitting,
       fetchComments,
@@ -53,11 +54,15 @@ class PostP extends React.Component {
       navigation,
     } = this.props;
 
-    if (post === undefined) {
+    if (post === undefined || error) {
       return (
         <View style={globalStyles.box}>
           <Text>Si è verificato un errore nel recupero del post.</Text>
         </View>
+      );
+    } else if (isFetching) {
+      return (
+        <ActivityIndicator size='large' color={MAIN_COLOR} />
       );
     } else {
       return (
@@ -95,12 +100,12 @@ class PostP extends React.Component {
           </View>
 
           <View style={globalStyles.box}>
-            <LikeAndCommentBox postId={post.id} commentsCount={post.commentsCount} branch={branch} />
+            <LikeAndCommentBox postId={id} commentsCount={post.commentsCount} branch={branch} />
           </View>
 
           <Text style={homeStyles.title}>commenti</Text>
           {
-            commentsPostId === post.id ? (
+            !commentsAreFetching ? (
               <CommentsSection
                 comments={comments}
                 handleCommentSubmit={handleCommentSubmit}

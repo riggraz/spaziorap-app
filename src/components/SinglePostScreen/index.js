@@ -17,7 +17,7 @@ class SinglePostScreen extends React.Component {
       <Post branch={navigation.getParam('branch')} 
         id={navigation.getParam('postId', '-1')}
         navigateToProfile={
-          profileName => navigation.push(PROFILE_PAGE, {profileName})
+          profileName => navigation.navigate(PROFILE_PAGE, {profileName})
         }
         navigateToPostsByTopic={
           topicName => navigation.navigate(POSTS_BY_TOPIC, {topicName})
