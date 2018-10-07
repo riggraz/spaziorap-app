@@ -6,6 +6,7 @@ import {
 } from  'react-native';
 
 import PostsList from '../../containers/PostsList';
+import NotificationsButton from '../../containers/NotificationsButton';
 
 import profileStyles from '../../styles/profileStyles';
 
@@ -15,16 +16,18 @@ import {PROFILE_BRANCH} from '../../constants/branches';
 const ProfileP = ({username, score, navigation}) => (
   <View style={{flex: 1}}>
     <View style={profileStyles.userInfoBox}>
-      <Text style={profileStyles.username}>{username}</Text>
       <View style={{flexDirection: 'row'}}>
-        <Text style={profileStyles.score}>punteggio: </Text>
+        <Text style={profileStyles.username}>{username} (</Text>
         {
           score === '...' ?
             <ActivityIndicator size='small' color='black' />
           :
             <Text style={profileStyles.score}>{score}</Text>
         }
+        <Text style={profileStyles.username}> punti)</Text>
       </View>
+
+      {!navigation.getParam('profileName') ? <NotificationsButton navigation={navigation} /> : null}
     </View>
 
     <PostsList branch={PROFILE_BRANCH}

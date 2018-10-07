@@ -1,6 +1,6 @@
 import React from 'react';
 
-import HeaderRight from '../../containers/HeaderRight';
+import NotificationsButton from '../../containers/NotificationsButton';
 import PostsList from '../../containers/PostsList';
 
 import getBranch from '../../helpers/getBranch';
@@ -15,6 +15,7 @@ class PostsScreen extends React.Component {
         'messaggi'
       :
         'categoria: ' + navigation.getParam('topicName'),
+    headerRight: <NotificationsButton topBar navigation={navigation} />,
   });
 
   render() {

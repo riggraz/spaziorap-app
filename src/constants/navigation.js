@@ -12,6 +12,7 @@ export const HOME = 'home';
 export const POSTS = 'messaggi';
   export const LATEST_POSTS = 'messaggi recenti';
   export const TRENDING_POSTS = 'messaggi di moda';
+export const NOTIFICATIONS = 'notifiche';
 
 export const TOPICS = 'categorie';
 export const TOPICS_LIST = 'lista categorie';

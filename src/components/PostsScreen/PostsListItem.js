@@ -47,6 +47,7 @@ const PostsListItem = ({
       />
 
       <LikeAndCommentBox
+        type='post'
         postId={id}
         commentsCount={commentsCount}
         branch={branch}

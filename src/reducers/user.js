@@ -40,7 +40,14 @@ import {
   VERIFY_ACCESS_TOKEN_UNAUTHORIZED_FAILURE,
 } from '../actions/verifyAccessToken';
 
+import {
+  START_NOTIFICATIONS_REQUEST,
+  NOTIFICATIONS_REQUEST_SUCCESSFUL,
+  NOTIFICATIONS_REQUEST_FAILURE,
+} from '../actions/requestNotifications';
+
 import newPost from './newPost';
+import notifications from './notifications';
 
 const defaultState = {
   isLoggingIn: false,
@@ -55,6 +62,8 @@ const defaultState = {
   accessToken: '',
 
   newPost: newPost(undefined, {}),
+
+  notifications: notifications(undefined, {}),
 };
 
 const user = (
@@ -112,6 +121,14 @@ const user = (
 
     case LOGOUT:
       return defaultState;
+
+    case START_NOTIFICATIONS_REQUEST:
+    case NOTIFICATIONS_REQUEST_SUCCESSFUL:
+    case NOTIFICATIONS_REQUEST_FAILURE:
+      return {
+        ...state,
+        notifications: notifications(state.notifications, action),
+      };
 
     case START_PROFILE_SCORE_REQUEST:
       return {

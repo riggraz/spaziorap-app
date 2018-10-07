@@ -100,7 +100,7 @@ class PostP extends React.Component {
           </View>
 
           <View style={globalStyles.box}>
-            <LikeAndCommentBox postId={id} commentsCount={post.commentsCount} branch={branch} />
+            <LikeAndCommentBox type='singlePost' postId={id} commentsCount={post.commentsCount} branch={branch} />
           </View>
 
           <Text style={homeStyles.title}>commenti</Text>

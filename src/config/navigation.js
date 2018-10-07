@@ -13,6 +13,7 @@ import InfoScreen from '../components/InfoScreen';
 //Posts stack
 import PostsScreen from '../components/PostsScreen';
 import SinglePostScreen from '../components/SinglePostScreen';
+import NotificationsScreen from '../components/NotificationsScreen';
 
 //Topics stack
 import TopicsScreen from '../components/TopicsScreen';
@@ -35,6 +36,7 @@ import {
   POSTS,
     LATEST_POSTS,
     TRENDING_POSTS,
+  NOTIFICATIONS,
 
   TOPICS,
   TOPICS_LIST,
@@ -54,6 +56,7 @@ import {
 //Imports used to fetch profile posts on bottom tab click
 import store from './store';
 import {fetchProfilePosts} from '../actions/requestProfilePosts';
+import {fetchNotifications} from '../actions/requestNotifications';
 
 import {MAIN_COLOR, MAIN_COLOR_DARKER} from '../constants/colors';
 
@@ -89,6 +92,7 @@ const PostsStack = createStackNavigator(
     [POSTS_BY_TOPIC]: PostsScreen,
     [SINGLE_POST]: SinglePostScreen,
     [PROFILE_PAGE]: ProfileScreen,
+    [NOTIFICATIONS]: NotificationsScreen,
   },
   {
     initialRouteName: LATEST_POSTS,
@@ -162,6 +166,7 @@ const BottomTabStack = createBottomTabNavigator(
           if (currentUser) {
             navigation.navigate(PROFILE);
             store.dispatch(fetchProfilePosts(currentUser));
+            store.dispatch(fetchNotifications(currentUser));
           } else {
             navigation.navigate(LOGIN);
           }

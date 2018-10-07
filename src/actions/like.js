@@ -28,7 +28,7 @@ export const like = (type, id, score, accessToken) => dispatch => {
     score
   };
 
-  return fetch(`${API_URL}/${type === 'post' ? 'posts' : 'comments' }/${id}/likes`,
+  return fetch(`${API_URL}/${type === 'comment' ? 'comments' : 'posts' }/${id}/likes`,
     {
       method: 'POST',
       headers,
@@ -43,6 +43,7 @@ export const like = (type, id, score, accessToken) => dispatch => {
           if (json.error === undefined) {
             switch (type) {
               case 'post':
+              case 'singlePost':
               default:
                 dispatch(likeSuccessfulPost(json.data.attributes.post_id, json.data.attributes.score, score));
 

@@ -1,6 +1,6 @@
-import {
-  POST_REQUEST_SUCCESSFUL,
-} from '../actions/requestPost';
+import {POST_REQUEST_SUCCESSFUL,} from '../actions/requestPost';
+
+import {LIKE_SUCCESSFUL_POST} from '../actions/like';
 
 const post = (
   state = {
@@ -28,6 +28,19 @@ const post = (
         url: action.post.attributes.url,
         userId: action.post.attributes.user_id,
         userUsername: action.post.attributes.user_username,
+      };
+
+    case LIKE_SUCCESSFUL_POST:
+      let score = state.score;
+
+      if (action.score == 1) score++;
+      else if (action.score == -1) score--;
+      else if (action.score == 0 && action.pressedButton == -1) score++;
+      else if (action.score == 0 && action.pressedButton == 1) score--;
+
+      return {
+        ...state,
+        score,
       };
 
     default:

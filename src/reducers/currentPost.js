@@ -12,7 +12,7 @@ import {
   COMMENTS_REQUEST_FAILURE,
 } from '../actions/requestComments';
 
-import {LIKE_SUCCESSFUL_COMMENT} from '../actions/like';
+import {LIKE_SUCCESSFUL_COMMENT, LIKE_SUCCESSFUL_POST} from '../actions/like';
 
 import {
   START_COMMENT_SUBMISSION,
@@ -51,6 +51,7 @@ const currentPost = (
       };
 
     case POST_REQUEST_SUCCESSFUL:
+    case LIKE_SUCCESSFUL_POST:
       return {
         ...state,
         post: post(state.post, action),

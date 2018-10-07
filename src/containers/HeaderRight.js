@@ -4,6 +4,7 @@ import HeaderRightP from '../components/Header/HeaderRight';
 
 import {fetchProfilePosts} from '../actions/requestProfilePosts';
 import {fetchProfileScore} from '../actions/requestProfileScore';
+import {fetchNotifications} from '../actions/requestNotifications';
 
 const mapStateToProps = state =>
   ({
@@ -17,6 +18,7 @@ const mapDispatchToProps = dispatch =>
   ({
     handleProfileRefresh(userId) {
       dispatch(fetchProfilePosts(userId));
+      dispatch(fetchNotifications(userId));
     },
   });
 

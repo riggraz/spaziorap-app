@@ -5,7 +5,7 @@ import {BOX_BACKGROUND_COLOR, BOX_BORDER_COLOR} from '../constants/colors';
 const profileStyles = StyleSheet.create({
   userInfoBox: {
     width: '100%',
-    height: 80,
+    height: 100,
 
     display: 'flex',
     justifyContent: 'center',
@@ -22,7 +22,7 @@ const profileStyles = StyleSheet.create({
   },
 
   score: {
-    fontSize: 20,
+    fontSize: 24,
   }
 });
 
