@@ -52,7 +52,7 @@ const NotificationsButtonP = ({
         <Text style={styles.text}>📭 ... nuove notifiche</Text>
       :
         <TouchableOpacity onPress={() => navigation.navigate(LOGIN)}>
-          <Text style={styles.text}>accedi</Text>
+          <Text style={styles.text}>benvenuto su spazio rap</Text>
         </TouchableOpacity>
 );
 
@@ -68,5 +68,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 22,
     color: 'black',
+    textAlign: 'center',
   },
 });
