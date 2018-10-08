@@ -17,6 +17,7 @@ import {
   SELECTEDTOPIC_BRANCH,
   PROFILE_BRANCH,
 } from '../constants/branches';
+import { fetchNotifications } from '../actions/requestNotifications';
 
 const mapStateToProps = (state, ownProps) =>
   ({
@@ -32,6 +33,7 @@ const mapStateToProps = (state, ownProps) =>
     selectedTopic: state.topics.selectedTopic,
     selectedProfile: state.posts.profile.items && state.posts.profile.items[0] && state.posts.profile.items[0].userId,
 
+    loggedUserId: state.user.isLoggedIn ? state.user.id : 0,
     admin: state.user.admin,
     accessToken: state.user.accessToken,
   });
@@ -53,11 +55,13 @@ const mapDispatchToProps = dispatch =>
       dispatch(selectTopic(topicId));
     },
 
-    handleRefresh(whatToRefresh, id) {
+    handleRefresh(whatToRefresh, id, userId) {
       if (whatToRefresh === LATEST_BRANCH) dispatch(fetchLatestPosts());
       else if (whatToRefresh === TRENDING_BRANCH) 0//to implement
       else if (whatToRefresh === SELECTEDTOPIC_BRANCH) dispatch(fetchPosts(id));
       else if (whatToRefresh === PROFILE_BRANCH) dispatch(fetchProfilePosts(id));
+
+      if (userId !== 0) dispatch(fetchNotifications(userId));
     },
 
     handleLoadMore(whatToLoadMore, id, page) {

@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import {NOTIFICATIONS} from '../constants/navigation';
+import {NOTIFICATIONS, LOGIN} from '../constants/navigation';
 
 const NotificationsButtonP = ({
   numberOfNotifications,
@@ -14,6 +14,7 @@ const NotificationsButtonP = ({
   handleNotificationsRefresh,
   
   isLoggedIn,
+  isLoggingIn,
   userId,
 
   topBar,
@@ -29,18 +30,37 @@ const NotificationsButtonP = ({
       }
     >
       <Text style={[topBar ? styles.topBarText : styles.text]}>
-        {topBar ? '' : '📬 apri centro '}notifiche ({numberOfNotifications})
+        {
+          topBar ?
+            areFetching ?
+              'notifiche (...)'
+            :
+              'notifiche (' + numberOfNotifications + ')'
+          :
+            (( !areFetching && numberOfNotifications > 0) ? '📬' : '📭') + ' ' +
+            (areFetching ? '...' : numberOfNotifications) + ' ' +
+            'nuov' + (numberOfNotifications === 1 ? 'a' : 'e') + ' ' +
+            'notific' + (numberOfNotifications === 1 ? 'a' : 'he')
+        }
       </Text>
     </TouchableOpacity>
   :
-    null
+    topBar ?
+      null
+    :
+      isLoggingIn ?
+        <Text style={styles.text}>📭 ... nuove notifiche</Text>
+      :
+        <TouchableOpacity onPress={() => navigation.navigate(LOGIN)}>
+          <Text style={styles.text}>accedi</Text>
+        </TouchableOpacity>
 );
 
 export default NotificationsButtonP;
 
 const styles = StyleSheet.create({
   topBarText: {
-    fontSize: 22,
+    fontSize: 19,
     color: 'white',
     marginRight: 16,
   },

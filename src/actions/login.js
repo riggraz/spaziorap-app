@@ -1,6 +1,7 @@
 import {API_URL} from '../constants/API';
 
 import {fetchProfilePosts} from '../actions/requestProfilePosts';
+import {fetchNotifications} from './requestNotifications';
 
 import {saveValueByKey} from '../config/localStorage';
 
@@ -51,7 +52,7 @@ export const login = (username, password) => dispatch => {
             dispatch(loginSuccessful(json.data));
             dispatch(fetchProfilePosts(json.data.id));
             saveValueByKey('accessToken', json.data.attributes.access_token);
-
+            dispatch(fetchNotifications(json.data.id));
           } else {
             dispatch(loginFailure());
           }

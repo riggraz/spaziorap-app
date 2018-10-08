@@ -76,6 +76,7 @@ const HomeStack = createStackNavigator(
     [POSTS_BY_TOPIC]: PostsScreen,
     [SINGLE_POST]: SinglePostScreen,
     [PROFILE_PAGE]: ProfileScreen,
+    [NOTIFICATIONS]: NotificationsScreen,
 
     [INFO]: InfoScreen,
   },
@@ -128,6 +129,7 @@ const ProfileStack = createStackNavigator(
     [PROFILE_PAGE]: ProfileScreen,
     [POSTS_BY_TOPIC]: PostsScreen,
     [SINGLE_POST]: SinglePostScreen,
+    [NOTIFICATIONS]: NotificationsScreen,
   },
   {
     initialRouteName: PROFILE_PAGE,

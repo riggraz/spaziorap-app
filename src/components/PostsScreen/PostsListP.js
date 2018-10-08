@@ -48,11 +48,11 @@ class PostsListP extends React.Component {
   );
 
   _handleRefresh = () => {
-    const {handleRefresh, selectedTopic, selectedProfile, branch} = this.props;
+    const {handleRefresh, selectedTopic, selectedProfile, loggedUserId, branch} = this.props;
 
-    if (branch === LATEST_BRANCH || branch === TRENDING_BRANCH) handleRefresh(branch);
-    else if (branch === PROFILE_BRANCH) handleRefresh(branch, selectedProfile);
-    else handleRefresh(branch, selectedTopic);
+    if (branch === LATEST_BRANCH || branch === TRENDING_BRANCH) handleRefresh(branch, 0, loggedUserId);
+    else if (branch === PROFILE_BRANCH) handleRefresh(branch, selectedProfile, loggedUserId);
+    else handleRefresh(branch, selectedTopic,loggedUserId);
   }
 
   _renderListHeader = () => {

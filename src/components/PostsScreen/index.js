@@ -10,11 +10,7 @@ import {POSTS_BY_TOPIC, SINGLE_POST, PROFILE_PAGE} from '../../constants/navigat
 class PostsScreen extends React.Component {
   static navigationOptions = ({navigation}) =>
   ({
-    title:
-      navigation.getParam('topicName', 'messaggi') === 'messaggi' ?
-        'messaggi'
-      :
-        'categoria: ' + navigation.getParam('topicName'),
+    title: navigation.getParam('topicName', 'messaggi'),
     headerRight: <NotificationsButton topBar navigation={navigation} />,
   });
 

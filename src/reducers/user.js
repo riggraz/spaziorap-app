@@ -46,6 +46,8 @@ import {
   NOTIFICATIONS_REQUEST_FAILURE,
 } from '../actions/requestNotifications';
 
+import {NOTIFICATION_READ_SUCCESS} from '../actions/markNotificationAsRead';
+
 import newPost from './newPost';
 import notifications from './notifications';
 
@@ -125,6 +127,7 @@ const user = (
     case START_NOTIFICATIONS_REQUEST:
     case NOTIFICATIONS_REQUEST_SUCCESSFUL:
     case NOTIFICATIONS_REQUEST_FAILURE:
+    case NOTIFICATION_READ_SUCCESS:
       return {
         ...state,
         notifications: notifications(state.notifications, action),

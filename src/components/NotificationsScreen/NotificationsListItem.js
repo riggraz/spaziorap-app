@@ -9,7 +9,8 @@ import {
 import globalStyles from '../../styles/globalStyles';
 
 import friendlyDate from '../../helpers/friendlyDate';
-import { MAIN_COLOR } from '../../constants/colors';
+
+import {MAIN_COLOR} from '../../constants/colors';
 
 const NotificationsListItem = ({
   senderUsername,
@@ -22,8 +23,17 @@ const NotificationsListItem = ({
 }) => (
   <TouchableOpacity onPress={handlePress}>
     <View style={globalStyles.box}>
-      {read ? null : <Text style={styles.new}>nuova!</Text>}
-      <Text style={styles.notificationText}>{senderUsername} ti ha risposto in '{postBody.slice(0, 50) + '...'}'</Text>
+      {
+        read ?
+          <Text style={styles.read}>⬤ letta</Text>
+        :
+          <Text style={styles.new}>⬤ nuova</Text>
+      }
+      <Text style={styles.notificationText}>
+        <Text style={styles.boldText}>{senderUsername}</Text>
+        <Text> ti ha risposto in </Text>
+        <Text style={styles.boldText}>{postBody.slice(0, 50) + '...'}</Text>
+      </Text>
       <Text style={styles.notificationDate}>{friendlyDate(createdAt)} fa</Text>
     </View>
   </TouchableOpacity>
@@ -39,6 +49,13 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
 
+  read: {
+    fontSize: 16,
+    color: 'grey',
+
+    marginBottom: 8,
+  },
+
   notificationText: {
     fontSize: 17,
   },
@@ -48,5 +65,9 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
 
     marginTop: 8,
+  },
+
+  boldText: {
+    fontWeight: 'bold',
   },
 });

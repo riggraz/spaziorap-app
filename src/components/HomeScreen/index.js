@@ -1,7 +1,8 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
+import {ScrollView, View, Text} from 'react-native';
 
 import HeaderRight from '../../containers/HeaderRight';
+import NotificationsButton from '../../containers/NotificationsButton';
 
 import Menu from './Menu/Menu';
 import LatestSongs from '../../containers/LatestSongs';
@@ -10,6 +11,7 @@ import PostsListHorizontal from './PostsListHorizontal';
 import BottomMenu from './Menu/BottomMenu';
 
 import globalStyles from '../../styles/globalStyles';
+import homeStyles from '../../styles/homeStyles';
 
 import {POSTS_BY_TOPIC} from '../../constants/navigation';
 
@@ -26,9 +28,12 @@ class HomeScreen extends React.Component {
     return (
       <ScrollView style={globalStyles.container}>
         <Menu navigation={navigation} />
+        
+        <View style={homeStyles.menu}>
+          <NotificationsButton navigation={navigation} />
+        </View>
 
         <LatestSongs foreign={false} />
-
         <LatestSongs foreign />
 
         <TopicsListHorizontal
@@ -38,10 +43,12 @@ class HomeScreen extends React.Component {
           }
         />
 
-        <PostsListHorizontal
-          branch='latest'
-          navigation={navigation}
-        />
+        <View style={{flex: 1}}>
+          <PostsListHorizontal
+            branch='latest'
+            navigation={navigation}
+          />
+        </View>
 
         <BottomMenu navigation={navigation} />
       </ScrollView>

@@ -4,6 +4,8 @@ import {
   NOTIFICATIONS_REQUEST_FAILURE,
 } from '../actions/requestNotifications';
 
+import {NOTIFICATION_READ_SUCCESS} from '../actions/markNotificationAsRead';
+
 const notifications = (
   state = {
     items: [],
@@ -43,6 +45,15 @@ const notifications = (
         items: [],
         areFetching: false,
         error: true,
+      };
+
+    case NOTIFICATION_READ_SUCCESS:
+      return {
+        ...state,
+        items: state.items.map(notification => {
+          if (notification.id == action.notificationId) notification.read = true;
+          return notification;
+        }),
       };
 
     default:
