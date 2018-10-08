@@ -21,7 +21,8 @@
       "bundleIdentifier": "com.riccardograziosi.spaziorap"
     },
     "android": {
-      "package": "com.riccardograziosi.spaziorap"
+      "package": "com.riccardograziosi.spaziorap",
+      "versionCode": 2
     },
 
     "updates": {
