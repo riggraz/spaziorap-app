@@ -22,13 +22,12 @@
     },
     "android": {
       "package": "com.riccardograziosi.spaziorap",
-      "versionCode": 4
+      "versionCode": 4,
+      "permissions": []
     },
 
     "updates": {
       "enabled": false
-    },
-
-    "permissions": []
+    }
   }
 }
