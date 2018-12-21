@@ -2,7 +2,6 @@ import React from 'react';
 import {
   View,
   Text,
-  Button,
   FlatList,
 } from 'react-native';
 
@@ -16,7 +15,7 @@ import homeStyles from '../../../styles/homeStyles';
 const LatestSongsP = ({songs, foreign, areFetching, handlePlaySong}) => (
     <View style={globalStyles.hiddenBox}>
       <Text style={homeStyles.title}>
-        ultime uscite in {foreign ? 'america 🇺🇸' : 'italia 🇮🇹'}
+        ultime uscite
       </Text>
       {
         !areFetching ?

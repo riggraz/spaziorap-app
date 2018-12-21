@@ -34,7 +34,7 @@ class HomeScreen extends React.Component {
         </View>
 
         <LatestSongs foreign={false} />
-        <LatestSongs foreign />
+        {/* <LatestSongs foreign /> */}
 
         <TopicsListHorizontal
           titleVisible

@@ -22,7 +22,7 @@ const latestSongsRequestFailure = () =>
 export const fetchLatestSongs = () => dispatch => {
   dispatch(startLatestSongsRequest());
 
-  return fetch(`${API_URL}/songs`)
+  return fetch(`${API_URL}/songs/latest`)
     .then(
       response => response.json(),
       error => latestSongsRequestFailure(),
