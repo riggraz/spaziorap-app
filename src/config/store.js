@@ -9,6 +9,7 @@ import {fetchTopics} from '../actions/requestTopics';
 import {verifyAccessToken} from '../actions/verifyAccessToken';
 
 import {loadValueByKey} from './localStorage';
+import { fetchArtists } from '../actions/requestArtists';
 
 const store = createStore(
   rootReducer,
@@ -23,6 +24,7 @@ if (__DEV__) {
   );
 }
 
+store.dispatch(fetchArtists());
 store.dispatch(fetchLatestSongs());
 store.dispatch(fetchTopics());
 store.dispatch(fetchLatestPosts());

@@ -1,6 +1,4 @@
-import {StyleSheet} from 'react-native';
-
-import {TITLE_COLOR} from '../constants/colors';
+import {StyleSheet, Platform} from 'react-native';
 
 const postListItemStyles = StyleSheet.create({
   postContent: {
@@ -15,7 +13,7 @@ const postListItemStyles = StyleSheet.create({
   
   postBody: {
     color: 'black',
-    fontFamily: 'Roboto',
+    fontFamily: Platform.OS === 'ios' ? 'Helvetica Neue' : 'Roboto',
 
     marginRight: 4,
   },

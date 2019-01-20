@@ -12,10 +12,10 @@ import getVideoId from '../../../helpers/getVideoId';
 
 import songStyles from '../../../styles/songStyles';
 
-const Song = ({name, artist, url, handlePlaySong}) => (
+const Song = ({name, artistName, url, handlePlaySong}) => (
   <TouchableOpacity onPress={() => handlePlaySong(getVideoId(url))}>
     <View style={songStyles.box}>
-      <Text style={songStyles.songName}>{name} - {artist}</Text>
+      <Text style={songStyles.songName}>{name} - {artistName}</Text>
 
       <Image
         source={{uri: `https://img.youtube.com/vi/${getVideoId(url)}/0.jpg`}}

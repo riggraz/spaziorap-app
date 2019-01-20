@@ -29,7 +29,7 @@ class Comment extends React.Component {
       username,
       createdAt,
       level,
-      ...other,
+      ...other
     } = this.props;
     const {newCommentOpen} = this.state;
 

@@ -27,7 +27,7 @@ const latestSongs = (
         items: action.songs.map(song => ({
           id: song.id,
           name: song.attributes.name,
-          artist: song.attributes.artist_name,
+          artistId: song.attributes.artist_id,
           foreign: song.attributes.foreign,
           url: song.attributes.url,
         })),

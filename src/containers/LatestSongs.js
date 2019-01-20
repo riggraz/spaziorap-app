@@ -8,6 +8,7 @@ const mapStateToProps = (state, ownProps) =>
   ({
     songs: !state.home.latestSongs.areFetching ? state.home.latestSongs.items.filter(song => song.foreign === ownProps.foreign) : [],
     areFetching: state.home.latestSongs.areFetching,
+    artists: state.artists.items,
   });
 
 const mapDispatchToProps = dispatch =>

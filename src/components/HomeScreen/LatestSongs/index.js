@@ -12,7 +12,7 @@ import SkeletonLoadingSong from '../../SkeletonLoading/SkeletonLoadingSong';
 import globalStyles from '../../../styles/globalStyles';
 import homeStyles from '../../../styles/homeStyles';
 
-const LatestSongsP = ({songs, foreign, areFetching, handlePlaySong}) => (
+const LatestSongsP = ({songs, areFetching, artists, handlePlaySong}) => (
     <View style={globalStyles.hiddenBox}>
       <Text style={homeStyles.title}>
         ultime uscite
@@ -24,7 +24,7 @@ const LatestSongsP = ({songs, foreign, areFetching, handlePlaySong}) => (
             renderItem={({item}) =>
               <Song
                 name={item.name}
-                artist={item.artist}
+                artistName={artists.find(artist => artist.id == item.artistId) && artists.find(artist => artist.id == item.artistId).name}
                 url={item.url}
                 handlePlaySong={songId => handlePlaySong(songId)}
               />
