@@ -103,31 +103,31 @@ class PostP extends React.Component {
             <LikeAndCommentBox type='singlePost' postId={id} commentsCount={post.commentsCount} branch={branch} />
           </View>
 
-          <Text style={homeStyles.title}>commenti</Text>
-          {
-            !commentsAreFetching ? (
-              <CommentsSection
-                comments={comments}
-                handleCommentSubmit={handleCommentSubmit}
-                newCommentIsSubmitting={newCommentIsSubmitting}
+          <View style={{flex: 1, flexDirection: 'row',}}>
+            <Text style={homeStyles.title}>commenti</Text>
+            {
+              commentsAreFetching ? <ActivityIndicator size='large' color={MAIN_COLOR} /> : null
+            }
+          </View>
+          
+          <CommentsSection
+            comments={comments}
+            handleCommentSubmit={handleCommentSubmit}
+            newCommentIsSubmitting={newCommentIsSubmitting}
 
-                handleProfileChange={
-                  (userId, userUsername) => {
-                    handleProfileChange(userId);
-                    navigateToProfile(userUsername);
-                  }
-                }
-                postId={post.id}
+            handleProfileChange={
+              (userId, userUsername) => {
+                handleProfileChange(userId);
+                navigateToProfile(userUsername);
+              }
+            }
+            postId={post.id}
 
-                isLoggedIn={isLoggedIn}
-                accessToken={accessToken}
-                branch={branch}
-                navigation={navigation}
-              />
-            )
-            :
-              <ActivityIndicator size='large' color={MAIN_COLOR} />
-          }
+            isLoggedIn={isLoggedIn}
+            accessToken={accessToken}
+            branch={branch}
+            navigation={navigation}
+          />
 
           <View style={{height: 300}} />
         </ScrollView>
