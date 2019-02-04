@@ -190,7 +190,7 @@ const BottomTabStack = createBottomTabNavigator(
         return <Text style={{fontSize: 18}}>{icon}</Text>;
       },
     }),
-    initialRouteName: HOME,
+    initialRouteName: POSTS,
     tabBarOptions: {
       activeTintColor: MAIN_COLOR_DARKER,
       inactiveTintColor: 'gray',
