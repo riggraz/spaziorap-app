@@ -5,6 +5,8 @@ import {fetchNotifications} from './requestNotifications';
 
 import {saveValueByKey} from '../config/localStorage';
 
+import pushNotificationToken from '../config/pushNotificationToken';
+
 export const START_LOGIN = 'START_LOGIN';
 const startLogin = () =>
   ({
@@ -53,6 +55,7 @@ export const login = (username, password) => dispatch => {
             dispatch(fetchProfilePosts(json.data.id));
             saveValueByKey('accessToken', json.data.attributes.access_token);
             dispatch(fetchNotifications(json.data.id));
+            pushNotificationToken(json.data.attributes.username);
           } else {
             dispatch(loginFailure());
           }

@@ -22,8 +22,9 @@
     },
     "android": {
       "package": "com.riccardograziosi.spaziorap",
-      "versionCode": 5,
-      "permissions": []
+      "versionCode": 6,
+      "permissions": [],
+      "googleServicesFile": "./google-services.json"
     },
 
     "updates": {

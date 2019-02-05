@@ -2,6 +2,8 @@ import {API_URL} from '../constants/API';
 
 import {saveValueByKey} from '../config/localStorage';
 
+import pushNotificationToken from '../config/pushNotificationToken';
+
 export const START_REGISTRATION = 'START_REGISTRATION';
 const startRegistration = () =>
   ({
@@ -51,6 +53,7 @@ export const register = (username, email, password) => dispatch => {
           if (json.error === undefined) {
             dispatch(registrationSuccessful(json.data));
             saveValueByKey('accessToken', json.data.attributes.access_token);
+            pushNotificationToken(json.data.attributes.username);
           } else {
             dispatch(registrationFailure());
           }

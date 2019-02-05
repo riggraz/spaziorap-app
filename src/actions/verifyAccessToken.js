@@ -5,6 +5,8 @@ import {deleteValueByKey} from "../config/localStorage";
 import {fetchProfilePosts} from './requestProfilePosts';
 import {fetchNotifications} from './requestNotifications';
 
+import pushNotificationToken from '../config/pushNotificationToken';
+
 export const START_VERIFY_ACCESS_TOKEN = 'START_VERIFY_ACCESS_TOKEN';
 const startVerifyAccessToken = () =>
   ({
@@ -56,6 +58,7 @@ export const verifyAccessToken = accessToken => dispatch => {
               dispatch(verifyAccessTokenSuccessful(json.data));
               dispatch(fetchProfilePosts(json.data.id));
               dispatch(fetchNotifications(json.data.id));
+              pushNotificationToken(json.data.attributes.username);
             } else {
               //accessToken is not correct (unauthorized error)
               dispatch(verifyAccessTokenUnauthorizedFailure());
