@@ -22,9 +22,14 @@
     },
     "android": {
       "package": "com.riccardograziosi.spaziorap",
-      "versionCode": 6,
+      "versionCode": 7,
       "permissions": [],
       "googleServicesFile": "./google-services.json"
+    },
+
+    "notification": {
+      "icon": "./assets/images/notificationIcon.png",
+      "color": "#F15946"
     },
 
     "updates": {

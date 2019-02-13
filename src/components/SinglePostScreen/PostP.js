@@ -6,6 +6,8 @@ import {
   ActivityIndicator,
 } from 'react-native';
 
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 import PostInfoBox from '../PostInfoBox';
 import PostContent from './PostContent';
 import LikeAndCommentBox from '../LikeAndCommentBox';
@@ -19,6 +21,12 @@ import homeStyles from '../../styles/homeStyles';
 import {MAIN_COLOR} from '../../constants/colors';
 
 class PostP extends React.Component {
+
+  constructor() {
+    super();
+
+    this.keyboardAwareScrollViewRef = React.createRef();
+  }
 
   _getTopicName = (topicId, topics) => (
     (topicId && topics) ?
@@ -66,9 +74,11 @@ class PostP extends React.Component {
       );
     } else {
       return (
-        <ScrollView
+        <KeyboardAwareScrollView
+          ref={this.keyboardAwareScrollViewRef}
           style={globalStyles.container}
           keyboardShouldPersistTaps='handled'
+          extraHeight={116}
         >
           <View style={globalStyles.box}>
             <PostInfoBox
@@ -103,15 +113,11 @@ class PostP extends React.Component {
             <LikeAndCommentBox type='singlePost' postId={id} commentsCount={post.commentsCount} branch={branch} />
           </View>
 
-          <View style={{flex: 1, flexDirection: 'row',}}>
-            <Text style={homeStyles.title}>commenti</Text>
-            {
-              commentsAreFetching ? <ActivityIndicator size='large' color={MAIN_COLOR} /> : null
-            }
-          </View>
+          <Text style={homeStyles.title}>commenti</Text>
           
           <CommentsSection
             comments={comments}
+            commentsAreFetching={commentsAreFetching}
             handleCommentSubmit={handleCommentSubmit}
             newCommentIsSubmitting={newCommentIsSubmitting}
 
@@ -121,16 +127,20 @@ class PostP extends React.Component {
                 navigateToProfile(userUsername);
               }
             }
-            postId={post.id}
+            postId={id}
 
             isLoggedIn={isLoggedIn}
             accessToken={accessToken}
             branch={branch}
             navigation={navigation}
+
+            handleScrollViewAwareness={
+              input => this.keyboardAwareScrollViewRef.current.scrollToFocusedInput(input)
+            }
           />
 
           <View style={{height: 300}} />
-        </ScrollView>
+        </KeyboardAwareScrollView>
       );
     }
   }

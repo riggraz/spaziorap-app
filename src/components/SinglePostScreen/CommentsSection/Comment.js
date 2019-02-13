@@ -69,6 +69,8 @@ class Comment extends React.Component {
               }
               parentId={id}
               isSubmitting={other.newCommentIsSubmitting}
+
+              handleScrollViewAwareness={other.handleScrollViewAwareness}
         
               postId={other.postId}
 

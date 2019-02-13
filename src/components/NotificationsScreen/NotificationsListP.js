@@ -57,7 +57,7 @@ const NotificationsListP = ({
             </Text>
             <TouchableOpacity
               onPress={() =>
-                notifications.reverse().map(notification => (
+                notifications.slice().reverse().map(notification => (
                   (!notification.read) ?
                       handleMarkNotificationAsRead(notification.id, accessToken)
                     :

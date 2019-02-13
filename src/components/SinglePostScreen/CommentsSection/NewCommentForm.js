@@ -7,6 +7,7 @@ import {
   Keyboard,
   ActivityIndicator,
   StyleSheet,
+  findNodeHandle,
 } from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 
@@ -22,12 +23,27 @@ class NewCommentForm extends React.Component {
     this.state = {
       commentText: '',
     };
+
+    this.textInputRef = React.createRef();
   }
+  
+  componentDidMount = () => {
+    if (this.props.parentId && this.props.isLoggedIn) {
+      this.textInputRef.current.focus();
+    }
+  };
+
+  _handleScrollViewAwareness = input => {
+    if (this.props.handleScrollViewAwareness) {
+      this.props.handleScrollViewAwareness(findNodeHandle(this.textInputRef.current));
+    }
+  };
 
   render() {
     const {
       handleCommentSubmit,
       parentId,
+      handleScrollViewAwareness,
       postId,
       isLoggedIn,
       accessToken,
@@ -40,7 +56,7 @@ class NewCommentForm extends React.Component {
     if (!isLoggedIn) {
       return (
         <TouchableOpacity onPress={() => navigation.navigate(LOGIN)}>
-          <Text style={{fontSize: 16, textAlign: 'center', textDecorationLine: 'underline', marginVertical: 4,}}>
+          <Text style={styles.loginMessage}>
             devi essere loggato per poter commentare. clicca qui per accedere.
           </Text>
         </TouchableOpacity>
@@ -50,12 +66,17 @@ class NewCommentForm extends React.Component {
     return (
       <View style={styles.newCommentForm}>
           <TextInput
+            ref={this.textInputRef}
             placeholder='commenta...'
-            onChangeText={(commentText) => this.setState({commentText})}
+            onChangeText={(commentText) => {
+              this.setState({commentText});
+              this._handleScrollViewAwareness();
+            }}
+            onFocus={() => this._handleScrollViewAwareness()}
             value={this.state.commentText}
             underlineColorAndroid='transparent'
             multiline
-            style={[formStyles.input, {width: '90%', maxHeight: 100, margin: 0}]}
+            style={[formStyles.input, {width: '90%', margin: 0}]}
           />
 
           {
@@ -102,6 +123,14 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     marginHorizontal: 0,
     paddingHorizontal: 8,
+  },
+
+  loginMessage: {
+    fontSize: 16,
+    textAlign: 'center',
+    textDecorationLine: 'underline',
+    marginVertical: 4,
+    marginHorizontal: 8,
   },
 
   submittable: {
