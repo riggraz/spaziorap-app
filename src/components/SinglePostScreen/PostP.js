@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Keyboard,
   ScrollView,
   View,
   Text,
@@ -25,8 +26,33 @@ class PostP extends React.Component {
   constructor() {
     super();
 
+    this.state = {
+      keyboardVisible: false,
+    };
+
+    this.keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      this._keyboardDidShow,
+    );
+    this.keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      this._keyboardDidHide,
+    );
+
     this.keyboardAwareScrollViewRef = React.createRef();
   }
+
+  componentWillUnmount = () => {
+    this.keyboardDidShowListener.remove();
+    this.keyboardDidHideListener.remove();
+  };
+  
+  _keyboardDidShow = () => {
+    this.setState({keyboardVisible: true});
+  };
+  _keyboardDidHide = () => {
+  this.setState({keyboardVisible: false});
+  };
 
   _getTopicName = (topicId, topics) => (
     (topicId && topics) ?
@@ -139,7 +165,7 @@ class PostP extends React.Component {
             }
           />
 
-          <View style={{height: 300}} />
+          <View style={this.state.keyboardVisible ? { height: 300 } : { height: 0 }} />
         </KeyboardAwareScrollView>
       );
     }

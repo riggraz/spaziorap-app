@@ -19,6 +19,8 @@ const CommentsSection = ({comments, commentsAreFetching, handleCommentSubmit, ..
       parentId={null}
       isSubmitting={other.newCommentIsSubmitting}
 
+      handleScrollViewAwareness={other.handleScrollViewAwareness}
+
       postId={other.postId}
 
       isLoggedIn={other.isLoggedIn}
