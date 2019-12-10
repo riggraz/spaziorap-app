@@ -2,7 +2,10 @@
 
 **Spazio Rap is an italian reddit-like social network for hip-hop enthusiasts.**
 
-This is the app for Spazio Rap app. For the API check out [Spazio Rap API](https://github.com/riggraz/spaziorap-api).
+This is the app for Spazio Rap. For the API (needed to make the app work!) check out [Spazio Rap API](https://github.com/riggraz/spaziorap-api).
+
+## Screenshots
+<img width="200" alt="portfolio_view" src="screenshots/home.png"> &nbsp;&nbsp; <img width="200" alt="portfolio_view" src="screenshots/posts.png"> &nbsp;&nbsp; <img width="200" alt="portfolio_view" src="screenshots/player.png">
 
 ## Download
 
