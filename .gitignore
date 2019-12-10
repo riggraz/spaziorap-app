@@ -21,3 +21,6 @@ yarn-error.log*
 
 # macos specific files
 *.DS_Store
+
+# google services
+google-services.json
